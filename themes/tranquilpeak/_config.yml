@@ -44,10 +44,6 @@ sidebar:
             icon: fa fa-search
             # `open-algolia-search` classes are used to open algolia search modal
             class: open-algolia-search
-        about:
-            title: global.about
-            url: /#about
-            icon: fa fa-question
         resume:
             title: Resume
             url: /
@@ -57,22 +53,18 @@ sidebar:
             title: global.github
             url: https://github.com/bmitchinson
             icon: fab fa-github
-        stack_overflow:
-            title: global.stack_overflow
-            url: https://stackoverflow.com/users/10007258/ben-mitchinson?tab=profile
-            icon: fab fa-stack-overflow
         twitter:
             title: global.twitter
             url: https://twitter.com/115bwm/
             icon: fab fa-twitter
-        linked_in:
-            title: global.linkedin
-            url: https://www.linkedin.com/profile/
-            icon: fab fa-linkedin
         mail:
             title: global.mail
             url: mailto:115bwm@gmail.com
             icon: fas fa-envelope
+        about:
+            title: global.about
+            url: /#about
+            icon: fa fa-question
 
 
 # --------------------
