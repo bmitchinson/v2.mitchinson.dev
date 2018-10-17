@@ -46,7 +46,7 @@ sidebar:
             class: open-algolia-search
         resume:
             title: Resume
-            url: /
+            url: https://res.cloudinary.com/dheqbiqti/image/upload/v1538501285/Documents/Resume.pdf
             icon: fas fa-file-pdf
     author_links:
         github:
