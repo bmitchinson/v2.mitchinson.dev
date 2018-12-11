@@ -23,7 +23,7 @@ gallery:
 ### Our Mission Statement:
 > Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process.
 
-<p></br>Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your identity online", "Using Facebook safely", "Password management", and even "How to use the TV in the downstairs game room". 😊</br></br></p>
+<p></br>Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your Identity Online", "Using Facebook Safely", "Password Management", and even "How to use the TV in the downstairs game room". 😊</br></br></p>
 
 <!-- more -->
 
