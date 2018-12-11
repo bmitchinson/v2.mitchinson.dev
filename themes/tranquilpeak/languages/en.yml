@@ -76,6 +76,10 @@ post:
 
 author:
     # Your biography (Markdown and HTML supported)
-    bio: "Front End Developer @ [Innovative Software Engineering](http://iseinc.biz/), President of [Computer Comfort](/2018/07/21/Computer-Comfort-Year-3/), Engineering Community Resident Assistant, Hackathons + Game Jams participant, and open source contributor."
+    bio: "Front End Dev @ [ISE](http://iseinc.biz/), President of 
+    [Computer Comfort](/2018/07/21/Computer-Comfort-Year-3/), Engineering 
+    Community Resident Assistant, Hackathons + Game Jams participant, 
+    and open source contributor."
+    
     # Your job
     job: "University of Iowa Engineering"
