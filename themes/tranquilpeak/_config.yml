@@ -38,16 +38,20 @@ sidebar:
             title: global.tags
             url: /all-tags
             icon: fa fa-tags
+        archives:
+            title: global.archives
+            url: /all-archives
+            icon: fa fa-calendar
         search:
             title: global.search
             url: /#search
             icon: fa fa-search
             # `open-algolia-search` classes are used to open algolia search modal
             class: open-algolia-search
-        resume:
-            title: Resume
-            url: https://res.cloudinary.com/dheqbiqti/image/upload/v1538501285/Documents/Resume.pdf
-            icon: fas fa-file-pdf
+        about:
+            title: global.about
+            url: /#about
+            icon: fa fa-question
     author_links:
         github:
             title: global.github
@@ -61,10 +65,10 @@ sidebar:
             title: global.mail
             url: mailto:115bwm@gmail.com
             icon: fas fa-envelope
-        about:
-            title: global.about
-            url: /#about
-            icon: fa fa-question
+        resume:
+            title: Resume
+            url: https://res.cloudinary.com/dheqbiqti/image/upload/v1538501285/Documents/Resume.pdf
+            icon: fas fa-file-pdf
 
 
 # --------------------
