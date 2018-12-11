@@ -2,7 +2,12 @@
 title: Entering Year 3 of Computer Comfort 👵💻
 date: 2018-07-21 14:26:20
 tags: Computer Comfort
-keywords: Computer, Comfort, Seniors, Volunteer, Club
+keywords: 
+- Computer Comfort
+- Seniors
+- Volunteer
+- Club
+comments: false
 coverImage: http://res.cloudinary.com/dheqbiqti/image/upload/v1532808896/comfort0.jpg
 coverMeta: out
 thumbnailImage: none
