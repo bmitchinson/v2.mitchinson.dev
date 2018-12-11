@@ -218,14 +218,14 @@ fb_app_id:
 # ```
 sharing_options:
     facebook:
-        icon: "fa-facebook-official"
+        icon: "fab fa-facebook"
         url: "https://www.facebook.com/sharer/sharer.php?u={{post.permalink}}"
     twitter:
-        icon: "fa-twitter"
+        icon: "fab fa-twitter"
         url: "https://twitter.com/intent/tweet?text={{post.permalink}}"
-    google_plus:
-        icon: "fa-google-plus"
-        url: "https://plus.google.com/share?url={{post.permalink}}"
+    # google_plus:
+    #    icon: "fa-google-plus"
+    #    url: "https://plus.google.com/share?url={{post.permalink}}"
     # Asian social networks
     # weibo:
     #     title: "Weibo"
