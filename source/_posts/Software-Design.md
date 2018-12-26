@@ -66,4 +66,4 @@ Kicking off new runnables with event handling
 </br></br>
 
 {% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801846/Projects/SWD/bouncing.mp4
-"60%" "Rotating an image" %}
+"60%" "Each runnable represnted by a ball moving in frame" %}
