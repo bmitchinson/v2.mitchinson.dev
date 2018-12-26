@@ -29,17 +29,12 @@ could create accounts and post items. It was completed over the course of 72
 hours in a hackathon style weekend, and we ended up being selected as one of the
 top four groups, and demoed our solution to peers.</br></br>
 
-<video autoplay loop muted>
-<source src="https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4"
-type="video/mp4">
-<p>Your browser doesn't support HTML5 video :/</p>
-</video>
+{% video center https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4 
+60% "The main list of inventory availible to the user" %}
 
-
-{% image center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4 "70%" 
-"The main list of inventory availible to the user" %}
 </br>
-{% image center  https://res.cloudinary.com/dheqbiqti/image/upload/v1545513251/Projects/SWD/sold.gif 
+
+{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/sold.mp4
 "85%" "Sold!" %}
 
 I had used SQLite previously for a hackathon project, but building a true cross-relational
@@ -56,23 +51,19 @@ it really opened my eyes to all I still need to learn for managing proper
 cross network client connections. Also learned how to do basic threading and 
 conditional locks.</br></br>
 
-{% image center  https://res.cloudinary.com/dheqbiqti/image/upload/v1545785740/Projects/SWD/blackjack.gif 
-"100%" "A sample round of cross client blackjack" %}
+{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/blackjack.mp4
+"85%" "An example game of blackjack" %}
 
 ### Image Rotator
 Using Graphics2D objects with AffineTransform objects applied on a timer thread.
 </br></br>
-{% image center  https://res.cloudinary.com/dheqbiqti/image/upload/v1545786647/Projects/SWD/rotate.gif 
-"100%" "Triggering a timer thread with event handling" %}
+
+{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotate.mp4
+"85%" "Rotating an image" %}
 
 ### Bouncing Ball
 Kicking off new runnables with event handling
 </br></br>
-{% image center  https://res.cloudinary.com/dheqbiqti/image/upload/v1545786911/Projects/SWD/bouncing.gif 
-"80%" "Event processing to kickoff new runnables in a thread" %}
 
-<!-- TODO:
-Should be good without a thumbnail preview right?
-Lighthouse? -> Swap Gifs to videos?
-Check mobile view once live
--->
+{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801846/Projects/SWD/bouncing.mp4
+"60%" "Rotating an image" %}
