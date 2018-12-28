@@ -28,9 +28,9 @@ gallery:
 ### Our Mission Statement:
 > Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process.
 
-<p></br>Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your Identity Online", "Using Facebook Safely", "Password Management", and even "How to use the TV in the downstairs game room". 😊</br></br></p>
-
 <!-- more -->
+</br>
+Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your Identity Online", "Using Facebook Safely", "Password Management", and even "How to use the TV in the downstairs game room". 😊</br></br>
 
 ### Connecting Seniors to Their Families:
 
@@ -45,6 +45,7 @@ gallery:
 <p>I'm grateful to be taking on the presidential position for a while, and my main motivation for the year ahead is to bring even more stories like those to seniors and students. We have all of our fall dates set for the semester ahead of schedule, and are also for the first time signed up to participate in the Student Org fair on campus. We've also got a strong and diverse exec board this year so I can't wait for our first session.</br></br></p>
 
 #### P.S.
-<p>_If you're a student who wants to attend a session, or a company interested in getting involevd in our organization, please [contact us!](mailto:studorg-ComputerC@uiowa.edu) Email: (studorg-ComputerC@uiowa.edu)_</p>
+<p>_If you're a student who wants to attend a session, or a company interested in getting involved in our organization, please [contact us!](mailto:studorg-ComputerC@uiowa.edu) Email: (studorg-ComputerC@uiowa.edu)_</p>
+</br>
 
 <!-- Gallery -->

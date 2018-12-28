@@ -27,13 +27,12 @@ gallery:
  - https://res.cloudinary.com/dheqbiqti/image/upload/v1544545533/Projects/PhotoFrame/IMG_0290.jpg "Less than ideal skotch tape reassembly"
  - https://res.cloudinary.com/dheqbiqti/image/upload/v1544545534/Projects/PhotoFrame/IMG_0405.jpg "Final placement! Mom loved it"
 ---
-<p> This year for Mother's Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
-</p>
-
+This year for Mother's Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br>
 <!-- More -->
 
 # Solution ● [Github](github.com/bmitchinson/raspberry-pi-photo-frame)
-<p>Inside now is a Raspberry Pi running OSMC on a HD display, with a python script running in the background to download new photos from a dedicated Gmail account. From there, OSMC transitions through them all to display. The frame is also enabled with SSH at home, so while I'm at school, I can perform remote updates and mass file transfers to update large amounts of photos manually.
+<p>Inside now is a Raspberry Pi running OSMC on an HD display, with a python script running in the background to download new photos from a dedicated Gmail account. From there, OSMC transitions through them all to display. The frame is also enabled with SSH at home, so while I'm at school, I can perform remote updates and mass file transfers to update large amounts of photos manually.
 </p>
 
 # What I learned + potential improvements
