@@ -83,7 +83,7 @@ theme: tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:bmitchinson/benmitchinson.com.git
+  repo: git@github.com:bmitchinson/bmitchinson.github.io.git
   branch: master
   name: bmitchinson
   email: 115bwm@gmail.com
