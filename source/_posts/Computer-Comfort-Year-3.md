@@ -8,10 +8,9 @@ keywords:
 - Volunteer
 - Club
 comments: false
-coverImage: http://res.cloudinary.com/dheqbiqti/image/upload/v1532808896/comfort0.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1532808896/comfort0.jpg
+autoThumbnailImage: false
 coverMeta: out
-thumbnailImage: none
-thumbnailImagePosition: none
 coverSize: partial
 gallery:
     - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808640/CComfort/comfort9.jpg
@@ -28,9 +27,9 @@ gallery:
 ### Our Mission Statement:
 > Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process.
 
-<!-- more -->
 </br>
-Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your Identity Online", "Using Facebook Safely", "Password Management", and even "How to use the TV in the downstairs game room". 😊</br></br>
+<!-- more -->
+Around 7 times each month, Computer Comfort coordinates hour-long sessions in senior living communities, where members are invited to bring any form of technology with them, and ask questions about how they can utilize it in their daily life. In the past, we've also given presentations on topics like "Protecting your Identity Online", "Using Facebook Safely", "Password Management", and even "How to use the TV in the downstairs game room". 😊
 
 ### Connecting Seniors to Their Families:
 

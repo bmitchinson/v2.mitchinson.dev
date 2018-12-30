@@ -9,16 +9,15 @@ keywords:
 - Java
 comments: false
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1545175002/Projects/SWD/SWD.jpg
+autoThumbnailImage: false
 coverMeta: out
-thumbnailImage: none
-thumbnailImagePosition: none
 coverSize: partial
 ---
 This semester I completed our project-based Java course "Software Design" and learned
 a <u>ton</u>. Over the course of the semester, we were given a grid of assignments
 for completion, and I thought I'd post some of the highlights. I completed 13 short
 programs that covered topics like GUI using Swing, Multithreading, Networking, and 
-entry-level database work.</br>
+entry-level database work.</br></br>
 <!-- more -->
 
 # SneakerHead
