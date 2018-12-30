@@ -221,9 +221,9 @@ fb_app_id:
 #     share_on_foo_bar: "Share on Foo Bar"
 # ```
 sharing_options:
-    facebook:
-        icon: "fab fa-facebook"
-        url: "https://www.facebook.com/sharer/sharer.php?u={{post.permalink}}"
+    # facebook:
+        # icon: "fab fa-facebook"
+        # url: "https://www.facebook.com/sharer/sharer.php?u={{post.permalink}}"
     twitter:
         icon: "fab fa-twitter"
         url: "https://twitter.com/intent/tweet?text={{post.permalink}}"
