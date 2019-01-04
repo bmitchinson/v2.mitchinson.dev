@@ -7,6 +7,10 @@ tags:
 keywords: 
 - Raspberry Pi
 - Python
+- Photo Frame
+- Digital
+- Smart Frame
+- Smart Photo Frame
 - Frame
 - Photo
 comments: false

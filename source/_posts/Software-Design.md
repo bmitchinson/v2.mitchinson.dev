@@ -35,7 +35,7 @@ top four groups, and demoed our solution to peers.</br></br>
 {% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/sold.mp4
 "85%" "Sold!" %}
 
-I had used SQLite previously for a hackathon project, but building a true cross-relational
+I had used SQLite previously for a [hackathon project](/Playground-News), but building a true cross-relational
 database was a great experience. We didn't have much time to implement features
 around that part of our table structure, but I feel confident working with databases
 headed into future projects.

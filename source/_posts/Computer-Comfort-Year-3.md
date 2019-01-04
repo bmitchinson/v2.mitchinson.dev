@@ -7,6 +7,9 @@ keywords:
 - Seniors
 - Volunteer
 - Club
+- Iowa
+- University of Iowa
+- Iowa Computer Comfort
 comments: false
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1532808896/comfort0.jpg
 autoThumbnailImage: false
