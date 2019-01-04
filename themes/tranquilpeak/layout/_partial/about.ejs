@@ -17,9 +17,7 @@
         <% if (authorPicture) { %>
             <img id="about-card-picture" src="<%= authorPicture %>" alt="<%= __('global.author_picture') %>"/>
         <% } %>
-            <h4 id="about-card-name">
-                <%= config.author %></br><a href="/">(Home)</a>
-            </h4>
+            <h4 id="about-card-name"><%= config.author %></h4>
         <% if (__('author.bio')) { %>
             <div id="about-card-bio"><%- markdown(__('author.bio')) %></div>
         <% } %>
