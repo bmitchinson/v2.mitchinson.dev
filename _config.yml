@@ -3,13 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "💻 Ben Mitchinson"
+title: "Ben Mitchinson"
 subtitle:
 description: 
 keywords: 
   - Ben
   - Mitchinson
+  - Ben Mitchinson
+  - Ben Mitchinson Resume
+  - Iowa
+  - Ben Mitchinson Iowa
+  - Iowa Computer Science Engineering
+  - Ben Mitchinson HackIowa
+  - HackIowa
+  - Ben Hack Iowa
   - Blog
+  - Ben Computer Comfort
+  - Computer Comfort
   - Projects
 author: Ben Mitchinson
 language: en
@@ -17,7 +27,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://benmitchinson.com
+url: https://benmitchinson.com
 root: /
 permalink: :title/
 permalink_defaults:
@@ -100,3 +110,21 @@ marked:
   smartypants: true
   modifyAnchors: ''
   autolink: false
+
+# Algolia
+# https://github.com/LouisBarranqueiro/hexo-algoliasearch
+algolia:
+  appId: "***REMOVED***"
+  apiKey: "***REMOVED***"
+  adminApiKey: "***REMOVED***"
+  chunkSize: 5000
+  indexName: "my-hexo-blog"
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
