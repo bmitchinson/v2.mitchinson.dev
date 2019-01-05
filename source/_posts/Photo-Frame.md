@@ -14,7 +14,7 @@ keywords:
 - Frame
 - Photo
 comments: false
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1544512051/Projects/PhotoFrame/IMG_0405.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1546666566/Projects/PhotoFrame/photoframe.jpg
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
@@ -29,6 +29,7 @@ gallery:
  - https://res.cloudinary.com/dheqbiqti/image/upload/v1544545533/Projects/PhotoFrame/IMG_0281.jpg "Some final testing"
  - https://res.cloudinary.com/dheqbiqti/image/upload/v1544545533/Projects/PhotoFrame/IMG_0290.jpg "Less than ideal skotch tape reassembly"
  - https://res.cloudinary.com/dheqbiqti/image/upload/v1544545534/Projects/PhotoFrame/IMG_0405.jpg "Final placement! Mom loved it"
+ - https://res.cloudinary.com/dheqbiqti/image/upload/v1546666566/Projects/PhotoFrame/photoframe.jpg
 ---
 This year for Mother's Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
 </br></br>
