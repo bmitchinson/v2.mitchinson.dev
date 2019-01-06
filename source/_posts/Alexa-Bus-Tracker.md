@@ -35,7 +35,7 @@ The process of building Alexa skills has changed a lot over time, but when this 
 I never earned an API key, but luckily, using "XXXX" (the key that was used in the demonstration documentation page), allowed for unlimited requests :). In writing this post, I found their [developer facebook page](https://www.facebook.com/bongodevelopers/) and [API documentation](https://api.ebongo.org/), and they've acknowledged the public key and now encourage developers to use it.
 </br>
 
-# Interacting with the API ● [GitHub](https://github.com/bmitchinson/Bongo-Python/tree/master)
+# Interacting with the API ● [GitHub](https://github.com/bmitchinson/Bongo-Python/tree/master) ● [Alexa Skill](https://www.amazon.com/Mitchinson-Apps-Bongo/dp/B077X254MN/)
 Below is the script I used to interact with the Bongo API. As of January 2019, it still works, so feel free to use it in your own projects!
 The lambda function version I used for the Alexa Skill is also available as a separate script on the GitHub repo. It's a great beginners project because it could easily be turned into a full wrapper, and the skill has many more potential improvements, so feel free to make pull requests!
 </br></br>
