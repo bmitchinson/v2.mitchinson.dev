@@ -11,17 +11,17 @@ keywords:
 - University of Iowa
 - Iowa Computer Comfort
 comments: false
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1532808896/comfort0.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808896/comfort0.jpg
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
 gallery:
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808640/CComfort/comfort9.jpg
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808640/CComfort/comfort8.jpg
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808637/CComfort/comfort7.jpg
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808637/CComfort/comfort6.jpg
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532808633/CComfort/comfort2.jpg
-    - https://res.cloudinary.com/dheqbiqti/image/upload/v1532201521/CComfort/comfort_1.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808640/CComfort/comfort9.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808640/CComfort/comfort8.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808637/CComfort/comfort7.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808637/CComfort/comfort6.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808633/CComfort/comfort2.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532201521/CComfort/comfort_1.jpg
 ---
 
 <p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.

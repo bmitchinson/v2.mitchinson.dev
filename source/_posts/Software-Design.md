@@ -8,7 +8,7 @@ keywords:
 - School
 - Java
 comments: false
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/v1545175002/Projects/SWD/SWD.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545175002/Projects/SWD/SWD.jpg
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
