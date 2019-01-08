@@ -17,7 +17,7 @@ This semester I completed our project-based Java course "Software Design" and le
 a <u>ton</u>. Over the course of the semester, we were given a grid of assignments
 for completion, and I thought I'd post some of the highlights. I completed 13 short
 programs that covered topics like GUI using Swing, Multithreading, Networking, and 
-entry-level database work.</br></br>
+entry-level database work.</br>
 <!-- more -->
 
 # SneakerHead
@@ -56,7 +56,7 @@ conditional locks.</br></br>
 Using Graphics2D objects with AffineTransform objects applied on a timer thread.
 </br></br>
 
-{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotate.mp4
+{% video center https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotate.mp4
 "85%" "Rotating an image" %}
 
 ### Bouncing Ball

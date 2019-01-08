@@ -25,7 +25,7 @@ gallery:
 ---
 
 During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week. 
-</br></br>
+</br>
 <!-- More --> 
 
 # Development

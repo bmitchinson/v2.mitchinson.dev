@@ -32,7 +32,7 @@ gallery:
  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.jpg
 ---
 This year for Mother's Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
-</br></br>
+</br>
 <!-- More -->
 
 # Solution ● [Github](github.com/bmitchinson/raspberry-pi-photo-frame)
