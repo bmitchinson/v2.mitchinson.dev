@@ -4,7 +4,7 @@ date: 2010-0-0 00:00:00
 tags:
 keywords:
 comments: false
-coverImage:
+coverImage: (use transform (/upload/fl_progressive/v_149...) ) @ 2500 x 1512
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
