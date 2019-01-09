@@ -16,7 +16,8 @@ demo-ing, if you've found this article while browsing my site,
 go ahead and just move on to the next one 😅 apologies!
 </br>
 <!-- More -->
-# Documentation for the tag to be updated on [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak/blob/master/DOCUMENTATION.md)
+# Documentation for the tag to be updated on [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak/blob/master/DOCUMENTATION.md#video)
+# [Current open pull request](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/pull/522)
 
 # The Video Tag
 The video tag supports any mp4 video, as it's widely accepted by modern web
