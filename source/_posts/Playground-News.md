@@ -7,7 +7,7 @@ tags:
 - React
 - Python
 - Django
-comments: false
+comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545860719/PlaygroundNews/playground_cover.jpg
 autoThumbnailImage: false
 coverMeta: out

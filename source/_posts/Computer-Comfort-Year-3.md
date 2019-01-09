@@ -10,7 +10,7 @@ keywords:
 - Iowa
 - University of Iowa
 - Iowa Computer Comfort
-comments: false
+comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808896/comfort0.jpg
 autoThumbnailImage: false
 coverMeta: out

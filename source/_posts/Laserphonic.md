@@ -8,7 +8,7 @@ keywords:
   - Lazerphonic
   - Music
   - Digital Arts
-comments: false
+comments: true
 coverImage: >-
   https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.jpg
 autoThumbnailImage: false

@@ -13,7 +13,7 @@ keywords:
 - Smart Photo Frame
 - Frame
 - Photo
-comments: false
+comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.jpg
 autoThumbnailImage: false
 coverMeta: out

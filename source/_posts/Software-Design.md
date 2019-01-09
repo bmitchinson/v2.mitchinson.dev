@@ -7,7 +7,7 @@ tags:
 keywords:
 - School
 - Java
-comments: false
+comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545175002/Projects/SWD/SWD.jpg
 autoThumbnailImage: false
 coverMeta: out

@@ -14,7 +14,7 @@ keywords:
   - Skill
   - Python
   - AWS
-comments: false
+comments: true
 coverImage: >-
   https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546745048/Projects/Bongo/bongo.jpg
 autoThumbnailImage: false
