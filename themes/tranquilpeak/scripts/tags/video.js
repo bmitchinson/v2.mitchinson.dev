@@ -17,27 +17,35 @@
     return -1;
   }
 
+  var rPath = new RegExp(
+    '((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=+$,\\w]+@)?' +
+    '[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)' +
+    '((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-+=&;%@.\\w_]*)' +
+    '#?(?:[.!\\/\\w]*))|^[A-Za-z0-9_\\/-]+\\.\\w{2,4})');
   var rClass = /^[_a-zA-Z0-9-]+$/;
   var rSize = /^\d+(?:|\.\d+)(?:px|%)?$/;
-  var rFigClass = /(^fig-\d{2,3}$|^center$)/;
-  var figureClass = 'figure';
   var captionClass = 'caption';
   var noCaptionClass = 'nocaption';
   var clearClass = 'clear';
+  var autoplayClass = 'autoplay';
+  var loopClass = 'loop';
+  var mutedClass = 'muted';
+  var noControlsClass = 'nocontrols';
   /**
    * Video tag
    *
    * Syntax:
    *     {% video [classes] /path/to/video
-   *     [width] [title text] %}
+   *     [width%] [title text] %}
    * E.g:
-   *     {% video fig-50 right http://example.com/video145.mp4
+   *     {% video http://example.com/video145.mp4
    *     100% "A beautiful sunrise" %}
    */
   hexo.extend.tag.register('video', function(args) {
     var original;
-    var thumbnailWidth = '';
-    var thumbnailHeight = '';
+    var poster = '';
+    var width = '';
+    var height = '';
     var classes = [];
     var html = '';
     var clear = '';
@@ -48,36 +56,59 @@
     
     // Get path of original video
     original = args.shift();
+
+    // Get path of poster image
+    if (args.length && rPath.test(args[0])) {
+      poster = args.shift();
+    }
     
     // Get width of video
     if (args.length && rSize.test(args[0])) {
-      thumbnailWidth = args.shift();
+      width = args.shift();
     }
     
     // Get height of video
     if (args.length && rSize.test(args[0])) {
-      thumbnailHeight = args.shift();
+      height = args.shift();
     }
     
     // Get title of video
     var title = args.join(' ');
 
     // Build the video HTML structure
-    var video = '<video autoplay loop muted ';
+    //var noautoplay = classes.contains
+    var video = '<video';
+    if (classes.indexOf(autoplayClass) >= 0){
+      video += ' autoplay';
+    }
+    if (classes.indexOf(loopClass) >= 0){
+      video += ' loop';
+    }
+    if (classes.indexOf(mutedClass) >= 0){
+      video += ' muted';
+    }
+    if (classes.indexOf(noControlsClass) === -1){
+      video += ' controls';
+    }
+    if (poster !== ''){
+      video += ' poster="' + poster + '"';
+    }
     // add size
-    if (thumbnailWidth || thumbnailHeight) {
-      video += 'style="';
+    video += ' style="';
+    if (width || height) {
       // add width
-      if (thumbnailWidth) {
-        video += 'width:' + thumbnailWidth + ';';
+      if (width) {
+        video += 'width:' + width + ';';
       }
       // add height
-      if (thumbnailHeight) {
-        video += 'height:' + thumbnailHeight + ';';
+      if (height) {
+        video += 'height:' + height + ';';
       }
-      video += '"';
     }
-    video += 'alt="' + title + '">\n';
+    else{
+      video += 'width:100%;';
+    }
+    video += '" alt="' + title + '">\n';
     video += '<source src="' + original + '" type="video/mp4">\n';
     video += '<p>Your browser doesn\'t support HTML5 Video :/</p>';
     video += '</video>';
@@ -90,7 +121,17 @@
     }
     
     // Build HTML structure
-    html += '<div style="text-align:center;">';
+    html += '<div';
+    var placement = "left";
+    if (classes.indexOf('right') >= 0){
+      placement = "right"
+    }
+    if (classes.indexOf('center') >= 0){
+      placement = "center"
+    }
+    let pos = ' style="text-align:' + placement + '"';
+    html += pos;
+    html += '>';
     html += video;
     
     // Add caption
@@ -103,7 +144,6 @@
     html += '</div>';
     // add `clear` div
     html += clear;
-    
     return html;
   });
 })();
