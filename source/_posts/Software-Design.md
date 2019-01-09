@@ -27,12 +27,14 @@ could create accounts and post items. It was completed over the course of 72
 hours in a hackathon-style weekend, and we ended up being selected as one of the
 top four groups, and demoed our solution to peers.</br></br>
 
-{% video center https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4 
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4 
 60% "The main list of inventory available to the user" %}
 
 </br>
 
-{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/sold.mp4
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/sold.mp4
 "85%" "Sold!" %}
 
 I had used SQLite previously for a [hackathon project](/Playground-News), but building a true cross-relational
@@ -49,19 +51,22 @@ it really opened my eyes to all I still need to learn for managing proper
 cross network client connections. Also learned how to do basic threading and 
 conditional locks.</br></br>
 
-{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/blackjack.mp4
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/blackjack.mp4
 "85%" "An example game of blackjack" %}
 
 ### Image Rotator
 Using Graphics2D objects with AffineTransform objects applied on a timer thread.
 </br></br>
 
-{% video center https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotate.mp4
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotate.mp4
 "85%" "Rotating an image" %}
 
 ### Bouncing Ball
 Kicking off new runnables with event handling
 </br></br>
 
-{% video center  https://res.cloudinary.com/dheqbiqti/video/upload/v1545801846/Projects/SWD/bouncing.mp4
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801846/Projects/SWD/bouncing.mp4
 "60%" "Each runnable represented by a ball moving in frame" %}
