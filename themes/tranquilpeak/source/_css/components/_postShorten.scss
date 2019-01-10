@@ -17,6 +17,10 @@
 
     .postShorten-thumbnailimg {
         overflow:hidden;
+
+        img {
+            width: 100%;
+        }
     }
     .postShorten-header {
         .postShorten-title {
@@ -77,7 +81,7 @@
 }
 
 // Hide the post's thumbnail image on very small screen and down
-@media #{$xsmall-and-down} {
+/* @media #{$xsmall-and-down} {
     .postShorten {
         .postShorten-thumbnailimg {
             display: none;
@@ -87,7 +91,7 @@
             }
         }
     }
-}
+} */
 
 // Display the post's thumbnail image on small screen and up
 @media #{$small-and-up} {

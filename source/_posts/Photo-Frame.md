@@ -15,7 +15,7 @@ keywords:
 - Photo
 comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.jpg
-autoThumbnailImage: false
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.jpg
 coverMeta: out
 coverSize: partial
 gallery:

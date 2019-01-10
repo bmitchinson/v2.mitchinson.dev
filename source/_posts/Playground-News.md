@@ -9,7 +9,7 @@ tags:
 - Django
 comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545860719/PlaygroundNews/playground_cover.jpg
-autoThumbnailImage: false
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547067724/PlaygroundNews/PlaygroundThumbnail.jpg
 coverMeta: out
 coverSize: partial
 gallery:

@@ -9,8 +9,8 @@ keywords:
   - Music
   - Digital Arts
 comments: true
-coverImage: >-
-  https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547069276/Projects/Lazerphonics/LaserThumb.jpg
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
