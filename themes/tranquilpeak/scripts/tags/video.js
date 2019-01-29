@@ -79,7 +79,7 @@
     //var noautoplay = classes.contains
     var video = '<video';
     if (classes.indexOf(autoplayClass) >= 0){
-      video += ' autoplay';
+      video += ' autoplay playsinline';
     }
     if (classes.indexOf(loopClass) >= 0){
       video += ' loop';

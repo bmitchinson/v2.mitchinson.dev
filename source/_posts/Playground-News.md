@@ -19,7 +19,7 @@ gallery:
 - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545938552/PlaygroundNews/prizes.jpg "Our haul. Later given away to other students as prizes for our own hackathon events"
 - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1545938569/PlaygroundNews/out.jpg "I was so tired from staying up that I don't remember driving home"
 ---
-At [TigerHacks](http://tiger-hacks.com/) this year at the University of Missouri, [Olivia Sandfold](https://github.com/osandvold302), [Ben Weinberg](https://github.com/benjamin-weinberg) and I, worked together to build "Playground News": A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+At [TigerHacks](http://tiger-hacks.com/) this year at the University of Missouri, [Olivia Sandvold](https://github.com/osandvold302), [Ben Weinberg](https://github.com/benjamin-weinberg) and I, worked together to build "Playground News": A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
 Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
 </br>
 <!-- more -->

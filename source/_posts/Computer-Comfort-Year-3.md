@@ -17,9 +17,12 @@ coverMeta: out
 coverSize: partial
 gallery:
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808640/CComfort/comfort9.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/v1548126494/CComfort/fair.jpg
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808640/CComfort/comfort8.jpg
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808637/CComfort/comfort7.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/v1548126494/CComfort/helpping.jpg
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808637/CComfort/comfort6.jpg
+    - https://res.cloudinary.com/dheqbiqti/image/upload/v1548126494/CComfort/email.jpg
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808633/CComfort/comfort2.jpg
     - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532201521/CComfort/comfort_1.jpg
 ---
