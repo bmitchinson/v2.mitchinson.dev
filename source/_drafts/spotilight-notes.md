@@ -1,5 +1,5 @@
 ---
-title: Spotilight
+title: Developing Spotilight
 date: 2010-0-0 00:00:00
 tags:
 - Spotilight
@@ -24,10 +24,22 @@ I'm building a lightweight showcase for spotify playlists in attempt to
 better share libraries across streaming services. Built open source without 
 using JS frameworks in an attempt to learn fundamentals the right way.
 
-# [GitHub](https://github.com/bmitchinson/Spotilight)
+# [GitHub](https://github.com/bmitchinson/Spotilight) ● [Live Demo](/Spotilight)
 
 </br></br>
 <!-- More -->
+
+# Hosting
+The app is actually hosted from within my hexo generated site[(Repo here)](). 
+Due to [Hexo Sage Posts](https://github.com/printempw/hexo-sage-posts), I'm able to
+add a theme-less post to my hexo index, and have it hidden from my blogs main
+view. Looking forward to being able to host multiple applications using this
+method, as they'll be available right from my site, with a seperate post such as
+this one detailing their development / implementation.
+
+# Resources 
+
+<!-- NOTES TO DELETE FROM POST -->
 
 # Planned Features:
 * "Spotlight Selection" for a pinned highlight of all music
@@ -65,12 +77,10 @@ https://github.com/spotify/web-api/issues/1146
 # Helpful Links
 
 ### SPA With Vanilla JS
-* SPA With Vanilla JS: https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
-* Bryan Manuele: https://medium.com/@bryanmanuele/how-i-implemented-my-own-spa-routing-system-in-vanilla-js-49942e3c4573
+* SPA With VJS by Santiago Da Rosa: https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
+* VJS Routing by Bryan Manuele: https://medium.com/@bryanmanuele/how-i-implemented-my-own-spa-routing-system-in-vanilla-js-49942e3c4573
 * Rishav Sharan: https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng
 * Robinsr: https://robinsr.github.io/blog/post/vanilla-es6-spa-1
-* Authorization Guide
-https://developer.spotify.com/documentation/general/guides/authorization-guide/
 
 ### Spotify API
 * Console (Endpoint Directory)
@@ -88,6 +98,8 @@ https://developer.spotify.com/documentation/web-api/reference/
 * Web API Libraries
 https://developer.spotify.com/documentation/web-api/libraries/
 * Spotify Connect API https://developer.spotify.com/documentation/web-api/guides/using-connect-web-api/
+* Authorization Guide
+https://developer.spotify.com/documentation/general/guides/authorization-guide/
 
 ######## Rate Limiting:
 To reduce the amount of requests, use endpoints that fetch multiple entities in one request. For example: If you often request single tracks, albums, or artists, use endpoints such as Get Several Tracks, Get Several Albums or Get Several Artists, instead.
