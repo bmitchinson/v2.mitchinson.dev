@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+html {
+  background-image: linear-gradient(#3E3E3E, #181818);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+#title {
+  color: white;
+  margin-top: 5%;
+  margin-left: 5%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 80px;
+}
+
+.paused {
+  -webkit-animation-play-state:paused;
+  animation-play-state:paused;
+}
+
+.fadeout {
+  animation-duration: 1s;
+  animation-name: fadeout
+}
+
+.fadein {
+  animation-duration: 1s;
+  animation-name: fadein
+}
+
+.fadeinbot {
+  animation-duration: 3.5s;
+  animation-name: fadeinbottom;
+}
+
+.fadeinbotfast {
+  animation-duration: 1s;
+  animation-name: fadeinbottom;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinbottom {
+  from {
+    margin-top: 55%;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 5%;
+    opacity: 1;
+  }
+}
+
+/* Credit http://tobiasahlin.com/spinkit/ */
+.spinner {
+  margin: 25% auto;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  text-align: center;
+  
+  -webkit-animation: sk-rotate 2.0s infinite linear, fadein 5.0s;
+  animation: sk-rotate 2.0s infinite linear, fadein 5.0s;
+}
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  border-radius: 100%;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

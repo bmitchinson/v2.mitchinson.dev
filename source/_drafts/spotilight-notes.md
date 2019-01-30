@@ -30,12 +30,11 @@ using JS frameworks in an attempt to learn fundamentals the right way.
 <!-- More -->
 
 # Hosting
-The app is actually hosted from within my hexo generated site[(Repo here)](). 
-Due to [Hexo Sage Posts](https://github.com/printempw/hexo-sage-posts), I'm able to
-add a theme-less post to my hexo index, and have it hidden from my blogs main
-view. Looking forward to being able to host multiple applications using this
-method, as they'll be available right from my site, with a seperate post such as
-this one detailing their development / implementation.
+The app is hosted from within my hexo generated site[(Repo here)](). 
+By creating a new hexo "page", I'm able to add a separate raw HTML page to my site,
+and have it hidden from my blogs main index view. Planning on hosting multiple 
+applications using this method, as they'll be available right from my site, 
+with a seperate writeup to detail their development and implementation.
 
 # Resources 
 
@@ -74,13 +73,23 @@ https://github.com/spotify/web-api/issues/1146
 * Build small main page with demo images + playlist links
 * Test view naviagation, all on one page, with non url routing. (Refreshing brings you back to landing)
 
+* Move CSS to a CDN
+* Uglify to reduce size? Gulp bundling? Parcel?
+
 # Helpful Links
+* http://localhost:4000/Spotilight/
+* view-source:http://localhost:4000/Spotilight/
+* https://cloudinary.com/console/media_library/folders/all/Spotilight
 
 ### SPA With Vanilla JS
 * SPA With VJS by Santiago Da Rosa: https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
 * VJS Routing by Bryan Manuele: https://medium.com/@bryanmanuele/how-i-implemented-my-own-spa-routing-system-in-vanilla-js-49942e3c4573
 * Rishav Sharan: https://dev.to/rishavs/making-a-single-page-app-in-ye-good-olde-js-es6-3eng
 * Robinsr: https://robinsr.github.io/blog/post/vanilla-es6-spa-1
+
+### Random DOM stuff
+* https://www.digitalocean.com/community/tutorials/how-to-make-changes-to-the-dom
+* https://stackoverflow.com/questions/26986129/play-multiple-css-animations-at-the-same-time
 
 ### Spotify API
 * Console (Endpoint Directory)
