@@ -20,9 +20,9 @@ coverSize: partial
 gallery:
 ---
 
-I'm building a lightweight showcase for spotify playlists in attempt to
-better share libraries across streaming services. Built open source without 
-using JS frameworks in an attempt to learn fundamentals the right way.
+I'm building a SPA to showcase your public spotify playlists across streaming 
+services. Built open source without using any JS frameworks in an attempt to learn 
+fundamentals the right way.
 
 # [GitHub](https://github.com/bmitchinson/Spotilight) ● [Live Demo](/Spotilight)
 
@@ -36,7 +36,18 @@ and have it hidden from my blogs main index view. Planning on hosting multiple
 applications using this method, as they'll be available right from my site, 
 with a seperate writeup to detail their development and implementation.
 
-# Resources 
+# Resources
+
+# Other's Code:
+* Spinners: http://tobiasahlin.com/spinkit/
+* Spotify API: https://developer.spotify.com/console/
+
+
+# Upcoming Features:
+* [soundiiz](https://soundiiz.com) is easily the best way to convert playlists 
+across streaming services. Their accuracy is really high and eventually they
+want to offer an API, but as of now, it's not available. Until then, I don't
+think converting playlists to other streaming services would really be possible.
 
 <!-- NOTES TO DELETE FROM POST -->
 
@@ -60,6 +71,7 @@ with a seperate writeup to detail their development and implementation.
 * Follow Playlists right from the SPA:
 https://github.com/spotify/web-api/issues/1146
 * Follow me as a user right from the site? Both Apple Music and Spotify? Soundcloud? Youtube? Tidal? Amazon Music?
+* #playlistID -> Straight to that playlist view
 
 # Questions:
 * Playlist Folder Support?
