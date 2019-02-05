@@ -7,37 +7,32 @@ html {
   overflow: hidden;
 }
 
-#title {
+#username {
   color: white;
-  margin-top: 5%;
-  margin-left: 5%;
+  margin-top: 2%;
+  margin-left: 2%;
   font-family: 'Montserrat', sans-serif;
   font-size: 80px;
 }
 
-.paused {
-  -webkit-animation-play-state:paused;
-  animation-play-state:paused;
+#userpic {
+  height: 150px;
 }
 
+.box {
+  border-style: solid;
+  display: flex;
+  align-items: center;
+}
+
+.boxitem {
+  /*border-style: solid;*/
+}
+
+/* Animations */
 .fadeout {
   animation-duration: 1s;
   animation-name: fadeout
-}
-
-.fadein {
-  animation-duration: 1s;
-  animation-name: fadein
-}
-
-.fadeinbot {
-  animation-duration: 3.5s;
-  animation-name: fadeinbottom;
-}
-
-.fadeinbotfast {
-  animation-duration: 1s;
-  animation-name: fadeinbottom;
 }
 
 @keyframes fadeout {
@@ -50,6 +45,11 @@ html {
   }
 }
 
+.fadein {
+  animation-duration: 3s;
+  animation-name: fadein
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -60,17 +60,28 @@ html {
   }
 }
 
+
+.fadeinbot {
+  animation-duration: 2s;
+  animation-name: fadeinbottom;
+}
+
+.fadeinbotfast {
+  animation-duration: 1s;
+  animation-name: fadeinbottom;
+}
+
 @keyframes fadeinbottom {
   from {
-    margin-top: 55%;
+    margin-top: 10%;
     opacity: 0;
   }
 
   to {
-    margin-top: 5%;
     opacity: 1;
   }
 }
+
 
 /* Credit http://tobiasahlin.com/spinkit/ */
 .spinner {

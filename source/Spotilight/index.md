@@ -20,10 +20,12 @@ layout: false
 <body>
 <script>
   window.addEventListener("load", function(event) {
-    new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
-      console.log("Promise done");
-      document.getElementById("spinner").remove();
-      document.getElementById('target').removeAttribute("hidden");
+    new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
+      console.log('Promise done');
+      document.getElementById('spinner').remove();
+      document.getElementById('userpic').removeAttribute("hidden");
+      document.getElementById('username').removeAttribute("hidden");
+
     })
   });
 </script>
@@ -33,8 +35,11 @@ layout: false
   <div class="dot2" id="dot2"></div>
 </div>
 
-<div hidden id="target">
-  <h1 id="title" class="fadeinbotfast">Spotilight</h1>
+<div hidden id="target"></div>
+
+<div class="box fadeinbot" id="namebox">
+  <img hidden class="fadeinbot boxitem" id="userpic" src="img/profilepic.png">
+  <h1 hidden class="fadeinbot boxitem" id="username">115bwm</h1>
 </div>
 
 </body>

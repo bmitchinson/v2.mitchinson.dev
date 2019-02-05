@@ -42,12 +42,16 @@ with a seperate writeup to detail their development and implementation.
 * Spinners: http://tobiasahlin.com/spinkit/
 * Spotify API: https://developer.spotify.com/console/
 
+# Hosting your own:
+All website code is available [here](github.com/bmitchinson/spotilight), with
+instructions on how to host your own profile. I reccomend simple hosting on
+something like  [GitHub Pages](https://pages.github.com)
 
 # Upcoming Features:
 * [soundiiz](https://soundiiz.com) is easily the best way to convert playlists 
 across streaming services. Their accuracy is really high and eventually they
 want to offer an API, but as of now, it's not available. Until then, I don't
-think converting playlists to other streaming services would really be possible.
+think converting playlists to other streaming services would really be possible :(
 
 <!-- NOTES TO DELETE FROM POST -->
 
@@ -70,7 +74,8 @@ think converting playlists to other streaming services would really be possible.
 * Woah what about a "now playing" thing similar to discord's thing.
 * Follow Playlists right from the SPA:
 https://github.com/spotify/web-api/issues/1146
-* Follow me as a user right from the site? Both Apple Music and Spotify? Soundcloud? Youtube? Tidal? Amazon Music?
+* Follow me as a user right from the site? Both Apple Music and Spotify? 
+Soundcloud? Youtube? Tidal? Amazon Music?
 * #playlistID -> Straight to that playlist view
 
 # Questions:
@@ -79,11 +84,11 @@ https://github.com/spotify/web-api/issues/1146
 * Pagination of new pages on scroll 
 
 # Steps:
-* Create a site, hosted on benmitchinson.com, outside of the hexo index
-* Explore how to develop that site and serve/(just open?) that site locally.
-* Draft up all page interaction + design
-* Build small main page with demo images + playlist links
-* Test view naviagation, all on one page, with non url routing. (Refreshing brings you back to landing)
+[x] Create a site, hosted on benmitchinson.com, outside of the hexo index
+[x] Explore how to develop that site and serve/(just open?) that site locally.
+[x] Draft up all page interaction + design
+[] Build small main page with demo images + playlist links (CSS Grid All Page View)
+[] Test view naviagation, all on one page, with non url routing. (Refreshing brings you back to landing)
 
 * Move CSS to a CDN
 * Uglify to reduce size? Gulp bundling? Parcel?
