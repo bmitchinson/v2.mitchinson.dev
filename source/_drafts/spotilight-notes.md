@@ -20,21 +20,29 @@ coverSize: partial
 gallery:
 ---
 
-I'm building a SPA to showcase your public spotify playlists across streaming 
-services. Built open source without using any JS frameworks in an attempt to learn 
-fundamentals the right way.
+In an attempt to learn fundamentals I'm building an open source 
+"[Vanilla](http://vanilla-js.com/)" JavaScript SPA to show off your spotify 
+playlists.
 
 # [GitHub](https://github.com/bmitchinson/Spotilight) ● [Live Demo](/Spotilight)
 
 </br></br>
 <!-- More -->
 
+# No Frameworks
+Last summer, I spent my internship at ISE working on a single page 
+application in React. The experience was invaluable, but I had never worked in 
+web before, so starting from a UI framework and working backwards presented 
+plenty of challenges. Decided to tackle this idea using only JS in order to
+get a better grasp on things like routing, proper styling, simple bundling,
+and accessibility.
+
 # Hosting
-The app is hosted from within my hexo generated site[(Repo here)](). 
-By creating a new hexo "page", I'm able to add a separate raw HTML page to my site,
-and have it hidden from my blogs main index view. Planning on hosting multiple 
-applications using this method, as they'll be available right from my site, 
-with a seperate writeup to detail their development and implementation.
+The app is hosted on a dedicated page within my hexo blog, served with github 
+pages. By creating a new hexo "page", I'm able to add separate applications to 
+the site, and have it hidden from my blogs main index view. I plan on hosting 
+multiple apps with this method, with a seperate writeup to detail their 
+development and implementation.
 
 # Resources
 
