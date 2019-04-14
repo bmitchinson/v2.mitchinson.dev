@@ -8,14 +8,6 @@
    * @param {Number} startpos
    * @return {Number}
    */
-  function reIndexOf(array, regex) {
-    for (var i in this) {
-      if (array[i].toString().match(regex)) {
-        return i;
-      }
-    }
-    return -1;
-  }
 
   var rPath = new RegExp(
     '((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=+$,\\w]+@)?' +
@@ -35,11 +27,11 @@
    * Video tag
    *
    * Syntax:
-   *     {% video [classes] /path/to/video
-   *     [width%] [title text] %}
+   *     {% video [classes] videoURL [Optional Poster (Thumbnail) URL]
+   *     [Width] [Height] [Caption] %}
    * E.g:
-   *     {% video http://example.com/video145.mp4
-   *     100% "A beautiful sunrise" %}
+   *     {% video loop http://example.com/video145.mp4
+   *     http://example.com/image.png 100% 95% "A beautiful sunrise" %}
    */
   hexo.extend.tag.register('video', function(args) {
     var original;
@@ -76,25 +68,24 @@
     var title = args.join(' ');
 
     // Build the video HTML structure
-    //var noautoplay = classes.contains
-    var video = '<video';
-    if (classes.indexOf(autoplayClass) >= 0){
-      video += ' autoplay playsinline';
+    var video = '<video ';
+    if (classes.indexOf(autoplayClass) >= 0) {
+      video += 'autoplay playsinline ';
     }
-    if (classes.indexOf(loopClass) >= 0){
-      video += ' loop';
+    if (classes.indexOf(loopClass) >= 0) {
+      video += 'loop ';
     }
-    if (classes.indexOf(mutedClass) >= 0){
-      video += ' muted';
+    if (classes.indexOf(mutedClass) >= 0) {
+      video += 'muted ';
     }
-    if (classes.indexOf(noControlsClass) === -1){
-      video += ' controls';
+    if (classes.indexOf(noControlsClass) === -1) {
+      video += 'controls ';
     }
-    if (poster !== ''){
-      video += ' poster="' + poster + '"';
+    if (poster !== '') {
+      video += 'poster="' + poster + '" ';
     }
     // add size
-    video += ' style="';
+    video += 'style="';
     if (width || height) {
       // add width
       if (width) {
@@ -105,7 +96,7 @@
         video += 'height:' + height + ';';
       }
     }
-    else{
+    else {
       video += 'width:100%;';
     }
     video += '" alt="' + title + '">\n';
@@ -122,12 +113,12 @@
     
     // Build HTML structure
     html += '<div';
-    var placement = "left";
-    if (classes.indexOf('right') >= 0){
-      placement = "right"
+    var placement = 'left';
+    if (classes.indexOf('right') >= 0) {
+      placement = 'right';
     }
-    if (classes.indexOf('center') >= 0){
-      placement = "center"
+    if (classes.indexOf('center') >= 0) {
+      placement = 'center';
     }
     let pos = ' style="text-align:' + placement + '"';
     html += pos;

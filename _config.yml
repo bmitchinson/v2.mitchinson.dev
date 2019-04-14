@@ -89,7 +89,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: tranquilpeak
+theme: bmitchinson_tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -120,13 +120,14 @@ algolia:
   apiKey: "***REMOVED***"
   adminApiKey: "***REMOVED***"
   chunkSize: 5000
-  indexName: "my-hexo-blog"
+  indexName: "benmitchinson.com"
   fields:
-    - content:strip:truncate,0,500
-    - excerpt:strip
-    - gallery
-    - permalink
-    - photos
-    - slug
-    - tags
     - title
+    - tags
+    - date
+    - categories
+    - excerpt
+    - excerpt:strip
+    - content:strip:truncate,0,50
+    - permalink
+    - thumbnailImageUrl
