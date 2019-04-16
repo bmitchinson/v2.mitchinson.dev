@@ -1,6 +1,6 @@
 ## [BenMitchinson.com](https://benmitchinson.com)
 
-![](https://i.imgur.com/Wr5trkD.png)
+![](https://i.imgur.com/9Ac5NYS.png)
 
 Built using [my custom fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of Louis Barranqueiro's hexo theme [tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak), using static site engine [Hexo](https://hexo.io).
 
