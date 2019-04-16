@@ -7,7 +7,7 @@ Built using [my custom fork](https://github.com/bmitchinson/hexo-theme-tranquilp
 ### Organization
 More details to come soon, including a writeup on how I developed and organized the site. 
 
-All files on the [master branch](https://github.com/bmitchinson/BenMitchinson.com) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages](https://github.com/bmitchinson/BenMitchinson.com/tree/gh-pages) branch.
+All files on the [master branch](https://github.com/bmitchinson/BenMitchinson.com) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages branch](https://github.com/bmitchinson/BenMitchinson.com/tree/gh-pages).
 
 [My fork of tranquilpeak]() is used as the theme of the blog in a submodule located under `themes/`.
 
