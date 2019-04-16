@@ -12,9 +12,9 @@ All files on the master branch are used as source files for Hexo to be able to b
 [My fork of tranquilpeak]() is used as the theme of the blog in a submodule located under `themes/`.
 
 ### Running the site locally
-This is very easy to do, and a great way to learn hexo and it's common theme structure.
+This is very easy to do, and a great way to learn hexo and it's common theme structure. More details in a writeup on the site soon.
 
-More details later, but essentially:
+(From the master branch) Run :
 * `npm i` @ root dir
 * `npm i` @ themes/bmitchinson_tranquilpeak
 * `npm run-script build` @ themes/bmitchinson_tranquilpeak
