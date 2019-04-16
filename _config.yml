@@ -96,7 +96,7 @@ theme: bmitchinson_tranquilpeak
 deploy:
   type: git
   repo: git@github.com:bmitchinson/bmitchinson.github.io.git
-  branch: master
+  branch: gh-pages
   name: bmitchinson
   email: 115bwm@gmail.com
 
