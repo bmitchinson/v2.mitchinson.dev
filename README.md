@@ -1,6 +1,6 @@
 ## [BenMitchinson.com](https://benmitchinson.com)
 
-![](https://i.imgur.com/PtRFCLI.png)
+![](https://i.imgur.com/Wr5trkD.png)
 
 Built using [my custom fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of Louis Barranqueiro's hexo theme [tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak), using static site engine [Hexo](https://hexo.io).
 
@@ -19,3 +19,5 @@ More details later, but essentially:
 * `npm i` @ themes/bmitchinson_tranquilpeak
 * `npm run-script build` @ themes/bmitchinson_tranquilpeak
 * `hexo start` @ root dir
+
+This gives you a version of the site at `localhost:4000` for tinkering and testing 👍
