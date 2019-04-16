@@ -95,7 +95,7 @@ theme: bmitchinson_tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:bmitchinson/bmitchinson.github.io.git
+  repo: git@github.com:bmitchinson/BenMitchinson.com.git
   branch: gh-pages
   name: bmitchinson
   email: 115bwm@gmail.com
@@ -116,9 +116,9 @@ marked:
 # Algolia
 # https://github.com/LouisBarranqueiro/hexo-algoliasearch
 algolia:
-  appId: "***REMOVED***"
-  apiKey: "***REMOVED***"
-  adminApiKey: "***REMOVED***"
+  appId: "your_app_id"
+  apiKey: "your_api_key"
+  adminApiKey: "your_admin_key"
   chunkSize: 5000
   indexName: "benmitchinson.com"
   fields:
