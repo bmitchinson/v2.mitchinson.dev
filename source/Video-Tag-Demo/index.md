@@ -8,97 +8,92 @@ autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
 ---
+A page to demo my video tag [pull request](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/pull/527) to the [tranquilpeak theme](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/).</br>
+Feature branch of my fork [here](https://github.com/bmitchinson/hexo-theme-tranquilpeak/blob/videotag)</br>
+Documentation of the feature [here](https://github.com/bmitchinson/hexo-theme-tranquilpeak/blob/videotag/DOCUMENTATION.md)
 
-A page to demo my potential video tag pull request to the [tranquilpeak theme](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/). 
-This is meant for internal
-demo-ing, if you've found this article while browsing my site,
-go ahead and just move on to the next one 😅 apologies!
-</br>
 <!-- More -->
-# Documentation for the tag to be updated on [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak/blob/videotag/DOCUMENTATION.md)
-# [Current open pull request](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/pull/527)
 
 # The Video Tag
 The video tag supports any mp4 video, as it's widely accepted by modern web
 standards over other video formats. [Mozilla Docs](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
-</br>
 
-For images, you used the scss figure file, but to be honest, I wasn't sure how to do that. Would happy to either take suggestions for implementation, or to let someone else implement that portion properlly.
+All code examples have a '-' placed before the opening %. 
+This should be removed when using code, and is only included
+to avoid placing videos within this post.
 
-# Just a bland video
-code:
+
+## Just a video with a caption
 {-% video https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 a sample caption %}
 </br></br>
 
 {% video https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 a sample caption %}
 
-# 'nocaption'
-code:
+## 'nocaption'
 {-% video nocaption https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 This won't show %}
 </br></br>
 {% video nocaption https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 This won't show %}
 
-# Percentage Width: '60%'
+## Percentage Width: '60%'
 Height will scale accordingly
-</br></br>
-code:
+
 {-% video center https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 
 60% Percent Width of 60 %}
 </br></br>
 {% video center https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 
 60% Percent Width of 60 %}
 
-# Alignment: 'left', 'right', 'center' (Default: left)
-Can't get captions to align. Not sure how it works for 
-images? Tried to check but it was kinda confusing.
-</br>
+## Alignment: 'left', 'right', 'center' (Default: left)
 
-code:
-{-% video [left/center/right] https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% left caption %}
+{-% video [left/center/right] clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% left caption %}
 </br></br>
 {% video left https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% left caption%}
 
-{% video center  https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% center caption %}
+{% video center https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% center caption %}
 
-{% video right https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% right caption %}
+{% video right clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% right caption %}
 
-# Extra div: 'clear'
-don't know what this really does haha.
-Tried to reference [this post](https://stackoverflow.com/questions/10184934/why-div-class-clear-div-is-used-after-multiple-floating-divs-in-a-containe) but, either way it works as mentioned in the image.js.
+## Extra div: 'clear'
+Works as mentioned in the image tag + noted in documentation. 'clear' is used in the right aligned video above, so that text doesn't overflow into the side. Not using clear in a small enough and side aligned video, allows for text to wrap around video. 
+
+{-% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear %}
 </br></br>
-code:
-{-% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear Caption %}
-</br></br>
-{% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear Caption %}
+{% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear %}
 
-# 'autoplay' (with 'mute') and 'loop'
-Video will autoplay **as long as it's muted**. This is a web standard decided by
-browsers in order to avoid annoying users.</br></br>
-code:
+## 'autoplay' (with 'mute') and 'loop'
+Video will autoplay **as long as it's muted**. This is a standard from browser vendors in order to avoid annoying users.
+
 {-% video center autoplay muted loop https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 'autoplay' with 'muted' %}
 </br></br>
 {% video center autoplay muted loop https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 'autoplay' with 'muted' %}
 
-# Hide controls: 'nocontrols'
+## Hide controls: 'nocontrols'
 Right click on the video for controls. Useful when using
-with auto play and loop. Similar to using a gif within an image tag, except much more web friendly and faster.
-This purpose is the reason why I made the tag.
-</br></br>
-code:
-{-% video center nocontrols autoplay muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 
+with autoplay and loop. Similar to using a gif within an image tag, except much more [web friendly and fast](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/).
+This purpose is the main reason for implementing the video tag.
+
+{-% video center nocontrols autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 
 Controls off %}
 </br></br>
-{% video center nocontrols autoplay muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 
+{% video center nocontrols autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 
 Controls off %}
 
-# Poster (Thumbnail)
-I think image is (..., [Thumbnail], [Picture], ...), and this is (..., [Video], [Poster], ...) Might want
-to fix that here to match image habit of entry to avoid confusion?</br></br>
-code:
+## Poster (Thumbnail)
+
 {-% video center https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4
-https://peach.blender.org/wp-content/uploads/title_anouncement.jpg 100% 60 
-Poster (Thumbnail) Enabled %}
-</br></br>
+https://peach.blender.org/wp-content/uploads/title_anouncement.jpg 50% Poster (Thumbnail) Enabled %}
+
 {% video center https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4
-https://peach.blender.org/wp-content/uploads/title_anouncement.jpg 100% 60 
-Poster (Thumbnail) Enabled %}
+https://peach.blender.org/wp-content/uploads/title_anouncement.jpg 50% Poster (Thumbnail) Enabled %}
+
+## Fig-20,25,... classes
+Example usage of the fig-20,25... classes for automatic width. As noted in the
+documentation, fig classes automatically override to float left. Use custom 
+width if ever needing to adjust alignment in addition to custom size.
+
+{-% video nocontrols fig-25 autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp Fig-25 Example %}
+
+{-% video nocontrols fig-75 autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp Fig-75 Example %}
+</br></br>
+{% video nocontrols fig-25 autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 Fig-25 Example %}
+{% video nocontrols fig-75 autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 Fig-75 Example %}

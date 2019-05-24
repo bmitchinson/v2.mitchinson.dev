@@ -1,9 +1,15 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "BenMitchinson.com",
+  "version": "0.1.0",
   "private": true,
   "hexo": {
     "version": "3.7.1"
+  },
+  "scripts": {
+    "start": "hexo clean && hexo serve",
+    "serve": "hexo serve",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy -m"
   },
   "dependencies": {
     "hexo": "^3.2.0",

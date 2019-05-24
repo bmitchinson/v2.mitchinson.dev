@@ -42,9 +42,10 @@ Our prototype didn't have as many screens as I would have liked for demo interac
 </br></br>
 We took home awards for:
 * Best Presentation
-* Runner Up for Best Bussiness
+* Best Business (runner up)
 * Best Use of Domain
-Our prizes of Raspberry Pis and Chromecasts were then donated to [HackIowa](https://hackiowa.com/) to use for future prizes and projects at our own events.
+
+The Raspberry Pis and Chromecasts we recieved as prizes were then donated to [HackIowa](https://hackiowa.com/) to use for future awards at our own events.
 
 # Looking back
 We decided to use Django for managing the interaction with our SQLite database, and React for creating views. None of us had used the combination before, and that proved to be difficult down the road. I ended up waiting way too long before I made any of the views, instead of trying to help with Django and learning it for myself. Looking back now, I don't remember as much of Django as I thought I would, so in future events, I really need to make sure I keep notes as I go.
