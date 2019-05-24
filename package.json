@@ -9,7 +9,7 @@
     "start": "hexo clean && hexo serve",
     "serve": "hexo serve",
     "clean": "hexo clean",
-    "deploy": "hexo deploy -m"
+    "deploy": "hexo clean && hexo deploy -m"
   },
   "dependencies": {
     "hexo": "^3.2.0",
