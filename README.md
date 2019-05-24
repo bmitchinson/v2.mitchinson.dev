@@ -17,7 +17,7 @@ This is very easy to do, and a great way to learn hexo and it's common theme str
 (From the master branch) Run :
 * `npm i` @ root dir
 * `npm i` @ themes/bmitchinson_tranquilpeak
-* `npm run-script build` @ themes/bmitchinson_tranquilpeak
-* `hexo start` @ root dir
+* `npm start` @ themes/bmitchinson_tranquilpeak
+* `npm start` @ root dir
 
 This gives you a version of the site at `localhost:4000` for tinkering and testing 👍
