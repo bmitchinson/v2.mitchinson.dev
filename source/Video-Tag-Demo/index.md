@@ -19,8 +19,8 @@ The video tag supports any mp4 video, as it's widely accepted by modern web
 standards over other video formats. [Mozilla Docs](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
 
 All code examples have a '-' placed before the opening %. 
-This should be removed when using code, and is only included
-to avoid placing videos within this post.
+This should be removed when using the code, as it's only included
+to avoid placing videos within this post itself.
 
 
 ## Just a video with a caption
@@ -54,14 +54,14 @@ Height will scale accordingly
 {% video right clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% right caption %}
 
 ## Extra div: 'clear'
-Works as mentioned in the image tag + noted in documentation. 'clear' is used in the right aligned video above, so that text doesn't overflow into the side. Not using clear in a small enough and side aligned video, allows for text to wrap around video. 
+Works as mentioned in the image tag + noted in the documentation. 'clear' is used in the right aligned video above, so that text doesn't overflow into the side. Not using clear in a small enough and side aligned video, allows for text to wrap around video. 
 
 {-% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear %}
 </br></br>
 {% video center clear https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% Clear %}
 
 ## 'autoplay' (with 'mute') and 'loop'
-Video will autoplay **as long as it's muted**. This is a standard from browser vendors in order to avoid annoying users.
+The video will autoplay **as long as it's muted**. This is a standard from browser vendors in order to avoid annoying users.
 
 {-% video center autoplay muted loop https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 50% 'autoplay' with 'muted' %}
 </br></br>
@@ -88,8 +88,8 @@ https://peach.blender.org/wp-content/uploads/title_anouncement.jpg 50% Poster (T
 
 ## Fig-20,25,... classes
 Example usage of the fig-20,25... classes for automatic width. As noted in the
-documentation, fig classes automatically override to float left. Use custom 
-width if ever needing to adjust alignment in addition to custom size.
+documentation, fig classes automatically override to float left. Use custom
+width if ever needing to adjust the alignment in addition to custom size.
 
 {-% video nocontrols fig-25 autoplay loop muted https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp Fig-25 Example %}
 
