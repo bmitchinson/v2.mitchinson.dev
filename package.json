@@ -9,7 +9,8 @@
     "start": "hexo clean && hexo serve",
     "serve": "hexo serve",
     "clean": "hexo clean",
-    "deploy": "hexo clean && hexo deploy -m"
+    "deploy": "hexo clean && hexo deploy -m",
+    "algolia": "hexo clean && hexo algolia"
   },
   "dependencies": {
     "hexo": "^3.2.0",
@@ -23,7 +24,6 @@
     "hexo-renderer-ejs": "^0.3.0",
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.1",
-    "hexo-sage-posts": "0.0.1",
     "hexo-server": "^0.2.0",
     "jsdom": "^12.2.0"
   }

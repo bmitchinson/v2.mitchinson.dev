@@ -9,7 +9,7 @@ More details to come soon, including a writeup on how I developed and organized 
 
 All files on the [master branch](https://github.com/bmitchinson/BenMitchinson.com) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages branch](https://github.com/bmitchinson/BenMitchinson.com/tree/gh-pages).
 
-[My fork of tranquilpeak]() is used as the theme of the blog in a submodule located under `themes/`.
+[My fork of tranquilpeak](https://github.com/bmitchinson/hexo-theme-tranquilpeak) is used as the theme of the blog in a separate repo located under `themes/bmitchinson_tranquilpeak`.
 
 ### Running the site locally
 This is very easy to do, and a great way to learn hexo and it's common theme structure. More details in a writeup on the site soon.
@@ -17,7 +17,7 @@ This is very easy to do, and a great way to learn hexo and it's common theme str
 (From the master branch) Run :
 * `npm i` @ root dir
 * `npm i` @ themes/bmitchinson_tranquilpeak
-* `npm start` @ themes/bmitchinson_tranquilpeak
+* `npm run-script build` @ themes/bmitchinson_tranquilpeak
 * `npm start` @ root dir
 
 This gives you a version of the site at `localhost:4000` for tinkering and testing 👍

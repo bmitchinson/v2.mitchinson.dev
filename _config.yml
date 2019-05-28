@@ -131,3 +131,7 @@ algolia:
     - content:strip:truncate,0,50
     - permalink
     - thumbnailImageUrl
+
+sitemap:
+    path: sitemap.xml
+    template: ./sitemap_template.xml
