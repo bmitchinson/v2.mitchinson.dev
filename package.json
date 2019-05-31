@@ -6,10 +6,12 @@
     "version": "3.7.1"
   },
   "scripts": {
-    "start": "hexo clean && hexo serve",
+    "start": "hexo clean && hexo serve --draft",
+    "startnd": "hexo clean && hexo serve",
     "serve": "hexo serve",
     "clean": "hexo clean",
-    "deploy": "hexo clean && hexo deploy -m"
+    "deploy": "hexo clean && hexo deploy -m",
+    "algolia": "hexo clean && hexo algolia"
   },
   "dependencies": {
     "hexo": "^3.2.0",

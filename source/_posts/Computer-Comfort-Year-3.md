@@ -30,7 +30,7 @@ gallery:
 <p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
 </p>
 
-### Our Mission Statement:
+<h3>Our Mission Statement:</h3>
 > Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process.
 
 </br>
