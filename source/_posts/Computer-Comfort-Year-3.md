@@ -12,6 +12,7 @@ keywords:
 - Iowa Computer Comfort
 comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808896/comfort0.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1559368194/CComfort/CComfortBanner.jpg
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
