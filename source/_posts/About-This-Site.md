@@ -39,7 +39,7 @@ open source projects along the way.
 
 ### My Initial Approach:
 Before beginning my internship, I created a small site using only vanilla HTML +
-CSS. Funny to look back at now and consider how many unnecessary and 
+CSS. Funny to look back at it now and consider how many unnecessary and 
 completely inaccessible animations I chose to include.
 </br></br>
 {% video center autoplay muted nocontrols loop 
