@@ -66,7 +66,7 @@ in an npm package.
 took the longest to complete, and hopefully should be merged in soon. 
 Identifying a valuable improvement, iterating on the idea upon review, writing 
 up documentation, and providing [a demo page for the feature](/Video-Tag-Demo)
-Took a good amount of time outside of classes, but I'm looking forward to 
+took a good amount of time outside of classes, but I'm looking forward to 
 contributing more now that I have some experience.
 </br>
 Others:
