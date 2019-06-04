@@ -130,7 +130,6 @@ algolia:
     - excerpt:strip
     - content:strip:truncate,0,50
     - permalink
-    - thumbnailImageUrl
 
 sitemap:
     path: sitemap.xml
