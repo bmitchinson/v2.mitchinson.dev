@@ -11,6 +11,8 @@
     "serve": "hexo serve",
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo deploy -m",
+    "post": "hexo new post",
+    "draft": "hexo new draft",
     "algolia": "hexo clean && hexo algolia"
   },
   "dependencies": {
