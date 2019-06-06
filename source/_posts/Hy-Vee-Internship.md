@@ -32,7 +32,7 @@ We're building Aisles Online Mobile using React Native, while simultaneously wor
 
 <!-- more --> 
 
-I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has a privilege each and every day.
+I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
 
 #### Week 1:
 * Set the Mrs. Pac-Man High Score 👾
