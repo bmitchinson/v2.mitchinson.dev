@@ -22,6 +22,9 @@ A quick recap of everything the executive team accomplished for the 2018-2019
 year of Computer Comfort, including it's complete rebranding into -> Device Advice.
 </br>
 <!-- more -->
+
+If you're wondering what Computer Comfort is, check out [this post from last year](/Computer-Comfort-Year-3/)
+
 ### What got done this year
 * Spent 102 hours helping seniors during the fall semester, and 124 during the spring, for **a combined 226 hours of volunteering!**
   * (That's over 12,240 renditions of singing the hawkeye fight song, or sitting through 243 lectures)
@@ -48,6 +51,13 @@ While rebranding we decided to revisit our mission statement:
 educating older adults on today's technology while creating meaningful 
 connections in the process."
 
+We wanted it to reflect the half and half balance of 1.) creating meaningful 
+relationships and 2.) assisting with technology to keep older adults connected with
+their families. 
+
+In addition to include our new name, we're now doing our best to use the term 
+"older adults", as we've learned most prefer it over "seniors". 
+
 ### New Executive Board For 2019-20
 
 I'll be leaving the executive board after three years to work on
@@ -68,22 +78,22 @@ we've finished rebranding, there's a ton of potential for creating new materials
 and exploring paths for advertising. </br></br>Please reach out at 
 studorg-DeviceAdvice@uiowa.edu, if you're interested we'd love to hear from you!
 
-### The future of ~~Computer Comfort~~ Device Advice 
+### The future of Device Advice 
 
-* Growing our executive board so that we have bandwith to expand to other university!
-* Using our new marketing tools to ensure that volunteers always have seniors to help at sessions
-* Working with the existing technology support department at Oaknoll to provide more regular and direct help
+* Growing our executive board so that we have bandwith to expand to other universities.
+* Using our new marketing tools to ensure that volunteers always have seniors to help at sessions.
+* Working with the existing technology support department at Oaknoll to provide more direct and regular help.
 
 ### What I learned
-I learned a ton about my own leadership tendencies while holding
-the presidential position, as well as ways to help keep a team actively involved
-in a common mission. I grew a habit of taking on more tasks then I needed too,
-when I had a team of fully willing and capable students around me, so to be able
-to give others ownership is something that's been helpful in all areas of life
-when working on a team.
+In learning about my own leadership tendencies while holding
+the president position, I noticed a nasty habit of taking on more than I needed 
+too, even though I had a team of fully willing and capable students around me. 
+That and finding creative ways to help keep very busy people actively involved
+in a common mission taught me a lot, and has been helpful in all areas of life
+when working on a team, so I'm grateful for the experience.
 
 ### How to get involved with the org!
 
-If you’re a student who wants to attend a session, or a company interested in 
-supporting the organization, please contact us! 
+> If you’re a student who wants to attend a session, or a company interested in 
+supporting the organization, please contact us! </br>
 Email: (studorg-DeviceAdvice@uiowa.edu)
