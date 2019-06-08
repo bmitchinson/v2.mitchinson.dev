@@ -25,17 +25,11 @@ coverSize: partial
 I set out to use what I learned about javascript from my internship at 
 [ISE](http://blog.iseinc.biz/meet-our-team-2018-summer-interns)
 to create a responsive blog style portfolio using a static site generator. 
-The goal was to host it for free on github pages alongside its source code, 
+The goal was to host it for free on Github pages alongside its source code, 
 to allow for easy and immediate editing from anywhere, and to contribute to 
 open source projects along the way.
 </br>
-<!-- excerpt -->
-I set out to use what I learned about javascript from my internship at 
-[ISE](http://blog.iseinc.biz/meet-our-team-2018-summer-interns)
-to create a responsive blog style portfolio using a static site generator. 
-The goal was to host it for free on github pages alongside its source code, 
-to allow for easy and immediate editing from anywhere, and to contribute to 
-open source projects along the way.
+<!-- more -->
 
 ### My Initial Approach:
 Before beginning my internship, I created a small site using only vanilla HTML +
@@ -46,18 +40,18 @@ completely inaccessible animations I chose to include.
 https://res.cloudinary.com/dheqbiqti/video/upload/v1559357737/Projects/BenMitchinson.com/PCjkR5917p0Z41qbk5toTyQrMMaFf8kSELyErCau.mp4 "First attempt - Summer 2017"%}
 
 With no version control and no templates, sure hosting was incredibly simple
-([I used to host out of my personal dropbox account](https://droppages.com/)),
+([I used to host out of my personal Dropbox account](https://droppages.com/)),
 but nothing about the design allowed me to change content quickly, and the pages
 were completely unresponsive on anything but one zoom level of desktop. 
 
 ### Fast Forward:
 One year later, with a solid understanding of git and various JS frameworks
 and a better eye for design, I began working on a site based on
-Louis Barranqueiro's excellent hexo theme 
+Louis Barranqueiro's excellent Hexo theme 
 [Tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak).
 
-Now the site is hosted alongside it's source code on [github](https://github.com/bmitchinson/benmitchinson.com) 
-in an npm package.
+Now the site is hosted alongside its source code on [github](https://github.com/bmitchinson/benmitchinson.com) 
+in an NPM package.
 </br></br>
 {% image center https://res.cloudinary.com/dheqbiqti/image/upload/v1559279970/Projects/BenMitchinson.com/Audit.jpg "My lighthouse score - May 2019" %}
 
@@ -80,7 +74,7 @@ and [Documentation updates](https://github.com/LouisBarranqueiro/hexo-theme-tran
 * Engaging with other contributors results in me pushing myself to learn more
 * The beginning fundamentals of a11y
 * CDN best practices
-* Faster photoshop workflows 
+* Faster Photoshop workflows 
 * How to manage traffic and implement trackers on google analytics 
 * Device responsive styling
 * Have patience with those reviewing your contributions. They're doing it solely
