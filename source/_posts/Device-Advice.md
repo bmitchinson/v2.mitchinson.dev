@@ -7,7 +7,7 @@ tags:
   - Volunteering
 comments: true
 autoThumbnailImage: false
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1560018195/CComfort/DeviceAdviceBanner.png
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1560018195/CComfort/DeviceAdviceBanner.jpg
 coverMeta: out
 coverSize: partial
 keywords:
