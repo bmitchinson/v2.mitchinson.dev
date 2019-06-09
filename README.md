@@ -12,12 +12,12 @@ All files on the [master branch](https://github.com/bmitchinson/BenMitchinson.co
 [My fork of tranquilpeak](https://github.com/bmitchinson/hexo-theme-tranquilpeak) is used as the theme of the blog in a separate repo located under `themes/bmitchinson_tranquilpeak`.
 
 ### Running the site locally
-This is very easy to do, and a great way to learn hexo and it's common theme structure. More details in a writeup on the site soon.
+This is very easy to do, and a great way to learn hexo and it's common theme structure. [More details on the site here](https://benmitchinson.com/About-This-Site/)
 
-(From the master branch) Run :
+(From the master branch) Run:
 * `npm i` @ root dir
 * `npm i` @ themes/bmitchinson_tranquilpeak
-* `npm run-script build` @ themes/bmitchinson_tranquilpeak
-* `npm start` @ root dir
+* `npm start` @ themes/bmitchinson_tranquilpeak (to build the theme)
+* `npm start` @ root dir (to generate the site and serve it locally)
 
 This gives you a version of the site at `localhost:4000` for tinkering and testing 👍
