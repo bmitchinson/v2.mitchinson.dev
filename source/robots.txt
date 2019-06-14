@@ -12,4 +12,4 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://benmitchinson.com/sitemap.xml
+Sitemap: https://mitchinson.dev/sitemap.xml

@@ -29,7 +29,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://benmitchinson.com
+url: https://mitchinson.dev
 root: /
 permalink: :title/
 permalink_defaults:
@@ -95,7 +95,7 @@ theme: bmitchinson_tranquilpeak
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:bmitchinson/BenMitchinson.com.git
+  repo: git@github.com:bmitchinson/Mitchinson.dev.git
   branch: gh-pages
   name: bmitchinson
   email: 115bwm@gmail.com

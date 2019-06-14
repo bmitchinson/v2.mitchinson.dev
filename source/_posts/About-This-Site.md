@@ -50,7 +50,7 @@ and a better eye for design, I began working on a site based on
 Louis Barranqueiro's excellent Hexo theme 
 [Tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak).
 
-Now the site is hosted alongside its source code on [github](https://github.com/bmitchinson/benmitchinson.com) 
+Now the site is hosted alongside its source code on [github](https://github.com/bmitchinson/Mitchinson.dev) 
 in an NPM package.
 </br></br>
 {% image center https://res.cloudinary.com/dheqbiqti/image/upload/v1559279970/Projects/BenMitchinson.com/Audit.jpg "My lighthouse score - May 2019" %}

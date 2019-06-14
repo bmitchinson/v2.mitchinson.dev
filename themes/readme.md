@@ -6,6 +6,6 @@ Download [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of tr
 
 Place the clone inside of this `themes` directory, then from within the theme directory, run `npm install`, followed by npm start, to build the theme for use.
 
-Be sure to update [config.yml](https://github.com/bmitchinson/BenMitchinson.com/blob/master/_config.yml) to reflect the name of your chosen theme for use.
+Be sure to update [config.yml](https://github.com/bmitchinson/Mitchinson.dev/blob/master/_config.yml) to reflect the name of your chosen theme for use.
 
 Feel free also to experiement with other themes entirely if desired.

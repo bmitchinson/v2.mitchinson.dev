@@ -1,4 +1,4 @@
-## [BenMitchinson.com](https://benmitchinson.com)
+## [Mitchinson.dev](https://mitchinson.dev)
 
 ![](https://i.imgur.com/9Ac5NYS.png)
 
@@ -7,12 +7,12 @@ Built using [my custom fork](https://github.com/bmitchinson/hexo-theme-tranquilp
 ### Organization
 More details to come soon, including a writeup on how I developed and organized the site. 
 
-All files on the [master branch](https://github.com/bmitchinson/BenMitchinson.com) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages branch](https://github.com/bmitchinson/BenMitchinson.com/tree/gh-pages).
+All files on the [master branch](https://github.com/bmitchinson/Mitchinson.dev) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages branch](https://github.com/bmitchinson/Mitchinson.dev/tree/gh-pages).
 
 [My fork of tranquilpeak](https://github.com/bmitchinson/hexo-theme-tranquilpeak) is used as the theme of the blog in a separate repo located under `themes/bmitchinson_tranquilpeak`.
 
 ### Running the site locally
-This is very easy to do, and a great way to learn hexo and it's common theme structure. [More details on the site here](https://benmitchinson.com/About-This-Site/)
+This is very easy to do, and a great way to learn hexo and it's common theme structure. [More details on the site here](https://Mitchinson.dev/About-This-Site/)
 
 (From the master branch) Run:
 * `npm i` @ root dir
