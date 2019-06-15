@@ -49,4 +49,15 @@ I'll be updating this post as my summer internship continues, but here's a look 
 * Using Postman to test written API services
 * Building Graph QL Queries
 
+#### Week 3:
+* Using sketch mockups to implement a styled component
+* Sentry error reporting
+* Manual testing
+* Jest mock stubs and spys
+
+#### Week 4:
+* Redux action creators
+* Apollo client configuration
+* Limiting redux render using lifecycle methods
+
 </br>
