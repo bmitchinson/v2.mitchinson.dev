@@ -20,7 +20,7 @@ programs that covered topics like GUI using Swing, Multithreading, Networking, a
 entry-level database work.</br>
 <!-- more -->
 
-# SneakerHead
+# SneakerHead • [Github](https://github.com/bmitchinson/SoftwareDesign)
 
 Our final project was to create a marketplace client where buyers and sellers
 could create accounts and post items. It was completed over the course of 72
@@ -42,7 +42,7 @@ database was a great experience. We didn't have much time to implement features
 around that part of our table structure, but I feel confident working with databases
 headed into future projects.
 
-# Blackjack
+# Blackjack • [Github](https://github.com/bmitchinson/SoftwareDesign)
 
 The rest of the assignments I completed on my own in preparation of our interview
 exams. Blackjack took me the longest, but was a great way to learn threading

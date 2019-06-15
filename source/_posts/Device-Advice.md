@@ -94,7 +94,7 @@ That and finding creative ways to help keep very busy people actively involved
 in a common mission has been valuable in all areas of life so I'm 
 grateful for the experience.
 
-### How to get involved with the us!
+### How to get involved with us!
 
 > If you’re a student who wants to attend a session, or a company interested in 
 supporting the organization, please contact us! </br>
