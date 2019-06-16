@@ -27,9 +27,7 @@ gallery:
 - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613518/Projects/HyVee/636385330571006441-080917-hyvee-HST-it-centerRWHITE1306.jpg
 ---
 
-We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and it's GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in early June!
-</br>
-
+We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and it's GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in early June!</br>
 <!-- more --> 
 
 I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
