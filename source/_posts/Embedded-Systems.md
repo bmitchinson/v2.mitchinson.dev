@@ -24,7 +24,7 @@ Junior year.
 <!-- excerpt -->
 For Embedded Systems this Spring, [Alex](https://github.com/abpwrs/) and I completed 5 labs and a final project, written in both C and Assembly.
 
-For completing the labs, we programmed an ATiny45 and an ATMega48 in Atmel studio. We used digital I/O, timers, interrupts, handled complex timing issues, rotary pulse generators, and PWM generators all using assembly language.
+For completing the labs, we programmed an ATiny45 and an ATMega88 in Atmel studio. We used digital I/O, timers, interrupts, handled complex timing issues, rotary pulse generators, and PWM generators all using assembly language.
 
 ### Final Project • [Poster](https://github.com/abpwrs/ece-3360-sp19/blob/master/final/FinalPoster.pdf) • [Github](https://github.com/abpwrs/ece-3360-sp19/blob/master/final/FinalProjectDir/FinalProjectDir/main.c)
 
