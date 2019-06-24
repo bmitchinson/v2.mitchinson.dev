@@ -18,5 +18,5 @@ for you to showcase your music collection alongside highlighted selections.
 * [OpenQ](https://github.com/bmitchinson/OpenQ): A web application to 
 manage a public Spotify queue for playback.
 </br>
-##### Any posts with live demos [are tagged here](/tags/Live/)
+##### All live demos of my work [are tagged here](/tags/Live/)
 </br>
