@@ -27,7 +27,7 @@ gallery:
 - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613518/Projects/HyVee/636385330571006441-080917-hyvee-HST-it-centerRWHITE1306.jpg
 ---
 
-We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and it's GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in early June!</br>
+We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and it's GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in June!</br>
 <!-- more --> 
 
 I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
@@ -35,27 +35,38 @@ I'll be updating this post as my summer internship continues, but here's a look 
 #### Week 1:
 * Set the Mrs. Pac-Man High Score 👾
 * Jumping into React-Native
-* Completed Course on Redux 
+* Completed a course on Redux 
 * Implementing code with central immutable state
 * Querying Graph QL using Apollo through dispatch calls
 * Debugging using RN Investigator within AVD
 
 #### Week 2:
-* Writing a REST Endpoint to relay SQL Table data
+* Writing a REST endpoint to relay SQL table data
 * Creating a Graph QL Resolver for that endpoint
 * Writing React Unit Tests using RTL
 * Using Postman to test written API services
-* Building Graph QL Queries
+* Building Graph QL queries
 
 #### Week 3:
-* Using sketch mockups to implement a styled component
-* Sentry error reporting
-* Manual testing
-* Jest mock stubs and spys
+* Using Sketch mockups to implement a styled component
+* Utilizing Sentry error reports for bug fixes
+* Finding bugs in group manual testing
+* Mocking with stubs and spys for Jest tests
 
 #### Week 4:
-* Redux action creators
-* Apollo client configuration
-* Limiting redux render using lifecycle methods
+* Creating Redux action creators
+* Configuring Apollo client plug-ins
+* Limiting unnecessary component renders using lifecycle methods
+
+#### Week 5:
+* Using Testflight deployment paths
+* Scripting mobile interaction tests
+* Configuring Firebase for CMS driven content
+* Working with UI/UX dev for layout tests
+
+#### Week 6:
+* Deploying our public release build on both iOS and Android
+</br>
+...
 
 </br>
