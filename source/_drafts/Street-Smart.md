@@ -25,12 +25,18 @@ Diagnostics (OBD) system, enabling in cabin alerts when speeding is detected.
 All events are forwarded to firebase, and from there an Express API and React App
 on Heroku provide reports and visualizations of driving habits and vehicle health.
 </br>
-<!-- More -->
+<!-- excerpt -->
 
-# [Live Demo](street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
+## [Live Demo](street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
 
+For the final project of "Internet of Things" last spring, our team of 5 created
+an API, web app, and Raspberry Pi car sensor. The Pi utilizes an On Board
+Diagnostics (OBD) system, enabling in cabin alerts when speeding is detected.
+All events are forwarded to firebase, and from there an Express API and React App
+on Heroku provide reports and visualizations of driving habits and vehicle health.
 
-Might take a minute to spin up because i'm on the free tier
+(We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
+might have to wait a moment for the app to spin up upon initial load 👍)
 
 ### Got selected for showcase (link to modern?)
 
@@ -48,6 +54,7 @@ clean up since I was forced to write this script overnight in case our sensor di
 Pic of team in gallery?
 Snap of it first working
 
+-- SITE ICON
 
 - links -
 side by side video + terminal:
