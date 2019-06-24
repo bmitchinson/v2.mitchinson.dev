@@ -17,7 +17,7 @@ gallery:
 Description <3
 </br>
 <!-- more -->
-Post contents <3
+Post contents • <3
 Use "excerpt" instead of more if you'd like your top writeup to be absent from
 the index view 👍
 Remember to use .jpg for *all* images to reduce time to T2I
