@@ -7,13 +7,15 @@
   },
   "scripts": {
     "start": "hexo clean && hexo serve --draft",
+    "build": "hexo generate",
     "startnd": "hexo clean && hexo serve",
     "serve": "hexo serve",
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo deploy -m",
     "post": "hexo new post",
     "draft": "hexo new draft",
-    "algolia": "hexo clean && hexo algolia"
+    "algolia": "hexo clean && hexo algolia",
+    "theme": "cd themes/bmitchinson_tranquilpeak && npm run prod"
   },
   "dependencies": {
     "hexo": "^3.2.0",
