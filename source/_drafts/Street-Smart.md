@@ -19,15 +19,13 @@ coverSize: partial
 gallery:
 ---
 
-For my final project in Internet of Things last spring, our team of 5 created
+For the final project of "Internet of Things" last spring, our team created
 an API, web app, and Raspberry Pi car sensor. The Pi utilizes an On Board
-Diagnostics (OBD) system, enabling in cabin alerts when speeding is detected.
-All events are forwarded to firebase, and from there an Express API and React App
+Diagnostics (OBD) interface, eventually enabling in cabin alerts when speeding is detected.
+All events are forwarded to Firebase, and from there an Express API and React App
 on Heroku provide reports and visualizations of driving habits and vehicle health.
 </br>
 <!-- excerpt -->
-
-## [Live Demo](street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
 
 For the final project of "Internet of Things" last spring, our team created
 an API, web app, and Raspberry Pi car sensor. The Pi utilizes an On Board
@@ -35,18 +33,24 @@ Diagnostics (OBD) interface, eventually enabling in cabin alerts when speeding i
 All events are forwarded to Firebase, and from there an Express API and React App
 on Heroku provide reports and visualizations of driving habits and vehicle health.
 
+## [Live Demo](street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
+
 ( We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
 might have to wait a moment for the app to spin up upon initial load: 
 [Street-Smart.xyz](street-smart.xyz) 👍) 
 
-### Front End
+## The Front End
 [Harsh Patel](https://github.com/hhpatel09) and I worked on the Express API and React interface in order
 to demonstrate viewing sensor data on a "realtime" map. I tore apart [React Shards](https://designrevision.com/docs/shards-dashboard-lite/),
 a well styled theme from Design Revision, to throw together an interface quickly.
-I most proud of my implementation of the realtime map, as that component card
+I was most proud of my implementation of the realtime map, as that component card
 was created from scratch using our API, and [React Leaflet](https://react-leaflet.js.org).
 
-### Car Travel Simulation Script
+{% video center autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/v1561511209/Projects/StreetSmart/ss_demo_crop.mp4
+"85%" As data from traveling cars was published to Firestore, the map updated in realtime. %}
+
+## Car Travel Simulation Script
 To have realistic testing data, and to be able to demo to our class, I created a 
 script in node to simulate car travel. It's got speed accurate travel based on
 any given route of coordinates, and uploads to Firebase just like our sensor.
