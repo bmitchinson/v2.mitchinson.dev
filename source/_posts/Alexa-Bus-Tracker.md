@@ -42,7 +42,7 @@ The lambda function version I used for the Alexa Skill is also available as a se
 </br></br>
 
 <div style="height:600px;overflow-y:scroll">
-{% tabbed_codeblock stopInfoDemo.py https://github.com/bmitchinson/Bongo-Python/blob/master/stopInfoDemo.py %}
+{% tabbed_codeblock stopInfoDemo.py - GitHub https://github.com/bmitchinson/Bongo-Python/blob/master/stopInfoDemo.py %}
       <!-- tab python -->
 import json, urllib.request
 import string

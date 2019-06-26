@@ -26,7 +26,7 @@ coverSize: partial
 I set out to use what I learned about javascript from my internship at 
 [ISE](http://blog.iseinc.biz/meet-our-team-2018-summer-interns)
 to create a responsive blog style portfolio using a static site generator. 
-The goal was to host it for free on Github pages alongside its source code, 
+The goal was to host it for free on GitHub pages alongside its source code, 
 to allow for easy and immediate editing from anywhere, and to contribute to 
 open source projects along the way.
 </br>
@@ -51,7 +51,7 @@ and a better eye for design, I began working on a site based on
 Louis Barranqueiro's excellent Hexo theme 
 [Tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak).
 
-Now the site is hosted alongside its source code on [github](https://github.com/bmitchinson/Mitchinson.dev) 
+Now the site is hosted alongside its source code on [GitHub](https://github.com/bmitchinson/Mitchinson.dev) 
 in an NPM package.
 </br></br>
 {% image center https://res.cloudinary.com/dheqbiqti/image/upload/v1559279970/Projects/BenMitchinson.com/Audit.jpg "My lighthouse score - May 2019" %}

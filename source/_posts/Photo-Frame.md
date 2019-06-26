@@ -35,7 +35,7 @@ This year for Mother's Day, I decided to take an old digital photo frame we had 
 </br>
 <!-- More -->
 
-# Solution ● [Github](github.com/bmitchinson/raspberry-pi-photo-frame)
+# Solution ● [GitHub](github.com/bmitchinson/raspberry-pi-photo-frame)
 <p>Inside now is a Raspberry Pi running OSMC on an HD display, with a python script running in the background to download new photos from a dedicated Gmail account. From there, OSMC transitions through them all to display. The frame is also enabled with SSH at home, so while I'm at school, I can perform remote updates and mass file transfers to update large amounts of photos manually.
 </p>
 

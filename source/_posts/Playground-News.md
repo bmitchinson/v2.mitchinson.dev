@@ -35,7 +35,7 @@ We aimed to build a sample platform for a child to use on a regular basis with e
 </br></br>
 We hoped that with these tools and some additional methods to "gamify" the experience, kids would be engaged in the news, further develop their comprehension skills, and have conversations with their family about issues going on in the world today that wouldn't have taken place otherwise.
 
-# [Github](https://github.com/bmitchinson/KidNews-Tiger18) ●  [DevPost](https://devpost.com/software/playground-news)
+# [GitHub](https://github.com/bmitchinson/KidNews-Tiger18) ●  [DevPost](https://devpost.com/software/playground-news)
 
 # Development and Awards
 Our prototype didn't have as many screens as I would have liked for demo interaction, but our idea was solid, and the article view we had conveyed our final goal.
