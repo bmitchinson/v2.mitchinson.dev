@@ -3,6 +3,7 @@ title: Hy-Vee Internship - Aisles Online Mobile
 date: '2019-06-02 00:00:00'
 tags:
   - Internship
+  - Live
   - Hy-Vee
   - React Native
   - Graph QL
@@ -30,7 +31,12 @@ gallery:
 We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and it's GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in June!</br>
 <!-- more --> 
 
+### Downloads: [iOS](https://apps.apple.com/us/app/hy-vee-aisles-online/id1401371704?ls=1) • [Android](https://play.google.com/store/apps/details?id=com.hyvee.grocery&hl=en_US)
+
 I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
+
+{% video fig-25 right autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_40,q_30,b_white/v1561996776/Projects/HyVee/app_v1.mp4 %}
 
 #### Week 1:
 * Set the Mrs. Pac-Man High Score 👾
@@ -47,6 +53,9 @@ I'll be updating this post as my summer internship continues, but here's a look 
 * Using Postman to test written API services
 * Building Graph QL queries
 
+{% video fig-25 right autoplay muted nocontrols loop
+https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v1562001316/Projects/HyVee/shoplistedit.mp4 %}
+
 #### Week 3:
 * Using Sketch mockups to implement a styled component
 * Utilizing Sentry error reports for bug fixes
@@ -59,14 +68,18 @@ I'll be updating this post as my summer internship continues, but here's a look 
 * Limiting unnecessary component renders using lifecycle methods
 
 #### Week 5:
-* Using Testflight deployment paths
+* Using Testflight deployment paths for deploying to beta testers
 * Scripting mobile interaction tests
 * Configuring Firebase for CMS driven content
 * Working with UI/UX dev for layout tests
 
 #### Week 6:
-* Deploying our public release build on both iOS and Android
-</br>
-...
+* Submitting our public release build on both iOS and Android
+* Adding new guest user flow after App Store review
+* Configuring multiple apollo clients
 
-</br>
+#### Week 7:
+* July 1st Public Launch!
+* ...
+
+</br></br>
