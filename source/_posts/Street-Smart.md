@@ -11,49 +11,60 @@ tags:
   - Firebase
   - Live
 comments: true
-coverImage: http://localhost:4000/Street-Smart/ss_cover.jpg # (use transform (/upload/fl_progressive/v_149...) ) @ 2500 x 1512
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561941864/Projects/StreetSmart/ss_cover.jpg
 autoThumbnailImage: false
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561401615/Projects/StreetSmart/ss_banner.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.jpg
 coverMeta: out
 coverSize: partial
 gallery:
 ---
 
-For the final project of "Internet of Things" last spring, our team created
-an API, web app, and Raspberry Pi car sensor. The Pi utilizes an On Board
-Diagnostics (OBD) interface, eventually enabling in cabin alerts when speeding is detected.
-All events are forwarded to Firebase, and from there an Express API and React App
-on Heroku provide reports and visualizations of driving habits and vehicle health.
+For the final project in "Internet of Things" last spring, our team created
+an API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board
+Diagnostics (OBD) interface and the Overpass API to enable in-cabin alerts 
+when speeding is detected. All events are forwarded to Firebase, and an Express 
+API and React App hosted on Heroku provide reports and visualizations of driving
+habits and vehicle health.
 </br>
 <!-- excerpt -->
 
-For the final project of "Internet of Things" last spring, our team created
-an API, web app, and Raspberry Pi car sensor. The Pi utilizes an On Board
-Diagnostics (OBD) interface, eventually enabling in cabin alerts when speeding is detected.
-All events are forwarded to Firebase, and from there an Express API and React App
-on Heroku provide reports and visualizations of driving habits and vehicle health.
+For the final project in "Internet of Things" last spring, our team created
+an API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board
+Diagnostics (OBD) interface and the Overpass API to enable in-cabin alerts 
+when speeding is detected. All events are forwarded to Firebase, and an Express 
+API and React App hosted on Heroku provide reports and visualizations of driving
+habits and vehicle health.
 
-## [Live Demo](street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
+## [Live Demo](http://street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
 
-( We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
+(We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
 might have to wait a moment for the app to spin up upon initial load: 
-[Street-Smart.xyz](street-smart.xyz) 👍) 
+[Street-Smart.xyz](http://street-smart.xyz) 👍) 
 
 ## The Front End
 [Harsh Patel](https://github.com/hhpatel09) and I worked on the Express API and React interface in order
-to demonstrate viewing sensor data on a "realtime" map. I tore apart [React Shards](https://designrevision.com/docs/shards-dashboard-lite/),
-a well styled theme from Design Revision, to throw together an interface quickly.
-I was most proud of my implementation of the realtime map, as that component card
+to demonstrate viewing sensor data on a "real-time" map. I tore apart [React Shards](https://designrevision.com/docs/shards-dashboard-lite/),
+a well styled site template from Design Revision, to throw together an interface quickly.
+I was most proud of my implementation of the real-time map, as that component card
 was created from scratch using our API, and [React Leaflet](https://react-leaflet.js.org).
+</br></br>
 
 {% video center autoplay muted nocontrols loop
-https://res.cloudinary.com/dheqbiqti/video/upload/v1561511209/Projects/StreetSmart/ss_demo_crop.mp4
-"85%" As data from traveling cars was published to Firestore, the map updated in realtime. %}
+https://res.cloudinary.com/dheqbiqti/video/upload/q_50/v1561941958/Projects/StreetSmart/ss_demo.mp4
+100% As data from traveling cars is published to Firestore, the map shows updates in real-time. %}
 
-## Car Travel Simulation Script
-To have realistic testing data, and to be able to demo to our class, I created a 
-script in node to simulate car travel. It's got speed accurate travel based on
-any given route of coordinates, and uploads to Firebase just like our sensor.
+## Car Travel Simulation
+To have realistic test data, and to demo to our class, I created a 
+script for generating car travel data. It simulates driving locations and speeds
+along a given route of coordinates based on adjustable driver tendencies, and 
+uploads to Firebase in time accurate spacing, just like our in-car sensor.
+</br></br>
+It was great to implement async javascript, but going forward I really want
+to use proper modules now that I understand how they work in ES6 a bit better. 
+Too many functions in one file. This script was created overnight because we were
+having so many difficulties getting accurate location data for our sensor, so I'm
+proud of what I was able to do in that amount of time.
+</br></br>
 
 <div style="height:600px;overflow-y:scroll">
 {% tabbed_codeblock SimulateTrip.py - GitHub https://github.com/bmitchinson/StreetSmart/blob/master/server/SimulateTrip.js %}
@@ -249,32 +260,31 @@ sim()
   {% endtabbed_codeblock %}
 </div>
 
-A bit about the math to simulate times and events. Embedded code. Would be nice to
-clean up since I was forced to write this script overnight in case our sensor didn't function.
+### In-Car Sensor + Alerts
+Our Raspberry Pi ran a script to collect GPS location and utilized the Overpass
+API to fetch the speed limit of that location, pair them, and publish them to our
+database. Additionally, if an instance of speeding was detected, the Raspberry Pi
+lit up an LED to alert the driver. </br></br>
 
-### Got selected for showcase (link to modern?)
-
-
-### Improvements for the front end
-* GraphQL for a proper resource managed paginated API, instead of random express routes that fetch + deliver much more data then necessary 
-* Bundling / proper package management. Really want to learn about that soon.
-* Authentication is one of my biggest weaknesses, we faked it 
-
-### Credit template
-
-Pic of team in gallery?
-Snap of it first working
-Managing API Keys with dotenv 
-
--- SITE ICON
-
-- links -
-side by side video + terminal:
-https://res.cloudinary.com/dheqbiqti/video/upload/v1561338591/Projects/StreetSmart/SS_Demo.mp4
-
-firestore:
-https://res.cloudinary.com/dheqbiqti/video/upload/v1561400335/Projects/StreetSmart/firestore.mp4
-
-speedled:
+{% video center autoplay muted nocontrols loop
 https://res.cloudinary.com/dheqbiqti/video/upload/v1561400335/Projects/StreetSmart/speedled.mp4
+50% Speeding by exceeding 60MPH being detected %}
 
+### Awards
+Our presentation and live demo earned us one of 3 spots for IoT in "Modern Marvels", 
+the university's showcase for top projects completed throughout the year.
+</br></br>
+
+{% image center
+https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561942238/Projects/StreetSmart/team.jpg
+80% The team (myself not pictured) presenting our demo %}
+
+### Improvements
+* Next time I build an API, I'd like to try GraphQL. Our client fetched much
+more data then was necessary, and did client-side filtering that could have been
+accomplished in the API layer.
+* We only mocked the user account and lacked any sort of authentication on both the 
+database or front end. Integrating tools like OAuth is 
+something I need to get a handle on soon.
+
+## [Live Demo](http://street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)

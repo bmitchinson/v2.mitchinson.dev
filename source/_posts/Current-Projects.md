@@ -14,7 +14,5 @@ gallery:
 * [Spotilight](https://github.com/bmitchinson/Spotilight): A template website 
 for you to showcase your music collection alongside highlighted selections.
 * A small online game in Unreal Engine to learn network programming and asset creation.
-* [OpenQ](https://github.com/bmitchinson/OpenQ): A web application to 
-manage a public Spotify queue for playback.
 </br></br>
 <p align='center'><b> All live demos of my work [are tagged here](/tags/Live/) <b></p>
