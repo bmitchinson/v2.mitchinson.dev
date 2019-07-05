@@ -11,7 +11,7 @@ gallery:
 ---
 
 * [Hy-Vee Asiles Online](/Hy-Vee-Internship) - Hy-Vee's Online Shopping App
-* [Playlists](https://github.com/bmitchinson/Spotilight): A template website 
+* [Playlists](https://github.com/bmitchinson/Playlists): A template website 
 to showcase your music collection in a way that's streaming platform agnostic
 alongside highlighted selections.
 </br></br>
