@@ -80,6 +80,7 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v15620
 
 #### Week 7:
 * July 1st Public Launch!
-* ...
+* Using React-Native-Link to update new Icon assets
+* Creating new Icon assets out of SVGs
 
 </br></br>
