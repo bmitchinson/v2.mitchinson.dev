@@ -35,7 +35,22 @@ We're building Aisles Online Mobile using React Native, while simultaneously wor
 
 I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
 
-{% video fig-25 right autoplay muted nocontrols loop
+{% raw %}
+<style scoped>
+@media (max-width: 768px) {
+    .hide-768 {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .show-768 {
+        display: initial;
+    }
+}
+</style>
+{% endraw %}
+
+{% video fig-25 right autoplay muted nocontrols loop hide-768
 https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_40,q_30,b_white/v1561996776/Projects/HyVee/app_v1.mp4 %}
 
 #### Week 1:
@@ -53,7 +68,7 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_40,q_30,b_white/v15619
 * Using Postman to test written API services
 * Building Graph QL queries
 
-{% video fig-25 right autoplay muted nocontrols loop
+{% video fig-25 right autoplay muted nocontrols loop hide-768
 https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v1562001316/Projects/HyVee/shoplistedit.mp4 %}
 
 #### Week 3:
