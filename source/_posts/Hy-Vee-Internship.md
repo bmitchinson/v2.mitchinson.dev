@@ -42,11 +42,6 @@ I'll be updating this post as my summer internship continues, but here's a look 
         display: none;
     }
 }
-@media (max-width: 768px) {
-    .show-768 {
-        display: initial;
-    }
-}
 </style>
 {% endraw %}
 
