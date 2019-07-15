@@ -98,4 +98,11 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v15620
 * Using React-Native-Link to update new Icon assets
 * Creating new Icon assets out of SVGs
 
+#### Week 8:
+* Using Google Analytics to study user flow / funnelling
+* Creating new endpoints and generating respective GraphQL resolvers
+* lots of bug fixes from launch
+
+...
+
 </br></br>
