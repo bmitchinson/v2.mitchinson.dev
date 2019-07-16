@@ -11,7 +11,8 @@ gallery:
 ---
 
 * [Hy-Vee Asiles Online](/Hy-Vee-Internship) - Hy-Vee's Online Shopping App
-* [Playlists](https://github.com/bmitchinson/Playlists): A template website 
+* [Learning TypeScript](https://github.com/bmitchinson/LearningTypescript)
+* [Playlists](https://github.com/bmitchinson/Playlists) - A template website 
 to showcase your music collection in a way that's streaming platform agnostic
 alongside highlighted selections.
 </br></br>
