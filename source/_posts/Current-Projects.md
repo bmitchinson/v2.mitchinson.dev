@@ -14,6 +14,7 @@ gallery:
 * [Learning TypeScript](https://github.com/bmitchinson/LearningTypescript)
 * [Playlists](https://github.com/bmitchinson/Playlists) - A template website 
 to showcase your music collection in a way that's streaming platform agnostic
-alongside highlighted selections.
+alongside highlighted selections. A PWA built using Preact, Typescript, Sass, 
+and managed with Travis CI.
 </br></br>
 <p align='center'><b> All live demos of my work [are tagged here](/tags/Live/) <b></p>

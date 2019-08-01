@@ -98,6 +98,11 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v15620
 * Creating new endpoints and generating respective GraphQL resolvers
 * lots of bug fixes from launch
 
+#### Week 9:
+* Implementing complex linting rules + cleaning the codebase
+* Updating OS packages + managing forks
+* Completed online courses over Typescript + GraphQL
+
 ...
 
 </br></br>
