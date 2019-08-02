@@ -103,6 +103,4 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_50,q_50,b_white/v15620
 * Updating OS packages + managing forks
 * Completed online courses over Typescript + GraphQL
 
-...
-
 </br></br>
