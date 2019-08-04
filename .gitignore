@@ -1,10 +1,19 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
-node_modules/
-public/
-.deploy*/
-algoliakey.txt
-passwords.txt
+_config.yml
+# Algolia Keys
+# git update-index --skip-worktree <path-name>
+################
+
 bmitchinson_tranquilpeak/
+# Makeshift sub module
+################
+
+public/
+node_modules/
+.deploy*/
+################
+
+Thumbs.db
+*.log
+*.DS_Store
+db.json
+################
