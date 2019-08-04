@@ -1,4 +1,5 @@
 ## [Mitchinson.dev](https://mitchinson.dev)
+![Travis (.org)](https://img.shields.io/travis/bmitchinson/mitchinson.dev?logo=travis&style=for-the-badge)
 
 ![](https://i.imgur.com/9Ac5NYS.png)
 
@@ -12,7 +13,7 @@ All files on the [master branch](https://github.com/bmitchinson/Mitchinson.dev) 
 ### Running the site locally
 It's easy to do, and a great way to learn hexo and it's common theme structure.
 
-Make sure to clone using `git clone --recurse-submodules git@github.com:bmitchinson/hexo-theme-tranquilpeak.git` in order to 
+Make sure to clone using `git clone --recurse-submodules https://github.com/bmitchinson/hexo-theme-tranquilpeak.git` in order to 
 simultaneously clone [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of the tranquilpeak theme, as the markdown relies on it.
 
 (From the master branch) Run:
