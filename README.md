@@ -1,4 +1,5 @@
 ## [Mitchinson.dev](https://mitchinson.dev)
+![Travis (.org)](https://img.shields.io/travis/bmitchinson/mitchinson.dev?logo=travis&style=for-the-badge)
 
 ![](https://i.imgur.com/9Ac5NYS.png)
 
