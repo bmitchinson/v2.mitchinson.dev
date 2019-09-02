@@ -28,12 +28,12 @@ gallery:
 - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613518/Projects/HyVee/636385330571006441-080917-hyvee-HST-it-centerRWHITE1306.jpg
 ---
 
-We're building Aisles Online Mobile using React Native, while simultaneously working on our REST API and its GraphQL services. We're an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We're well on schedule to release our app on both iOS and Android in June!</br>
-<!-- more --> 
+This summer I helped build Aisles Online Mobile using React Native, while simultaneously working on our REST API and its GraphQL counterpart. I worked on an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We released the app in June, and reached 3k users and $86k in grocery sales within the first 2 weeks of launch, and a rating of 4.6 stars in the App Store.</br>
+<!-- more -->
 
 ### Downloads: [iOS](https://apps.apple.com/us/app/hy-vee-aisles-online/id1401371704?ls=1) • [Android](https://play.google.com/store/apps/details?id=com.hyvee.grocery&hl=en_US)
 
-I'll be updating this post as my summer internship continues, but here's a look into everything I've been able to learn and contribute to the Hy-Vee Aisles Online App so far. The engineers on my team are *incredibly* talented, so learning from them has been a privilege each and every day.
+Here's a look into everything I was able to work on and contribute to the Hy-Vee Aisles Online App. The engineers on the team are *incredibly* talented, so learning from them was a privilege I'm grateful for every day.
 
 {% raw %}
 <style scoped>
@@ -51,7 +51,7 @@ https://res.cloudinary.com/dheqbiqti/video/upload/so_.2,r_40,q_30,b_white/v15619
 #### Week 1:
 * Set the Mrs. Pac-Man High Score 👾
 * Jumping into React-Native
-* Completed a course on Redux 
+* Completed a course on Redux
 * Implementing code with central immutable state
 * Querying Graph QL using Apollo through dispatch calls
 * Debugging using RN Investigator within AVD
