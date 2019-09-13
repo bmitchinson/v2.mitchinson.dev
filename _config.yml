@@ -49,6 +49,7 @@ skip_render:
 - "music/index.html"
 - "musicapp/index.html"
 - "spotify/index.html"
+- "tempctrl/index.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
