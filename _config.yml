@@ -50,6 +50,7 @@ skip_render:
 - "musicapp/index.html"
 - "spotify/index.html"
 - "tempctrl/index.html"
+- "classroom-app/index.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
