@@ -124,9 +124,9 @@ marked:
 # Algolia
 # https://github.com/LouisBarranqueiro/hexo-algoliasearch
 algolia:
-  appId: "your_app_id"
-  apiKey: "your_api_key"
-  adminApiKey: "your_admin_key"
+  appId: '8HK3Y7M8DU'
+  apiKey: '1cd490d488a94b2d8d205df168c22b49'
+  adminApiKey: ${ALGOLIA_ADMIN_API_KEY}
   chunkSize: 5000
   indexName: "benmitchinson.com"
   fields:
