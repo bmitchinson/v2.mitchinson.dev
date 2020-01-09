@@ -31,7 +31,7 @@ For a course in Digital Arts this semester, two friends and I grouped together t
 create a multichannel audio circuit for displaying "Chladni Figures" in a project
 we called "Laserphonic".
 </br></br>
-{% image center https://res.cloudinary.com/dheqbiqti/image/upload/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.jpg 80%
+{% image center https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.jpg 80%
 Chladni Plate (Geek.com) %}
 </br>
 You may have seen these formations on plates such as the one shown above.

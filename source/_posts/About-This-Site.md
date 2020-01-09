@@ -54,7 +54,7 @@ Louis Barranqueiro's excellent Hexo theme
 Now the site is hosted alongside its source code on [GitHub](https://github.com/bmitchinson/Mitchinson.dev) 
 in an NPM package.
 </br></br>
-{% image center https://res.cloudinary.com/dheqbiqti/image/upload/v1559279970/Projects/BenMitchinson.com/Audit.jpg "My lighthouse score - May 2019" %}
+{% image center https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559279970/Projects/BenMitchinson.com/Audit.jpg "My lighthouse score - May 2019" %}
 
 ### Open Source Contributions:
 [My implementation of video tags](/Video-Tag-Demo) 
