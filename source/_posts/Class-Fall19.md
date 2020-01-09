@@ -9,9 +9,9 @@ tags:
   - Firebase
   - Live
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1577661158/Projects/Fall19Summary/fall_apps_cover.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578542413/Projects/Fall19Summary/fall_apps_cover.jpg
 autoThumbnailImage: false
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1577661157/Projects/Fall19Summary/fall_apps_thumbnail.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.jpg
 coverMeta: out
 coverSize: partial
 gallery:
