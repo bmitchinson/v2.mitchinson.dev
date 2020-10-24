@@ -5,16 +5,12 @@ comments: false
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
-date: 2020-1-24 12:40:39
+date: 2020-10-23 12:40:39
 keywords:
 gallery:
 ---
 
-* [inTune](https://www.notion.so/bmitchinson/inTune-Wiki-8a7aaf3cb67d42af8e18c53f5f32fa57): An open source Create-React-App template for generating a PWA. "Give fans a platform agnostic home-base for your music, conveniently surrounded by the memories and ideas that inspire it".
-* [VRJPG - Oculus Quest](https://github.com/bmitchinson/vr-jpg-viewer): A unity application to view photos taken with google
-cardboard camera. Built during the Iowa State hack-a-thon this last November.
-* [Iowa Public Policy Center](http://ppc.uiowa.edu/) Site redesign using 
-Drupal 8 and Docker. Working to add CI/CD and open sourcing the project.
-* Coursework: Finishing my final semester while working on Scrum teams to build SaSS apps with various web frameworks.
+- [Learning Rust](https://github.com/bmitchinson/learning-rust): Learning rust in order to move my old unity [VRJPG Project](https://github.com/bmitchinson/vr-jpg-viewer) to an aFrame XR web app. Progress notes available [here](https://www.notion.so/bmitchinson/JPGVR-Viewer-5136ef4d51744e73936bb9b1b549b246).
+- [Vail Systems](https://www.vailsys.com/): Working full time on an SPA dedicated to multilingual audio generation for IVRs. Using React, GraphQL, KnexJS, NestJS, and AWS.
 </br></br>
 <p align='center'><b> All live demos of my work [are tagged here](/tags/Live/) <b></p>
