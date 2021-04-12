@@ -5,12 +5,12 @@
 # Site
 title: "Ben Mitchinson"
 subtitle:
-description: "Senior at Iowa studying Computer Science and 
-    Engineering, Hackathon and Game Jam organizer + participant, open source 
-    contributor, former Pres. of [Computer Comfort](/Computer-Comfort-Year-3/), 
-    mentor for [HackIowa](https://uiowa.campuslabs.com/engage/organization/hackiowa), 
-    and Resident Assistant."
-keywords: 
+description: "Senior at Iowa studying Computer Science and
+  Engineering, Hackathon and Game Jam organizer + participant, open source
+  contributor, former Pres. of [Computer Comfort](/Computer-Comfort-Year-3/),
+  mentor for [HackIowa](https://uiowa.campuslabs.com/engage/organization/hackiowa),
+  and Resident Assistant."
+keywords:
   - Ben
   - Mitchinson
   - Ben Mitchinson
@@ -44,13 +44,13 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: 
-- "resume/index.html"
-- "music/index.html"
-- "musicapp/index.html"
-- "spotify/index.html"
-- "tempctrl/index.html"
-- "classroom-app/index.html"
+skip_render:
+  - "resume/index.html"
+  - "music/index.html"
+  - "musicapp/index.html"
+  - "spotify/index.html"
+  - "tempctrl/index.html"
+  - "classroom-app/index.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -67,16 +67,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 6
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -118,27 +118,26 @@ marked:
   breaks: false
   smartLists: true
   smartypants: true
-  modifyAnchors: ''
+  modifyAnchors: ""
   autolink: false
 
 # Algolia
 # https://github.com/LouisBarranqueiro/hexo-algoliasearch
 algolia:
-  appId: '8HK3Y7M8DU'
-  apiKey: '1cd490d488a94b2d8d205df168c22b49'
-  adminApiKey: ${ALGOLIA_ADMIN_API_KEY}
+  appId: "8HK3Y7M8DU"
+  apiKey: "5b05ad719f8bd6f2bad55658e160437a" # search only api key
+  adminApiKey: "~key~"
   chunkSize: 5000
-  indexName: "benmitchinson.com"
+  indexName: "mitchinson_dot_dev_index"
   fields:
     - title
     - tags
     - date
     - categories
     - excerpt
-    - excerpt:strip
-    - content:strip:truncate,0,50
     - permalink
+    - thumbnailImageUrl
 
 sitemap:
-    path: sitemap.xml
-    template: ./sitemap_template.xml
+  path: sitemap.xml
+  template: ./sitemap_template.xml
