@@ -11,6 +11,7 @@ thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressiv
 <!-- Remember to update thumbnail image for here and dev.to -->
 <!-- Remember to grammarly: https://app.grammarly.com/ddocs/424887498 -->
 <!-- Remember to update current projects + time/date -->
+<!-- Update postvail command for new file -->
 
 What I've been doing at [Vail Systems](https://www.vailsys.com/) for the month of MMMM.
 

@@ -82,8 +82,8 @@ I still have the energy to take on new things at the end of the day.
 
 ## Resources found / Articles I liked:
 
-- https://www.snowpack.dev/tutorials/react
-- https://twitter.com/dan_abramov/status/1368277175598735366?s=20
+- [https://www.snowpack.dev/tutorials/react](https://www.snowpack.dev/tutorials/react)
+- [https://twitter.com/dan_abramov/status/1368277175598735366?s=20](https://twitter.com/dan_abramov/status/1368277175598735366?s=20)
 
 ## Posts of Mine
 
