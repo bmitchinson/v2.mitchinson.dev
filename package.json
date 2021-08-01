@@ -14,7 +14,7 @@
     "deploy": "hexo clean && hexo deploy -m",
     "post": "hexo new post",
     "draft": "hexo new draft",
-    "algolia": "hexo clean && hexo algolia",
+    "algolia": "hexo clean && hexo generate && hexo algolia",
     "theme": "cd themes/bmitchinson_tranquilpeak && npm run prod"
   },
   "dependencies": {
