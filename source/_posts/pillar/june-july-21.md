@@ -19,7 +19,7 @@ _Cross posted on [dev.to](https://dev.to/bmitchinson/accenture-june-july-2021-29
 What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/industry-x-index) for the month of June + July.
 
 Took a break in between jobs during the month of May. Did some contracting to
-deploy a small node server + corresponding frontend in AWS Beanstalk.
+deploy a small node server + develop a corresponding frontend in AWS Beanstalk.
 
 ## What I've worked on
 
