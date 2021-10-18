@@ -11,7 +11,6 @@ thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressiv
 ---
 
 <!-- TODO -->
-<!-- Remember to update thumbnail image for here and dev.to -->
 <!-- Remember to grammarly: https://app.grammarly.com/ddocs/424887498 -->
 <!-- Remember to update current projects + time/date -->
 <!-- Post to devto and add crosslink -->
@@ -35,7 +34,7 @@ What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/ind
 
 Learned how to do some complex Jest mocking in Typescript, and the
 initial setup was brutal. Would like to break out findings like that into posts
-for other developers to reference.
+for other developers to reference more often.
 
 ## Things I've read
 
@@ -43,4 +42,4 @@ for other developers to reference.
 
 ## Things I've Written
 
--
+- [Mocking classes with Jest / Typescript](https://mitchinson.dev/jest-typescript-mocks/)

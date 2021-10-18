@@ -11,7 +11,6 @@ thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressiv
 ---
 
 <!-- TODO -->
-<!-- Remember to update thumbnail image for here and dev.to -->
 <!-- Remember to grammarly: https://app.grammarly.com/ddocs/424887498 -->
 <!-- Remember to update current projects + time/date -->
 <!-- Post to devto and add crosslink -->
