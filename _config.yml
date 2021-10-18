@@ -126,8 +126,8 @@ marked:
 # Algolia
 # https://github.com/LouisBarranqueiro/hexo-algoliasearch
 algolia:
-  appId: "8HK3Y7M8DU"
-  apiKey: "5b05ad719f8bd6f2bad55658e160437a" # search only api key
+  appId: "6XPKC4Q2SA"
+  apiKey: "c1cefc78aaf15ec5b644468ec41faf2f" # search only api key
   adminApiKey: "~key~"
   chunkSize: 5000
   indexName: "mitchinson_dot_dev_index"
