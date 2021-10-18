@@ -1,6 +1,6 @@
 ---
-title: "Accenture MMMM YYYY"
-date: YYYY-MM-DD 00:00:00
+title: "Accenture October 2021"
+date: 2021-10-31 00:00:00
 tags:
   - Accenture
   - UrbanOS
@@ -17,23 +17,25 @@ thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressiv
 <!-- Post to devto and add crosslink -->
 <!-- Add relevant tags on this post -->
 
-What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/industry-x-index) for the month of MMMM.
+What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/industry-x-index) for the month of October.
 
 <!-- excerpt -->
 
 _Cross posted on [dev.to](POSTLINK)_
 
-What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/industry-x-index) for the month of MMMM.
+What I've been doing at [Accenture](https://www.accenture.com/us-en/insights/industry-x-index) for the month of October.
 
 ## What I've worked on
 
-- item one
-- item two
+-
 
 ## What I'd like to improve
 
-- item one
-- item two
+#### Writing technical pieces
+
+Learned how to do some complex Jest mocking in Typescript, and the
+initial setup was brutal. Would like to break out findings like that into posts
+for other developers to reference.
 
 ## Things I've read
 
