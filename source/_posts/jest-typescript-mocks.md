@@ -28,8 +28,8 @@ mocked class for a single test.
 
 It was surprisingly hard to find a recently written article about the
 fastest way to setup Jest with some simple class mocks in Typescript. The
-following example demonstrates mocking a classes and modifying
-methods of an already mocked class within a single test.
+following example demonstrates mocking a class and modifying
+methods of that mocked class within a single test.
 
 Libraries like jest-ts-auto-mock are not used, cause I was unable to find a way
 to get them to work. Could have just been using them wrong but who knows.
