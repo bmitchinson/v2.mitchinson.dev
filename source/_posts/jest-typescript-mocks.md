@@ -24,6 +24,11 @@ _Cross posted on [dev.to](https://dev.to/bmitchinson/mocking-classes-in-jest-typ
 GetANumber.test.ts mocks a class, and further customizes a class method on that
 mocked class for a single test.
 
+### Improvements
+
+- config object should have only getters, that way you can mock process.env inbetween tests
+  - they'll be sourced every time, not pulled from process.env and held onto
+
 ### Purpose
 
 It was surprisingly hard to find a recently written article about the
