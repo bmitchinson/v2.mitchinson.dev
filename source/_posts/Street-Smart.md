@@ -9,7 +9,6 @@ tags:
   - Raspberry Pi
   - School
   - Firebase
-  - Live
 comments: true
 coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561941864/Projects/StreetSmart/ss_cover.jpg
 autoThumbnailImage: false
@@ -35,7 +34,7 @@ when speeding is detected. All events are forwarded to Firebase, and an Express
 API and React App hosted on Heroku provide reports and visualizations of driving
 habits and vehicle health.
 
-## [Live Demo](http://street-smart.xyz) • [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
+## [Showcase Poster](https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf) • [GitHub](https://github.com/bmitchinson/streetsmart)
 
 (We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
 might have to wait a moment for the app to spin up upon initial load: 
