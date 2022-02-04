@@ -18,4 +18,4 @@ gallery:
 - Messing around with Capacitor to learn to build iOS apps quickly. [Template repo](https://github.com/bmitchinson/ios-haptics-test-react)
 - Recording [some music](https://soundcloud.com/115bwm/three-color-challenge/s-JsBhgFRypNZ?si=6d8bcaeff23246a28d2d1e97493ecceb) 🎶
 </br></br>
-<p align='center'><b>Any live demos of my work <a href="/tags/live">are tagged here</a>.<b></p>
+<p align='center'><b>Any live demos of my work <a href="/tags/Live">are tagged here</a>.<b></p>
