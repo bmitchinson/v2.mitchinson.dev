@@ -8,7 +8,7 @@
   "scripts": {
     "start": "hexo clean && hexo serve --draft",
     "build": "hexo generate",
-    "startnd": "hexo clean && hexo serve",
+    "start_no_drafts": "hexo clean && hexo serve",
     "serve": "hexo serve",
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo deploy -m",
