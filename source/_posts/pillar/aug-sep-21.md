@@ -10,7 +10,7 @@ tags:
   - Typescript
   - "Project Management"
 comments: false
-thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1634507250/Projects/Vail/pillarPostNoDate.png"
+thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1634507250/Projects/Vail/pillarPostNoDate.webp"
 ---
 
 <!-- Post to devto and add crosslink -->
