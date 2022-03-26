@@ -2,22 +2,24 @@
 title: Completing Software Design
 date: 2018-12-16 12:00:00
 tags:
-- School
-- Java
+  - School
+  - Java
 keywords:
-- School
-- Java
+  - School
+  - Java
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1547067236/Projects/SWD/SWDCover.jpg
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547068354/Projects/SWD/SWDThumb.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1547067236/Projects/SWD/SWDCover.webp
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547068354/Projects/SWD/SWDThumb.webp
 coverMeta: out
 coverSize: partial
 ---
+
 This semester I completed our project-based Java course "Software Design" and learned
 a <u>ton</u>. Over the course of the semester, we were given a grid of assignments
 for completion, and I thought I'd post some of the highlights. I completed 13 short
-programs that covered topics like GUI using Swing, Multithreading, Networking, and 
+programs that covered topics like GUI using Swing, Multithreading, Networking, and
 entry-level database work.</br>
+
 <!-- more -->
 
 # SneakerHead • [GitHub](https://github.com/bmitchinson/SoftwareDesign)
@@ -28,7 +30,7 @@ hours in a hackathon-style weekend, and we ended up being selected as one of the
 top four groups, and demoed our solution to peers.</br></br>
 
 {% video center autoplay muted nocontrols loop
-https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4 
+https://res.cloudinary.com/dheqbiqti/video/upload/v1545801850/Projects/SWD/sneakerhead_one.mp4
 60% "The main list of inventory available to the user" %}
 
 </br>
@@ -46,9 +48,9 @@ headed into future projects.
 
 The rest of the assignments I completed on my own in preparation of our interview
 exams. Blackjack took me the longest, but was a great way to learn threading
-and networking for the first time. Although it turned out to work pretty solidly, 
-it really opened my eyes to all I still need to learn for managing proper 
-cross network client connections. Also learned how to do basic threading and 
+and networking for the first time. Although it turned out to work pretty solidly,
+it really opened my eyes to all I still need to learn for managing proper
+cross network client connections. Also learned how to do basic threading and
 conditional locks.</br></br>
 
 {% video center autoplay muted nocontrols loop
@@ -56,6 +58,7 @@ https://res.cloudinary.com/dheqbiqti/video/upload/v1545801844/Projects/SWD/black
 "85%" "An example game of blackjack" %}
 
 ### Image Rotator
+
 Using Graphics2D objects with AffineTransform objects applied on a timer thread.
 </br></br>
 
@@ -64,6 +67,7 @@ https://res.cloudinary.com/dheqbiqti/video/upload/v1545801849/Projects/SWD/rotat
 "85%" "Rotating an image" %}
 
 ### Bouncing Ball
+
 Kicking off new runnables with event handling
 </br></br>
 

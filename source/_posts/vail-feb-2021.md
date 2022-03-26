@@ -4,7 +4,7 @@ date: 2021-03-06 00:00:00
 tags:
   - Vail
 comments: false
-thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1615085603/Projects/Vail/vail_Feb21.jpg"
+thumbnailImage: "https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1615085603/Projects/Vail/vail_Feb21.webp"
 ---
 
 What I've been doing at [Vail Systems](https://www.vailsys.com/) for the month of February.

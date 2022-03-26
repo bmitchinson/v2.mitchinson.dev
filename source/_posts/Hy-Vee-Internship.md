@@ -9,9 +9,9 @@ tags:
   - GraphQL
   - Full Stack
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.jpg
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.webp
 autoThumbnailImage: false
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1559613267/Projects/HyVee/HyveeBanner.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1559613267/Projects/HyVee/HyveeBanner.webp
 coverMeta: out
 coverSize: partial
 keywords:
@@ -21,11 +21,11 @@ keywords:
   - GraphQL
   - Full Stack
 gallery:
-  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613419/Projects/HyVee/hy-vee-it-corporate-office-21.jpg
-  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613485/Projects/HyVee/ows_152123581830646.jpg
-  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.jpg
-  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613548/Projects/HyVee/HST-3-2.jpg
-  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613518/Projects/HyVee/636385330571006441-080917-hyvee-HST-it-centerRWHITE1306.jpg
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613419/Projects/HyVee/hy-vee-it-corporate-office-21.webp
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613485/Projects/HyVee/ows_152123581830646.webp
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.webp
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613548/Projects/HyVee/HST-3-2.webp
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613518/Projects/HyVee/636385330571006441-080917-hyvee-HST-it-centerRWHITE1306.webp
 ---
 
 This summer I helped build Aisles Online Mobile using React Native, while simultaneously working on our REST API and its GraphQL counterpart. I worked on an agile team made up of 4 devs, 1 QA, 1 UI/UX Designer, PO, Tech lead, and 1 intern (👋😄) with standards for TDD, 100% code coverage, and pair programming whenever possible. We released the app in June, and reached 3k users and $86k in grocery sales within the first 2 weeks of launch, and a rating of 4.6 stars in the App Store.</br>

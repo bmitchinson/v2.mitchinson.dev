@@ -1,28 +1,30 @@
 ---
-title: 'Embedded Systems ECE:3360' 
-date: '2019-05-08 00:00:00'
+title: "Embedded Systems ECE:3360"
+date: "2019-05-08 00:00:00"
 tags:
   - C
   - Assembly
   - School
 comments: true
 autoThumbnailImage: false
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1560649056/Projects/Embedded/embedded_ban.jpg
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1560649056/Projects/Embedded/embedded_ban.webp
 coverMeta: out
 coverSize: partial
 keywords:
-- School
-- C
-- Assembly
-- Kruger
-- Beichel
+  - School
+  - C
+  - Assembly
+  - Kruger
+  - Beichel
 ---
 
-Overview of the Assembly and C assignments completed for ECE:3360 during my 
+Overview of the Assembly and C assignments completed for ECE:3360 during my
 Junior year, and bluetooth morse code bluetooth final project.
 </br>
+
 <!-- excerpt -->
-For Embedded Systems this Spring, [Alex](https://github.com/abpwrs/) and I completed 5 labs and a final project, written in both C and Assembly. 
+
+For Embedded Systems this Spring, [Alex](https://github.com/abpwrs/) and I completed 5 labs and a final project, written in both C and Assembly.
 
 For completing the labs, we programmed an ATiny45 and an ATMega88 in Atmel studio. We used digital I/O, timers, interrupts, handled complex timing issues, rotary pulse generators, and PWM generators all using assembly language.
 

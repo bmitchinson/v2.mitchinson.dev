@@ -16,8 +16,8 @@ keywords:
   - Python
   - AWS
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546745048/Projects/Bongo/bongo.jpg
-thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.jpg 
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546745048/Projects/Bongo/bongo.webp
+thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp
 autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
@@ -25,9 +25,10 @@ date: 2017-12-02 13:00:00
 gallery:
 ---
 
-During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week. 
+During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
 </br>
-<!-- More --> 
+
+<!-- More -->
 
 # Development
 
@@ -37,6 +38,7 @@ I never earned an API key, but luckily, using "XXXX" (the key that was used in t
 </br>
 
 # Interacting with the API ● [GitHub](https://github.com/bmitchinson/Bongo-Python/tree/master) ● [Alexa Skill](https://www.amazon.com/Mitchinson-Apps-Bongo/dp/B077X254MN/)
+
 Below is the script I used to interact with the Bongo API. As of January 2019, it still works, so feel free to use it in your own projects.
 The lambda function version I used for the Alexa Skill is also available as a separate script on the GitHub repo. It's a great beginners project because it could easily be turned into a full wrapper, and the skill has many more potential improvements, so feel free to make pull requests!
 </br></br>
@@ -48,8 +50,8 @@ import json, urllib.request
 import string
 
 def routeListing():
-    with urllib.request.urlopen("http://api.ebongo.org/routelist?format=json&api_key=XXXX") as url:
-            mainDict = json.loads(url.read().decode())
+with urllib.request.urlopen("http://api.ebongo.org/routelist?format=json&api_key=XXXX") as url:
+mainDict = json.loads(url.read().decode())
 
     mainList = mainDict['routes']
 
@@ -58,15 +60,15 @@ def routeListing():
         print("ID: ",routeInfoDict["id"])
 
 def predictions(stop = 1015):
-    stopID = stop
-    print("Searching for " + str(stopID))
-    requestString = "http://api.ebongo.org/prediction?stopid=" + str(stopID) + "&api_key=XXXX"
-    with urllib.request.urlopen(requestString) as url:
-            mainDict = json.loads(url.read().decode())
+stopID = stop
+print("Searching for " + str(stopID))
+requestString = "http://api.ebongo.org/prediction?stopid=" + str(stopID) + "&api_key=XXXX"
+with urllib.request.urlopen(requestString) as url:
+mainDict = json.loads(url.read().decode())
 
     predictionsList = mainDict["predictions"]
     #print(predictionsList)
-    
+
     if predictionsList == []:
         print("No predictions for stop " + str(stopID) +"."
               +" Busses must not be running right now.")
@@ -84,12 +86,14 @@ def predictions(stop = 1015):
                 i = i + 1
 
 def main():
-    stop = int(input("Please Enter Stop ID: "))  #1015 is currier bus stop near burge
-    predictions(stop)
-    
-if __name__ == "__main__":
+stop = int(input("Please Enter Stop ID: ")) #1015 is currier bus stop near burge
+predictions(stop)
+
+if **name** == "**main**":
 main()
 
       <!-- endtab -->
-  {% endtabbed_codeblock %}
+
+{% endtabbed_codeblock %}
+
 </div>
