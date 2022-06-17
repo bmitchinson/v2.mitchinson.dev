@@ -6,9 +6,10 @@ tags:
   -
 keywords:
 comments: false
-coverImage: # (use transform (/upload/fl_progressive/v_149...) ) @ 2500 x 1512
+coverImage: # (use transform (/upload/fl_progressive/v_149...) ) @ 1500 x 533
 autoThumbnailImage: false
-thumbnailImage: # (upload/fl_progressive,r_50:5) 1500 x 400
+thumbnailImage: # (upload/fl_progressive,r_50:5) 750 x 200
+# failure to include fl_progressive will make dynamic sizing break (find)
 coverMeta: out
 coverSize: partial
 gallery:
