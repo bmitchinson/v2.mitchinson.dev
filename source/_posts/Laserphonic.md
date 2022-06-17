@@ -15,15 +15,9 @@ autoThumbnailImage: false
 coverMeta: out
 coverSize: partial
 gallery:
-  - >-
-    https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.webp
-    "Our interactive demo"
-  - >-
-    https://res.cloudinary.com/dheqbiqti/image/upload/q_20/v1546801803/Projects/Lazerphonics/IMG_20180419_224352.webp
-    "Building the circuit"
-  - >-
-    https://res.cloudinary.com/dheqbiqti/image/upload/q_30/v1546801778/Projects/Lazerphonics/Snapchat-1837840117.webp
-    "Testing"
+  - https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.webp "Our interactive demo"
+  - https://res.cloudinary.com/dheqbiqti/image/upload/q_20/v1546801803/Projects/Lazerphonics/IMG_20180419_224352.webp "Building the circuit"
+  - https://res.cloudinary.com/dheqbiqti/image/upload/q_30/v1546801778/Projects/Lazerphonics/Snapchat-1837840117.webp "Testing"
 date: 2018-05-02 13:00:00
 ---
 
@@ -38,7 +32,7 @@ You may have seen these formations on plates such as the one shown above.
 We set out to recreate the resonant frequency effects visually using lasers, as
 a way for listeners and artists to see a real-time visualization of harmony and
 dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
-for an [acoustics project](https://youtu.be/RxzMzSZF_b4?t=99) at USF Music Tech in 2012.
+for an <a href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
 </br>
 
 <!-- More -->
