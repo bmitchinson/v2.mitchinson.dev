@@ -9,7 +9,7 @@ tags:
   - Firebase
   - Live
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp
 autoThumbnailImage: false
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.webp
 coverMeta: out

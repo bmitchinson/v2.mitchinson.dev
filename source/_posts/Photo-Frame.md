@@ -14,7 +14,7 @@ keywords:
   - Frame
   - Photo
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546666566/Projects/PhotoFrame/photoframe.webp
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.webp
 coverMeta: out
 coverSize: partial

@@ -9,7 +9,7 @@ keywords:
   - Music
   - Digital Arts
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546801692/Projects/Lazerphonics/cover.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546801692/Projects/Lazerphonics/cover.webp
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547069276/Projects/Lazerphonics/LaserThumb.webp
 autoThumbnailImage: false
 coverMeta: out

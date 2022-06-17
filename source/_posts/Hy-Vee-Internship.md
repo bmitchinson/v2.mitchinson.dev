@@ -9,7 +9,7 @@ tags:
   - GraphQL
   - Full Stack
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1559613462/Projects/HyVee/hy-vee-it-corporate-office-1.webp
 autoThumbnailImage: false
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1559613267/Projects/HyVee/HyveeBanner.webp
 coverMeta: out

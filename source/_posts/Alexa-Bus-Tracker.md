@@ -16,7 +16,7 @@ keywords:
   - Python
   - AWS
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546745048/Projects/Bongo/bongo.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546745048/Projects/Bongo/bongo.webp
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp
 autoThumbnailImage: false
 coverMeta: out

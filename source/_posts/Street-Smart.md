@@ -10,7 +10,7 @@ tags:
   - School
   - Firebase
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561941864/Projects/StreetSmart/ss_cover.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1561941864/Projects/StreetSmart/ss_cover.webp
 autoThumbnailImage: false
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.webp
 coverMeta: out
@@ -258,7 +258,9 @@ Time: firebase.firestore.Timestamp.fromDate(Time.toDate())
 }).then(() => {
 console.log("🔥 ✔️");
 }) _/
+
 <!-- endtab -->
+
 {% endtabbed_codeblock %}
 
 </div>

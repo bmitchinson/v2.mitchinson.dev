@@ -11,7 +11,7 @@ keywords:
   - University of Iowa
   - Iowa Computer Comfort
 comments: true
-coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1532808896/comfort0.webp
+coverImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1532808896/comfort0.webp
 thumbnailImage: https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1559368194/CComfort/CComfortBanner.webp
 autoThumbnailImage: false
 coverMeta: out
