@@ -1,8 +1,15 @@
 ## [Mitchinson.dev](https://mitchinson.dev)
 
-![Travis (.org)](https://img.shields.io/travis/bmitchinson/mitchinson.dev?logo=travis&style=for-the-badge)
+[![Lighthouse Accessibility Badge](./badges/lighthouse_accessibility.svg)](https://github.com/bmitchinson/mitchinson.dev)
+[![Lighthouse Best Practices Badge](./badges/lighthouse_best-practices.svg)](https://github.com/bmitchinson/mitchinson.dev)
+[![Lighthouse Performance Badge](./badges/lighthouse_performance.svg)](https://github.com/bmitchinson/mitchinson.dev)
+[![Lighthouse SEO Badge](./badges/lighthouse_seo.svg)](https://github.com/bmitchinson/mitchinson.dev)
+
+---
 
 ![](https://i.imgur.com/9Ac5NYS.png)
+
+---
 
 Built using [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of Louis Barranqueiro's hexo theme [tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak), using static site engine [Hexo](https://hexo.io).
 
