@@ -1,25 +1,21 @@
-## [Mitchinson.dev](https://mitchinson.dev)
+# [🌍 mitchinson.dev](https://mitchinson.dev)
 
 [![Lighthouse Accessibility Badge](./badges/lighthouse_accessibility.svg)](https://github.com/bmitchinson/mitchinson.dev)
 [![Lighthouse Best Practices Badge](./badges/lighthouse_best-practices.svg)](https://github.com/bmitchinson/mitchinson.dev)
 [![Lighthouse Performance Badge](./badges/lighthouse_performance.svg)](https://github.com/bmitchinson/mitchinson.dev)
 [![Lighthouse SEO Badge](./badges/lighthouse_seo.svg)](https://github.com/bmitchinson/mitchinson.dev)
 
----
-
 ![](https://i.imgur.com/9Ac5NYS.png)
-
----
 
 Built using [my fork](https://github.com/bmitchinson/hexo-theme-tranquilpeak) of Louis Barranqueiro's hexo theme [tranquilpeak](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak), using static site engine [Hexo](https://hexo.io).
 
-### Organization
+# Organization
 
 All files on the [main branch](https://github.com/bmitchinson/Mitchinson.dev) are used as source files for Hexo to be able to build my website. The build is then deployed on the [gh-pages branch](https://github.com/bmitchinson/Mitchinson.dev/tree/gh-pages).
 
 [My fork of tranquilpeak](https://github.com/bmitchinson/hexo-theme-tranquilpeak) is used as the theme of the blog in a separate repo located under `themes/bmitchinson_tranquilpeak`.
 
-### Running the site locally
+# Running the site locally
 
 It's easy to do, and a great way to learn hexo and it's common theme structure.
 
