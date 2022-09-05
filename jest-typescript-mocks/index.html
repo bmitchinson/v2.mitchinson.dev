@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ben Mitchinson">
+    <title>Mocking Classes with Jest and Typescript - Ben Mitchinson</title>
+    <meta name="author" content="Ben Mitchinson">
+    
+        <meta name="keywords" content="Ben,Mitchinson,Ben Mitchinson,Ben Mitchinson Resume,Iowa,Ben Mitchinson Iowa,Iowa Computer Science Engineering,Ben Mitchinson HackIowa,HackIowa,Ben Hack Iowa,Blog,Ben Computer Comfort,Computer Comfort,Projects,">
+    
+    
+        <link rel="icon" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"},"articleBody":"\n\nCross posted on dev.to.\nTLDRExample Test\nGetANumber.test.ts mocks a class, and further customizes a class method on that\nmocked class for a single test.\nImprovements\nconfig object should have only getters, that way you can mock process.env inbetween tests\nthey’ll be sourced every time, not pulled from process.env and held onto\n\n\n\nPurposeIt was surprisingly hard to find a recently written article about the\nfastest way to setup Jest with some simple class mocks in Typescript. The\nfollowing example demonstrates mocking a class and modifying\nmethods of that mocked class within a single test.\nLibraries like jest-ts-auto-mock are not used, cause I was unable to find a way\nto get them to work. Could have just been using them wrong but who knows.\nI used the following methods to mock classes in an Express app while coding in\ntest driven development.\nExplanationComments are all over in this Example Repo,\nbut some highlights are:\n\njest.mock ends up at the top of the file when it’s transpiled.\nEven if you put it under other things, it gets pulled to the top.\n\n1234567891011121314151617181920212223242526272829///////////////////jest.mock(&quot;./Class&quot;, mockOne);it(&quot;does a thing&quot;, () =&gt; &#123;  expect(class).toBe(one)&#125;)it(&quot;does another thing&quot;, () =&gt; &#123;  jest.mock(&quot;./Class&quot;, mockTwo);  expect(class).toBe(two)&#125;)///////////////////// is really///////////////////jest.mock(&quot;./Class&quot;, mockOne); // this mock is uselessjest.mock(&quot;./Class&quot;, mockTwo); // as it&#x27;s immediately replacedit(&quot;does a thing&quot;, () =&gt; &#123;  expect(class).toBe(one)&#125;)it(&quot;does another thing&quot;, () =&gt; &#123;  expect(class).toBe(two)&#125;)///////////////////// You might as well always write `.mock` calls at the top of your file.\n\n\nThe examples mock a class that’s a default export. Named exports can also\nbe mocked with some modifications.\njest.mock(&#39;&#123;path_to_custom_class&#125;&#39;) will replace that paths default export\nin the runtime with the defined mock in __mocks__ dir defined at the same\nlevel.\nIf you’d like to modify a mock / assert things that happened to a mock, you need to import them from the “real” class.\nNever manually import from __mocks__, get the exports of __mocks__ “through” a normal import.\n\n\n\n123456789101112import * as MockNumberGen from &quot;./__mocks__/NumberGen&quot;;import * as NumberGen from &quot;./NumberGen&quot;; // __mocks__/CVEPathData// Give me the mock class i&#x27;ve defined in __mocks__/&#123;classname&#125; and let me//    name it mock&#123;ClassName&#125;Constructor// Give me the mock function i&#x27;ve defined in __mocks__/&#123;classname&#125;const &#123; default: mockNumberGenConstructor, mockGetOne &#125; =  // Get these things from the NumberGen class, because I know that jest  //     has secretly replaced it with the contents of MockNumberGen  NumberGen as unknown as typeof MockNumberGen;// Tell typescript that these things are really coming from MockNumberGen,//     so it should type them as such\n\nThe full test is available here","dateCreated":"2021-10-01T00:00:00-06:00","dateModified":"2021-11-10T15:35:19-07:00","datePublished":"2021-10-01T00:00:00-06:00","description":"An example to\ndemonstrate class mocks and modifying methods of an already mocked class\nwithin a single test. I used these patterns to mock classes in an Express\napp in test driven development.","headline":"Mocking Classes with Jest and Typescript","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitchinson.dev/jest-typescript-mocks/"},"publisher":{"@type":"Organization","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp","logo":{"@type":"ImageObject","url":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"}},"url":"https://mitchinson.dev/jest-typescript-mocks/","keywords":"Jest, TDD, Typescript"}</script>
+    <meta name="description" content="An example to demonstrate class mocks and modifying methods of an already mocked class within a single test. I used these patterns to mock classes in an Express app in test driven development.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Mocking Classes with Jest and Typescript">
+<meta property="og:url" content="https://mitchinson.dev/jest-typescript-mocks/index.html">
+<meta property="og:site_name" content="Ben Mitchinson">
+<meta property="og:description" content="An example to demonstrate class mocks and modifying methods of an already mocked class within a single test. I used these patterns to mock classes in an Express app in test driven development.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-01T06:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-10T22:35:19.155Z">
+<meta property="article:author" content="Ben Mitchinson">
+<meta property="article:tag" content="Jest">
+<meta property="article:tag" content="TDD">
+<meta property="article:tag" content="Typescript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@115bwm">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-en5gmpasgdjgiazbtcli0rjiek6x0iqpkeynzsoxwungafmdsudvh1nbyz95.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131573158-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131573158-1');
+    </script>
+
+
+    
+
+    
+</head>
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Ben Mitchinson
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ben Mitchinson</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:mitchinson.dev@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-calendar" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://dev.to/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Dev.to"
+                        >
+                        <i class="sidebar-button-icon fab fa-dev" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Dev.to</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/115bwm/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/ben-mitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin-in" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="Resume"
+                        >
+                        <i class="sidebar-button-icon fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Resume</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="1"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Mocking Classes with Jest and Typescript
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2021-10-01T00:00:00-06:00">
+	
+		    Oct 01, 2021
+    	
+    </time>
+    
+    
+        -
+        
+            3 min to read
+        
+        
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <!-- excerpt -->
+
+<p><em>Cross posted on <a target="_blank" rel="noopener" href="https://dev.to/bmitchinson/mocking-classes-in-jest-typescript-2pc">dev.to</a>.</em></p>
+<h3 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h3><p><a target="_blank" rel="noopener" href="https://github.com/bmitchinson/ts-node-starter/blob/main/src/GetANumber.test.ts">Example Test</a></p>
+<p>GetANumber.test.ts mocks a class, and further customizes a class method on that
+mocked class for a single test.</p>
+<h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>config object should have only getters, that way you can mock process.env inbetween tests<ul>
+<li>they’ll be sourced every time, not pulled from process.env and held onto</li>
+</ul>
+</li>
+</ul>
+<h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h3><p>It was surprisingly hard to find a recently written article about the
+fastest way to setup Jest with some simple class mocks in Typescript. The
+following example demonstrates mocking a class and modifying
+methods of that mocked class within a single test.</p>
+<p>Libraries like jest-ts-auto-mock are not used, cause I was unable to find a way
+to get them to work. Could have just been using them wrong but who knows.</p>
+<p>I used the following methods to mock classes in an Express app while coding in
+test driven development.</p>
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h3><p>Comments are all over in this <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/ts-node-starter">Example Repo</a>,
+but some highlights are:</p>
+<ul>
+<li><code>jest.mock</code> ends up at the top of the file when it’s transpiled.
+Even if you put it under other things, it gets pulled to the top.</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///////////////////</span></span><br><span class="line">jest.mock(<span class="string">&quot;./Class&quot;</span>, mockOne);</span><br><span class="line"></span><br><span class="line">it(<span class="string">&quot;does a thing&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="class"><span class="keyword">class</span>).<span class="title">toBe</span>(<span class="title">one</span>)</span></span><br><span class="line"><span class="class">&#125;)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">it(&quot;does another thing&quot;, () =&gt; &#123;</span><br><span class="line">  jest.mock(<span class="string">&quot;./Class&quot;</span>, mockTwo);</span><br><span class="line">  expect(<span class="class"><span class="keyword">class</span>).<span class="title">toBe</span>(<span class="title">two</span>)</span></span><br><span class="line"><span class="class">&#125;)</span></span><br><span class="line"><span class="class">///////////////////</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">// <span class="title">is</span> <span class="title">really</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">///////////////////</span></span><br><span class="line">jest.mock(&quot;./Class&quot;, mockOne); // this mock is useless</span><br><span class="line">jest.mock(<span class="string">&quot;./Class&quot;</span>, mockTwo); <span class="comment">// as it&#x27;s immediately replaced</span></span><br><span class="line"></span><br><span class="line">it(<span class="string">&quot;does a thing&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  expect(<span class="class"><span class="keyword">class</span>).<span class="title">toBe</span>(<span class="title">one</span>)</span></span><br><span class="line"><span class="class">&#125;)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">it(&quot;does another thing&quot;, () =&gt; &#123;</span><br><span class="line">  expect(<span class="class"><span class="keyword">class</span>).<span class="title">toBe</span>(<span class="title">two</span>)</span></span><br><span class="line"><span class="class">&#125;)</span></span><br><span class="line"><span class="class">///////////////////</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">// <span class="title">You</span> <span class="title">might</span> <span class="title">as</span> <span class="title">well</span> <span class="title">always</span> <span class="title">write</span> `.<span class="title">mock</span>` <span class="title">calls</span> <span class="title">at</span> <span class="title">the</span> <span class="title">top</span> <span class="title">of</span> <span class="title">your</span> <span class="title">file</span>.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The examples mock a class that’s a default export. Named exports can also
+be mocked with some modifications.</li>
+<li><code>jest.mock(&#39;&#123;path_to_custom_class&#125;&#39;)</code> will replace that paths default export
+in the runtime with the defined mock in <code>__mocks__</code> dir defined at the same
+level.</li>
+<li>If you’d like to modify a mock / assert things that happened to a mock, you need to import them from the “real” class.<ul>
+<li>Never manually import from <code>__mocks__</code>, get the exports of <code>__mocks__</code> “through” a normal import.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> MockNumberGen <span class="keyword">from</span> <span class="string">&quot;./__mocks__/NumberGen&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> NumberGen <span class="keyword">from</span> <span class="string">&quot;./NumberGen&quot;</span>; <span class="comment">// __mocks__/CVEPathData</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Give me the mock class i&#x27;ve defined in __mocks__/&#123;classname&#125; and let me</span></span><br><span class="line"><span class="comment">//    name it mock&#123;ClassName&#125;Constructor</span></span><br><span class="line"><span class="comment">// Give me the mock function i&#x27;ve defined in __mocks__/&#123;classname&#125;</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="attr">default</span>: mockNumberGenConstructor, mockGetOne &#125; =</span><br><span class="line">  <span class="comment">// Get these things from the NumberGen class, because I know that jest</span></span><br><span class="line">  <span class="comment">//     has secretly replaced it with the contents of MockNumberGen</span></span><br><span class="line">  NumberGen <span class="keyword">as</span> unknown <span class="keyword">as</span> <span class="keyword">typeof</span> MockNumberGen;</span><br><span class="line"><span class="comment">// Tell typescript that these things are really coming from MockNumberGen,</span></span><br><span class="line"><span class="comment">//     so it should type them as such</span></span><br></pre></td></tr></table></figure>
+
+<p>The full test is <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/ts-node-starter/blob/main/src/GetANumber.test.ts">available here</a></p>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Jest/" rel="tag">Jest</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/TDD/" rel="tag">TDD</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Typescript/" rel="tag">Typescript</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/pillar/aug-sep-21/"
+                    data-tooltip="Accenture August + September 2021"
+                    aria-label="PREVIOUS: Accenture August + September 2021"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/pillar/june-july-21/"
+                    data-tooltip="Accenture June + July 2021"
+                    aria-label="NEXT: Accenture June + July 2021"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/jest-typescript-mocks/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        
+    </span>
+</footer>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/pillar/aug-sep-21/"
+                    data-tooltip="Accenture August + September 2021"
+                    aria-label="PREVIOUS: Accenture August + September 2021"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/pillar/june-july-21/"
+                    data-tooltip="Accenture June + July 2021"
+                    aria-label="NEXT: Accenture June + July 2021"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/jest-typescript-mocks/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/jest-typescript-mocks/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ben Mitchinson</h4>
+        
+            <div id="about-card-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer @ Accenture Industry X</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Denver, CO
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Photo-Frame/"
+                            aria-label=": Mother&#39;s Day Photo Frame"
+                        >
+                            <h3 class="media-heading">Mother&#39;s Day Photo Frame</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Alexa-Bus-Tracker/"
+                            aria-label=": Bus Predictions with Alexa"
+                        >
+                            <h3 class="media-heading">Bus Predictions with Alexa</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Laserphonic/"
+                            aria-label=": ⚡ Laserphonic"
+                        >
+                            <h3 class="media-heading">⚡ Laserphonic</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 2, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>For a course in Digital Arts this semester, two friends and I grouped together to
+create a multichannel audio circuit for displaying “Chladni Figures” in a project
+we called “Laserphonic”.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.webp" style="width:80%;"alt="Chladni Plate (Geek.com)"><span class="caption">Chladni Plate (Geek.com)</span></div>
+</br>
+You may have seen these formations on plates such as the one shown above.
+We set out to recreate the resonant frequency effects visually using lasers, as
+a way for listeners and artists to see a real-time visualization of harmony and
+dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
+for an <a target="_blank" rel="noopener" href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Computer-Comfort-Year-3/"
+                            aria-label=": Entering Year 3 of Computer Comfort 👵💻"
+                        >
+                            <h3 class="media-heading">Entering Year 3 of Computer Comfort 👵💻</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jul 21, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
+</p>
+
+<h3>Our Mission Statement:</h3>
+> "Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process."
+
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Playground-News/"
+                            aria-label=": TigerHacks 2018: Playground News"
+                        >
+                            <h3 class="media-heading">TigerHacks 2018: Playground News</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>At <a target="_blank" rel="noopener" href="http://tiger-hacks.com/">TigerHacks</a> this year at the University of Missouri, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia Sandvold</a>, <a target="_blank" rel="noopener" href="https://github.com/benjamin-weinberg">Ben Weinberg</a> and I, worked together to build “Playground News”: A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                20 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,c_scale,w_0.5/v1532152643/BenMitchinson.com/cover.webp');"></div>
+        <!--SCRIPTS-->
+<script defer src="/assets/js/script-gh0j5lcktiv6ht9djleelhvmzfauj38ovizdvnuhcz9ywtxczjg43vryercs.min.js"></script>
+<!--SCRIPTS END-->
+<script src="/assets/js/lazysizes.js"></script>
+
+
+
+
+    <script>
+      var appId = '6XPKC4Q2SA'
+      var apiKey = 'c1cefc78aaf15ec5b644468ec41faf2f'
+      var indexName = 'mitchinson_dot_dev_index'
+    </script>
+
+    </body>
+</html>

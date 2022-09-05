@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ben Mitchinson">
+    <title>Street Smart - Ben Mitchinson</title>
+    <meta name="author" content="Ben Mitchinson">
+    
+        <meta name="keywords" content="Ben,Mitchinson,Ben Mitchinson,Ben Mitchinson Resume,Iowa,Ben Mitchinson Iowa,Iowa Computer Science Engineering,Ben Mitchinson HackIowa,HackIowa,Ben Hack Iowa,Blog,Ben Computer Comfort,Computer Comfort,Projects,">
+    
+    
+        <link rel="icon" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"},"articleBody":"\n\nFor the final project in “Internet of Things” last spring, our team created\nan API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board\nDiagnostics (OBD) interface and the Overpass API to enable in-cabin alerts\nwhen speeding is detected. All events are forwarded to Firebase, and an Express\nAPI and React App hosted on Heroku provide reports and visualizations of driving\nhabits and vehicle health.\nShowcase Poster • GitHub(We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You\nmight have to wait a moment for the app to spin up upon initial load:\nStreet-Smart.xyz 👍)\nThe Front EndHarsh Patel and I worked on the Express API and React interface in order\nto demonstrate viewing sensor data on a “real-time” map. I tore apart React Shards,\na well styled site template from Design Revision, to throw together an interface quickly.\nI was most proud of my implementation of the real-time map, as that component card\nwas created from scratch using our API, and React Leaflet.\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nAs data from traveling cars is published to Firestore, the map shows updates in real-time.\n\n\nCar Travel SimulationTo have realistic test data, and to demo to our class, I created a\nscript for generating car travel data. It simulates driving locations and speeds\nalong a given route of coordinates based on adjustable driver tendencies, and\nuploads to Firebase in time accurate spacing, just like our in-car sensor.\n\nIt was great to implement async javascript, but going forward I really want\nto use proper modules now that I understand how they work in ES6 a bit better.\nToo many functions in one file. This script was created overnight because we were\nhaving so many difficulties getting accurate location data for our sensor, so I’m\nproud of what I was able to do in that amount of time.\n\n\nSimulateTrip.py - GitHubjavascript123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187require('dotenv').config();const firebase = require(\"firebase\");var moment = require('moment');// Firebase initializtionfirebase.initializeApp({apiKey: process.env.APIKEY,authDomain: process.env.DOMAIN + '.firebaseapp.com',projectId: process.env.DOMAIN});var db = firebase.firestore();// Initial Values for simulating a \"trip\"let Battery = Math.floor(Math.random() \\* 60) + 40 // Will decay slowly// Optional status code enabled for the entire triplet StatusCode = \"\"// Starting time of the triplet Driver = \"Tyler\" // Constantlet Time = moment('05-2-2019 10:45', 'MM-DD-YYYY hh:mm');// to use for simulated triplet checkpointStrings = [\"41.663611, -91.534595\",\"41.663627, -91.537588\",\"41.656694, -91.537728\",\"41.656615, -91.530174\",\"41.654159, -91.530218\",\"41.650474, -91.531966\",\"41.649512, -91.532020\",\"41.649472, -91.515884\"]let speedLimits = [25, 35, 25, 25, 25, 25, 45]// Alters varience from speed limitlet DriveStyle = 5 // -2: Slow driver, 0: Strict Driver, 1: Late, 3: Stupidlet sampleRate = 12 // Sample every 15 secondslet timeFactor = 3 // Move time along 3x times fasterlet pushMode = true // If enabled results are pushed to firebaselet delayMode = true // If enabled, time / speed MPH accurate delays occur// Converts strings to GeoPoints for publishinglet checkpoints = []checkpointStrings.forEach((text) =&gt; {let geo = new firebase.firestore.GeoPoint(Number(text.split(',')[0]), Number(text.split(',')[1]));checkpoints.push(geo);})function cordDistKm(lat1, lon1, lat2, lon2) {var R = 6371; // Radius of the earth in kmvar dLat = deg2rad(lat2 - lat1); // deg2rad belowvar dLon = deg2rad(lon2 - lon1);var a =Math.sin(dLat / 2) _ Math.sin(dLat / 2) +Math.cos(deg2rad(lat1)) _ Math.cos(deg2rad(lat2)) _Math.sin(dLon / 2) _ Math.sin(dLon / 2);var c = 2 _ Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));var d = R _ c; // Distance in kmreturn d;}function deg2rad(deg) {return deg \\* (Math.PI / 180)}function sleep(milliseconds) {var start = new Date().getTime();for (var i = 0; i &lt; 1e7; i++) {if ((new Date().getTime() - start) &gt; milliseconds) {break;}}}async function sim(){let carGeoPoint = checkpoints[0];console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");console.log(Time.format('lll') + \": Starting 🚗 @ \"- String(carGeoPoint.latitude) + \", \" + String(carGeoPoint.longitude) +  \" Driver Style: \" + DriveStyle)  console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");  // Begin adding data in simulated time (if delayMode, otherwise all at once)  let index = 0  for (const destPoint of checkpoints){  //checkpoints.forEach((destPoint, index) =&gt; {  if (index != 0) {  // Variance in speed  let carMPH = speedLimits[index - 1] + (DriveStyle _ Math.floor(Math.random() _ 10) + 1)  if (DriveStyle == 0) {  carMPH--  }  let carMPS = carMPH / 3600  let carMPSample = carMPS _ sampleRate  let milesBetween = cordDistKm(destPoint.latitude, destPoint.longitude,  carGeoPoint.latitude, carGeoPoint.longitude) _ .6214; //KM to Miles  let subPointsCount = milesBetween / carMPSample  let subPoints = [];  let latShift = (destPoint.latitude -  carGeoPoint.latitude) / subPointsCount  let longShift = (destPoint.longitude -  carGeoPoint.longitude) / subPointsCount  let subPointsIndex = 0;  while (subPointsIndex &lt; subPointsCount - 1) {  carGeoPoint = new firebase.firestore.GeoPoint(  carGeoPoint.latitude + latShift,  carGeoPoint.longitude + longShift  )  if (pushMode) {  await db.collection(\"events\").doc().set({  RealData: false,  Battery: Battery,  Driver: Driver,  Location: carGeoPoint,  Speed: carMPH,  SpeedLimit: speedLimits[index - 1],  SpeedStatus: (carMPH - speedLimits[index - 1]),  StatusCode: StatusCode,  Time: firebase.firestore.Timestamp.fromDate(Time.toDate())  }).then(() =&gt; {  console.log(\"🔥 ✔️\");  })  }  if (delayMode) {  sleep(1000 _ sampleRate / timeFactor);  }  subPointsIndex++  Time = Time.add(sampleRate, 'seconds')  console.log(Time.format('lll') + \": 🚗 located @ \" +  String(Math.round(carGeoPoint.latitude _ 1000000.0) / 1000000.0) +  \", \" + String(Math.round(carGeoPoint.longitude _ 1000000.0) / 1000000.0) + \"\\ngoing \" + carMPH + \"MPH in a \" + speedLimits[index - 1] + \"MPH Zone\"  );  }  Battery--  carGeoPoint = checkpoints[index]  if (pushMode) {  await db.collection(\"events\").doc().set({  RealData: false,  Battery: Battery,  Driver: Driver,  Location: carGeoPoint,  Speed: carMPH,  SpeedLimit: speedLimits[index - 1],  SpeedStatus: (carMPH - speedLimits[index - 1]),  StatusCode: StatusCode,  Time: firebase.firestore.Timestamp.fromDate(Time.toDate())  }).then(() =&gt; {  console.log(\"🔥 ✔️\");  })  }  if (delayMode) {  sleep(1000 _ sampleRate / timeFactor);  }  Time = Time.add(sampleRate, 'seconds')  console.log(Time.format('lll') + \": 🚗 reached point \" + String(index+1) + \"! \" + checkpointStrings[index]);  }  index++  }  console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");  console.log(\"End of trip\");  console.log(\"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\");  }// Call the main sim async functionsim()/_ db.collection(\"bentest\").doc().set({RealData: false,Battery: Battery,Driver: Driver,Location: carGeoPoint,Speed: carMPH,SpeedLimit: speedLimits[index - 1],SpeedStatus: (carMPH - speedLimits[index - 1]),StatusCode: StatusCode,Time: firebase.firestore.Timestamp.fromDate(Time.toDate())}).then(() =&gt; {console.log(\"🔥 ✔️\");}) _/\n\n\n\nIn-Car Sensor + AlertsOur Raspberry Pi ran a script to collect GPS location and utilized the Overpass\nAPI to fetch the speed limit of that location, pair them, and publish them to our\ndatabase. Additionally, if an instance of speeding was detected, the Raspberry Pi\nlit up an LED to alert the driver. \n\n\n\nYour browser doesn't support HTML5 Video :/\nSpeeding by exceeding 60MPH being detected\n\n\nAwardsOur presentation and live demo earned us one of 3 spots for IoT in “Modern Marvels”,\nthe university’s showcase for top projects completed throughout the year.\n\nThe team (myself not pictured) presenting our demo\n\nImprovements\nNext time I build an API, I’d like to try GraphQL. Our client fetched much\nmore data then was necessary, and did client-side filtering that could have been\naccomplished in the API layer.\nWe only mocked the user account and lacked any sort of authentication on both the\ndatabase or front end. Integrating tools like OAuth is\nsomething I need to get a handle on soon.\n\nLive Demo • Showcase Poster • GitHub","dateCreated":"2019-06-19T00:00:00-06:00","dateModified":"2022-09-04T20:13:51-06:00","datePublished":"2019-06-19T00:00:00-06:00","description":"For the final project in “Internet of Things” last spring, our team created\nan API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board\nDiagnostics (OBD) interface and the Overpass API to enable in-cabin alerts\nwhen speeding is detected. All events are forwarded to Firebase, and an Express\nAPI and React App hosted on Heroku provide reports and visualizations of driving\nhabits and vehicle health.\n","headline":"Street Smart","image":["https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.webp","https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1561941864/Projects/StreetSmart/ss_cover.webp"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitchinson.dev/Street-Smart/"},"publisher":{"@type":"Organization","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp","logo":{"@type":"ImageObject","url":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"}},"url":"https://mitchinson.dev/Street-Smart/","keywords":"React, School, Firebase, Raspberry Pi, IoT, Express, Node","thumbnailUrl":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.webp"}</script>
+    <meta name="description" content="For the final project in “Internet of Things” last spring, our team created an API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board Diagnostics (OBD) interface and the Overpass API t">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Street Smart">
+<meta property="og:url" content="https://mitchinson.dev/Street-Smart/index.html">
+<meta property="og:site_name" content="Ben Mitchinson">
+<meta property="og:description" content="For the final project in “Internet of Things” last spring, our team created an API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board Diagnostics (OBD) interface and the Overpass API t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561942238/Projects/StreetSmart/team.webp">
+<meta property="article:published_time" content="2019-06-19T06:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-05T02:13:51.169Z">
+<meta property="article:author" content="Ben Mitchinson">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="School">
+<meta property="article:tag" content="Firebase">
+<meta property="article:tag" content="Raspberry Pi">
+<meta property="article:tag" content="IoT">
+<meta property="article:tag" content="Express">
+<meta property="article:tag" content="Node">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561942238/Projects/StreetSmart/team.webp">
+<meta name="twitter:creator" content="@115bwm">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1561941275/Projects/StreetSmart/ss_banner.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1561941864/Projects/StreetSmart/ss_cover.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1561941864/Projects/StreetSmart/ss_cover.webp"/>
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-en5gmpasgdjgiazbtcli0rjiek6x0iqpkeynzsoxwungafmdsudvh1nbyz95.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131573158-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131573158-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Ben Mitchinson
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ben Mitchinson</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:mitchinson.dev@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-calendar" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://dev.to/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Dev.to"
+                        >
+                        <i class="sidebar-button-icon fab fa-dev" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Dev.to</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/115bwm/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/ben-mitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin-in" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="Resume"
+                        >
+                        <i class="sidebar-button-icon fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Resume</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-left
+                    post-header-cover--partial"
+             style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1561941864/Projects/StreetSmart/ss_cover.webp');"
+             data-behavior="1">
+            
+        </div>
+
+            <div id="main" data-behavior="1"
+                 class="hasCover
+                        hasCoverMetaOut
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Street Smart
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-06-19T00:00:00-06:00">
+	
+		    Jun 19, 2019
+    	
+    </time>
+    
+    
+        -
+        
+            7 min to read
+        
+        
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <!-- excerpt -->
+
+<p>For the final project in “Internet of Things” last spring, our team created
+an API, web app, and Raspberry Pi car sensor. The Pi utilizes an on-board
+Diagnostics (OBD) interface and the Overpass API to enable in-cabin alerts
+when speeding is detected. All events are forwarded to Firebase, and an Express
+API and React App hosted on Heroku provide reports and visualizations of driving
+habits and vehicle health.</p>
+<h2 id="Showcase-Poster-•-GitHub"><a href="#Showcase-Poster-•-GitHub" class="headerlink" title="Showcase Poster • GitHub"></a><a target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf">Showcase Poster</a> • <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/streetsmart">GitHub</a></h2><p>(We use the free tier of Heroku, meaning the app sleeps every 30 minutes. You
+might have to wait a moment for the app to spin up upon initial load:
+<a target="_blank" rel="noopener" href="http://street-smart.xyz/">Street-Smart.xyz</a> 👍)</p>
+<h2 id="The-Front-End"><a href="#The-Front-End" class="headerlink" title="The Front End"></a>The Front End</h2><p><a target="_blank" rel="noopener" href="https://github.com/hhpatel09">Harsh Patel</a> and I worked on the Express API and React interface in order
+to demonstrate viewing sensor data on a “real-time” map. I tore apart <a target="_blank" rel="noopener" href="https://designrevision.com/docs/shards-dashboard-lite/">React Shards</a>,
+a well styled site template from Design Revision, to throw together an interface quickly.
+I was most proud of my implementation of the real-time map, as that component card
+was created from scratch using our API, and <a target="_blank" rel="noopener" href="https://react-leaflet.js.org/">React Leaflet</a>.
+</br></br></p>
+<div class="figure center" style="width:100%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="As data from traveling cars is published to Firestore, the map shows updates in real-time.">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/q_50/v1561941958/Projects/StreetSmart/ss_demo.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">As data from traveling cars is published to Firestore, the map shows updates in real-time.</span>
+</div>
+
+<h2 id="Car-Travel-Simulation"><a href="#Car-Travel-Simulation" class="headerlink" title="Car Travel Simulation"></a>Car Travel Simulation</h2><p>To have realistic test data, and to demo to our class, I created a
+script for generating car travel data. It simulates driving locations and speeds
+along a given route of coordinates based on adjustable driver tendencies, and
+uploads to Firebase in time accurate spacing, just like our in-car sensor.
+</br></br>
+It was great to implement async javascript, but going forward I really want
+to use proper modules now that I understand how they work in ES6 a bit better.
+Too many functions in one file. This script was created overnight because we were
+having so many difficulties getting accurate location data for our sensor, so I’m
+proud of what I was able to do in that amount of time.
+</br></br></p>
+<div style="height:600px;overflow-y:scroll">
+<figure class="codeblock codeblock--tabbed"><figcaption><a target="_blank" rel="noopener" href="https://github.com/bmitchinson/StreetSmart/blob/master/server/SimulateTrip.js">SimulateTrip.py - GitHub</a><ul class="tabs"><li class="tab active">javascript</li></ul></figcaption><div class="tabs-content"><figure class="highlight javascript" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'dotenv'</span>).config();</span><br><span class="line"><span class="keyword">const</span> firebase = <span class="built_in">require</span>(<span class="string">"firebase"</span>);</span><br><span class="line"><span class="keyword">var</span> moment = <span class="built_in">require</span>(<span class="string">'moment'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Firebase initializtion</span></span><br><span class="line">firebase.initializeApp({</span><br><span class="line"><span class="attr">apiKey</span>: process.env.APIKEY,</span><br><span class="line"><span class="attr">authDomain</span>: process.env.DOMAIN + <span class="string">'.firebaseapp.com'</span>,</span><br><span class="line"><span class="attr">projectId</span>: process.env.DOMAIN</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> db = firebase.firestore();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Initial Values for simulating a "trip"</span></span><br><span class="line"><span class="keyword">let</span> Battery = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() \* <span class="number">60</span>) + <span class="number">40</span> <span class="comment">// Will decay slowly</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Optional status code enabled for the entire trip</span></span><br><span class="line"><span class="keyword">let</span> StatusCode = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Starting time of the trip</span></span><br><span class="line"><span class="keyword">let</span> Driver = <span class="string">"Tyler"</span> <span class="comment">// Constant</span></span><br><span class="line"><span class="keyword">let</span> Time = moment(<span class="string">'05-2-2019 10:45'</span>, <span class="string">'MM-DD-YYYY hh:mm'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// to use for simulated trip</span></span><br><span class="line"><span class="keyword">let</span> checkpointStrings = [</span><br><span class="line"><span class="string">"41.663611, -91.534595"</span>,</span><br><span class="line"><span class="string">"41.663627, -91.537588"</span>,</span><br><span class="line"><span class="string">"41.656694, -91.537728"</span>,</span><br><span class="line"><span class="string">"41.656615, -91.530174"</span>,</span><br><span class="line"><span class="string">"41.654159, -91.530218"</span>,</span><br><span class="line"><span class="string">"41.650474, -91.531966"</span>,</span><br><span class="line"><span class="string">"41.649512, -91.532020"</span>,</span><br><span class="line"><span class="string">"41.649472, -91.515884"</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> speedLimits = [</span><br><span class="line"><span class="number">25</span>, <span class="number">35</span>, <span class="number">25</span>, <span class="number">25</span>, <span class="number">25</span>, <span class="number">25</span>, <span class="number">45</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Alters varience from speed limit</span></span><br><span class="line"><span class="keyword">let</span> DriveStyle = <span class="number">5</span> <span class="comment">// -2: Slow driver, 0: Strict Driver, 1: Late, 3: Stupid</span></span><br><span class="line"><span class="keyword">let</span> sampleRate = <span class="number">12</span> <span class="comment">// Sample every 15 seconds</span></span><br><span class="line"><span class="keyword">let</span> timeFactor = <span class="number">3</span> <span class="comment">// Move time along 3x times faster</span></span><br><span class="line"><span class="keyword">let</span> pushMode = <span class="literal">true</span> <span class="comment">// If enabled results are pushed to firebase</span></span><br><span class="line"><span class="keyword">let</span> delayMode = <span class="literal">true</span> <span class="comment">// If enabled, time / speed MPH accurate delays occur</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Converts strings to GeoPoints for publishing</span></span><br><span class="line"><span class="keyword">let</span> checkpoints = []</span><br><span class="line"></span><br><span class="line">checkpointStrings.forEach(<span class="function">(<span class="params">text</span>) =&gt;</span> {</span><br><span class="line"><span class="keyword">let</span> geo = <span class="keyword">new</span> firebase.firestore.GeoPoint(</span><br><span class="line"><span class="built_in">Number</span>(text.split(<span class="string">','</span>)[<span class="number">0</span>]), <span class="built_in">Number</span>(text.split(<span class="string">','</span>)[<span class="number">1</span>]));</span><br><span class="line">checkpoints.push(geo);</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cordDistKm</span>(<span class="params">lat1, lon1, lat2, lon2</span>) </span>{</span><br><span class="line"><span class="keyword">var</span> R = <span class="number">6371</span>; <span class="comment">// Radius of the earth in km</span></span><br><span class="line"><span class="keyword">var</span> dLat = deg2rad(lat2 - lat1); <span class="comment">// deg2rad below</span></span><br><span class="line"><span class="keyword">var</span> dLon = deg2rad(lon2 - lon1);</span><br><span class="line"><span class="keyword">var</span> a =</span><br><span class="line"><span class="built_in">Math</span>.sin(dLat / <span class="number">2</span>) _ <span class="built_in">Math</span>.sin(dLat / <span class="number">2</span>) +</span><br><span class="line"><span class="built_in">Math</span>.cos(deg2rad(lat1)) _ <span class="built_in">Math</span>.cos(deg2rad(lat2)) _</span><br><span class="line"><span class="built_in">Math</span>.sin(dLon / <span class="number">2</span>) _ <span class="built_in">Math</span>.sin(dLon / <span class="number">2</span>)</span><br><span class="line">;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">2</span> _ <span class="built_in">Math</span>.atan2(<span class="built_in">Math</span>.sqrt(a), <span class="built_in">Math</span>.sqrt(<span class="number">1</span> - a));</span><br><span class="line"><span class="keyword">var</span> d = R _ c; <span class="comment">// Distance in km</span></span><br><span class="line"><span class="keyword">return</span> d;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deg2rad</span>(<span class="params">deg</span>) </span>{</span><br><span class="line"><span class="keyword">return</span> deg \* (<span class="built_in">Math</span>.PI / <span class="number">180</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">milliseconds</span>) </span>{</span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1e7</span>; i++) {</span><br><span class="line"><span class="keyword">if</span> ((<span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - start) &gt; milliseconds) {</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">sim</span>(<span class="params"></span>)</span>{</span><br><span class="line"><span class="keyword">let</span> carGeoPoint = checkpoints[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(Time.format(<span class="string">'lll'</span>) + <span class="string">": Starting 🚗 @ "</span></span><br><span class="line"></span><br><span class="line">- <span class="built_in">String</span>(carGeoPoint.latitude) + <span class="string">", "</span> + <span class="built_in">String</span>(carGeoPoint.longitude) +</span><br><span class="line">  <span class="string">" Driver Style: "</span> + DriveStyle)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"</span>);</span><br><span class="line">  <span class="comment">// Begin adding data in simulated time (if delayMode, otherwise all at once)</span></span><br><span class="line">  <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> destPoint <span class="keyword">of</span> checkpoints){</span><br><span class="line">  <span class="comment">//checkpoints.forEach((destPoint, index) =&gt; {</span></span><br><span class="line">  <span class="keyword">if</span> (index != <span class="number">0</span>) {</span><br><span class="line">  <span class="comment">// Variance in speed</span></span><br><span class="line">  <span class="keyword">let</span> carMPH = speedLimits[index - <span class="number">1</span>] + (DriveStyle _ <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() _ <span class="number">10</span>) + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">if</span> (DriveStyle == <span class="number">0</span>) {</span><br><span class="line">  carMPH--</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">let</span> carMPS = carMPH / <span class="number">3600</span></span><br><span class="line">  <span class="keyword">let</span> carMPSample = carMPS _ sampleRate</span><br><span class="line">  <span class="keyword">let</span> milesBetween = cordDistKm(destPoint.latitude, destPoint.longitude,</span><br><span class="line">  carGeoPoint.latitude, carGeoPoint.longitude) _ <span class="number">.6214</span>; <span class="comment">//KM to Miles</span></span><br><span class="line">  <span class="keyword">let</span> subPointsCount = milesBetween / carMPSample</span><br><span class="line">  <span class="keyword">let</span> subPoints = [];</span><br><span class="line">  <span class="keyword">let</span> latShift = (destPoint.latitude -</span><br><span class="line">  carGeoPoint.latitude) / subPointsCount</span><br><span class="line">  <span class="keyword">let</span> longShift = (destPoint.longitude -</span><br><span class="line">  carGeoPoint.longitude) / subPointsCount</span><br><span class="line">  <span class="keyword">let</span> subPointsIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (subPointsIndex &lt; subPointsCount - <span class="number">1</span>) {</span><br><span class="line">  carGeoPoint = <span class="keyword">new</span> firebase.firestore.GeoPoint(</span><br><span class="line">  carGeoPoint.latitude + latShift,</span><br><span class="line">  carGeoPoint.longitude + longShift</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">if</span> (pushMode) {</span><br><span class="line">  <span class="keyword">await</span> db.collection(<span class="string">"events"</span>).doc().set({</span><br><span class="line">  <span class="attr">RealData</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">Battery</span>: Battery,</span><br><span class="line">  <span class="attr">Driver</span>: Driver,</span><br><span class="line">  <span class="attr">Location</span>: carGeoPoint,</span><br><span class="line">  <span class="attr">Speed</span>: carMPH,</span><br><span class="line">  <span class="attr">SpeedLimit</span>: speedLimits[index - <span class="number">1</span>],</span><br><span class="line">  <span class="attr">SpeedStatus</span>: (carMPH - speedLimits[index - <span class="number">1</span>]),</span><br><span class="line">  <span class="attr">StatusCode</span>: StatusCode,</span><br><span class="line">  <span class="attr">Time</span>: firebase.firestore.Timestamp.fromDate(Time.toDate())</span><br><span class="line">  }).then(<span class="function">() =&gt;</span> {</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"🔥 ✔️"</span>);</span><br><span class="line">  })</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">if</span> (delayMode) {</span><br><span class="line">  sleep(<span class="number">1000</span> _ sampleRate / timeFactor);</span><br><span class="line">  }</span><br><span class="line">  subPointsIndex++</span><br><span class="line">  Time = Time.add(sampleRate, <span class="string">'seconds'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(Time.format(<span class="string">'lll'</span>) + <span class="string">": 🚗 located @ "</span> +</span><br><span class="line">  <span class="built_in">String</span>(<span class="built_in">Math</span>.round(carGeoPoint.latitude _ <span class="number">1000000.0</span>) / <span class="number">1000000.0</span>) +</span><br><span class="line">  <span class="string">", "</span> + <span class="built_in">String</span>(<span class="built_in">Math</span>.round(carGeoPoint.longitude _ <span class="number">1000000.0</span>) / <span class="number">1000000.0</span>) + <span class="string">"\ngoing "</span> + carMPH + <span class="string">"MPH in a "</span> + speedLimits[index - <span class="number">1</span>] + <span class="string">"MPH Zone"</span></span><br><span class="line">  );</span><br><span class="line">  }</span><br><span class="line">  Battery--</span><br><span class="line">  carGeoPoint = checkpoints[index]</span><br><span class="line">  <span class="keyword">if</span> (pushMode) {</span><br><span class="line">  <span class="keyword">await</span> db.collection(<span class="string">"events"</span>).doc().set({</span><br><span class="line">  <span class="attr">RealData</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">Battery</span>: Battery,</span><br><span class="line">  <span class="attr">Driver</span>: Driver,</span><br><span class="line">  <span class="attr">Location</span>: carGeoPoint,</span><br><span class="line">  <span class="attr">Speed</span>: carMPH,</span><br><span class="line">  <span class="attr">SpeedLimit</span>: speedLimits[index - <span class="number">1</span>],</span><br><span class="line">  <span class="attr">SpeedStatus</span>: (carMPH - speedLimits[index - <span class="number">1</span>]),</span><br><span class="line">  <span class="attr">StatusCode</span>: StatusCode,</span><br><span class="line">  <span class="attr">Time</span>: firebase.firestore.Timestamp.fromDate(Time.toDate())</span><br><span class="line">  }).then(<span class="function">() =&gt;</span> {</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"🔥 ✔️"</span>);</span><br><span class="line">  })</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">if</span> (delayMode) {</span><br><span class="line">  sleep(<span class="number">1000</span> _ sampleRate / timeFactor);</span><br><span class="line">  }</span><br><span class="line">  Time = Time.add(sampleRate, <span class="string">'seconds'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(Time.format(<span class="string">'lll'</span>) + <span class="string">": 🚗 reached point "</span> + <span class="built_in">String</span>(index+<span class="number">1</span>) + <span class="string">"! "</span> + checkpointStrings[index]);</span><br><span class="line">  }</span><br><span class="line">  index++</span><br><span class="line">  }</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"End of trip"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"</span>);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call the main sim async function</span></span><br><span class="line">sim()</span><br><span class="line"></span><br><span class="line">/_ db.collection(<span class="string">"bentest"</span>).doc().set({</span><br><span class="line"><span class="attr">RealData</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">Battery</span>: Battery,</span><br><span class="line"><span class="attr">Driver</span>: Driver,</span><br><span class="line"><span class="attr">Location</span>: carGeoPoint,</span><br><span class="line"><span class="attr">Speed</span>: carMPH,</span><br><span class="line"><span class="attr">SpeedLimit</span>: speedLimits[index - <span class="number">1</span>],</span><br><span class="line"><span class="attr">SpeedStatus</span>: (carMPH - speedLimits[index - <span class="number">1</span>]),</span><br><span class="line"><span class="attr">StatusCode</span>: StatusCode,</span><br><span class="line"><span class="attr">Time</span>: firebase.firestore.Timestamp.fromDate(Time.toDate())</span><br><span class="line">}).then(<span class="function">() =&gt;</span> {</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"🔥 ✔️"</span>);</span><br><span class="line">}) _/</span><br></pre></td></tr></tbody></table></figure></div></figure>
+
+</div>
+
+<h3 id="In-Car-Sensor-Alerts"><a href="#In-Car-Sensor-Alerts" class="headerlink" title="In-Car Sensor + Alerts"></a>In-Car Sensor + Alerts</h3><p>Our Raspberry Pi ran a script to collect GPS location and utilized the Overpass
+API to fetch the speed limit of that location, pair them, and publish them to our
+database. Additionally, if an instance of speeding was detected, the Raspberry Pi
+lit up an LED to alert the driver. </br></br></p>
+<div class="figure center" style="width:50%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Speeding by exceeding 60MPH being detected">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/v1561400335/Projects/StreetSmart/speedled.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Speeding by exceeding 60MPH being detected</span>
+</div>
+
+<h3 id="Awards"><a href="#Awards" class="headerlink" title="Awards"></a>Awards</h3><p>Our presentation and live demo earned us one of 3 spots for IoT in “Modern Marvels”,
+the university’s showcase for top projects completed throughout the year.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1561942238/Projects/StreetSmart/team.webp" style="width:80%;"alt="The team (myself not pictured) presenting our demo"><span class="caption">The team (myself not pictured) presenting our demo</span></div>
+
+<h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ul>
+<li>Next time I build an API, I’d like to try GraphQL. Our client fetched much
+more data then was necessary, and did client-side filtering that could have been
+accomplished in the API layer.</li>
+<li>We only mocked the user account and lacked any sort of authentication on both the
+database or front end. Integrating tools like OAuth is
+something I need to get a handle on soon.</li>
+</ul>
+<h2 id="Live-Demo-•-Showcase-Poster-•-GitHub"><a href="#Live-Demo-•-Showcase-Poster-•-GitHub" class="headerlink" title="Live Demo • Showcase Poster • GitHub"></a><a target="_blank" rel="noopener" href="http://street-smart.xyz/">Live Demo</a> • <a target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/v1561400335/Projects/StreetSmart/SSposter.pdf">Showcase Poster</a> • <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/streetsmart">GitHub</a></h2>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Express/" rel="tag">Express</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Firebase/" rel="tag">Firebase</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/IoT/" rel="tag">IoT</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Node/" rel="tag">Node</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/React/" rel="tag">React</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/School/" rel="tag">School</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Class-Fall19/"
+                    data-tooltip="Classes: Fall 2019"
+                    aria-label="PREVIOUS: Classes: Fall 2019"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Device-Advice/"
+                    data-tooltip="Computer Comfort 2018-19"
+                    aria-label="NEXT: Computer Comfort 2018-19"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Street-Smart/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        
+    </span>
+</footer>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Class-Fall19/"
+                    data-tooltip="Classes: Fall 2019"
+                    aria-label="PREVIOUS: Classes: Fall 2019"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Device-Advice/"
+                    data-tooltip="Computer Comfort 2018-19"
+                    aria-label="NEXT: Computer Comfort 2018-19"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Street-Smart/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Street-Smart/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ben Mitchinson</h4>
+        
+            <div id="about-card-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer @ Accenture Industry X</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Denver, CO
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Photo-Frame/"
+                            aria-label=": Mother&#39;s Day Photo Frame"
+                        >
+                            <h3 class="media-heading">Mother&#39;s Day Photo Frame</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Alexa-Bus-Tracker/"
+                            aria-label=": Bus Predictions with Alexa"
+                        >
+                            <h3 class="media-heading">Bus Predictions with Alexa</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Laserphonic/"
+                            aria-label=": ⚡ Laserphonic"
+                        >
+                            <h3 class="media-heading">⚡ Laserphonic</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 2, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>For a course in Digital Arts this semester, two friends and I grouped together to
+create a multichannel audio circuit for displaying “Chladni Figures” in a project
+we called “Laserphonic”.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.webp" style="width:80%;"alt="Chladni Plate (Geek.com)"><span class="caption">Chladni Plate (Geek.com)</span></div>
+</br>
+You may have seen these formations on plates such as the one shown above.
+We set out to recreate the resonant frequency effects visually using lasers, as
+a way for listeners and artists to see a real-time visualization of harmony and
+dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
+for an <a target="_blank" rel="noopener" href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Computer-Comfort-Year-3/"
+                            aria-label=": Entering Year 3 of Computer Comfort 👵💻"
+                        >
+                            <h3 class="media-heading">Entering Year 3 of Computer Comfort 👵💻</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jul 21, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
+</p>
+
+<h3>Our Mission Statement:</h3>
+> "Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process."
+
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Playground-News/"
+                            aria-label=": TigerHacks 2018: Playground News"
+                        >
+                            <h3 class="media-heading">TigerHacks 2018: Playground News</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>At <a target="_blank" rel="noopener" href="http://tiger-hacks.com/">TigerHacks</a> this year at the University of Missouri, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia Sandvold</a>, <a target="_blank" rel="noopener" href="https://github.com/benjamin-weinberg">Ben Weinberg</a> and I, worked together to build “Playground News”: A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                20 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,c_scale,w_0.5/v1532152643/BenMitchinson.com/cover.webp');"></div>
+        <!--SCRIPTS-->
+<script defer src="/assets/js/script-gh0j5lcktiv6ht9djleelhvmzfauj38ovizdvnuhcz9ywtxczjg43vryercs.min.js"></script>
+<!--SCRIPTS END-->
+<script src="/assets/js/lazysizes.js"></script>
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://mitchinson.dev/Street-Smart/';
+              
+            this.page.identifier = 'Street-Smart/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'benmitchinson';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script>
+      var appId = '6XPKC4Q2SA'
+      var apiKey = 'c1cefc78aaf15ec5b644468ec41faf2f'
+      var indexName = 'mitchinson_dot_dev_index'
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ben Mitchinson">
+    <title>Classes: Fall 2019 - Ben Mitchinson</title>
+    <meta name="author" content="Ben Mitchinson">
+    
+        <meta name="keywords" content="Ben,Mitchinson,Ben Mitchinson,Ben Mitchinson Resume,Iowa,Ben Mitchinson Iowa,Iowa Computer Science Engineering,Ben Mitchinson HackIowa,HackIowa,Ben Hack Iowa,Blog,Ben Computer Comfort,Computer Comfort,Projects,">
+    
+    
+        <link rel="icon" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"},"articleBody":"Quick highlight of three web apps I developed this semester using React, Preact, and Ruby on Rails.\n\n\n\nClassroom • React • GitHubJacob, Greg, and I worked on a three-person agile team to develop a web app for managing course sections, class documents, submission grading, and user management.\n\n\nMaterial UI components\nReact context providers for theming.\nEntity Framework Core and Dotnet on the backend.\n\nEntity Framework Core was great for learning JWT Token distribution, and how to lock down endpoints to user role (Teacher, Student, …etc).\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nEditing course details as an admin - made easy with material-ui table\n\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nGrading student submissions as an instructor\n\n\nDeals on Rails • Ruby on Rails • DemoYou might notice a delay in fetching the demo, as the free tier of heroku needs a moment to reboot the application\nFor Software Engineering Languages and Tools, Colton, Stephen, Olivia, Chase, and myself worked on a 5 person agile team to build a directory for\nlocal restaurant deals. It works with a voting system similar to Reddit for\ncustomers, and establishments can sign up to post their own deals.\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nDaily Cal\n\n\nIt was great to learn how to use facebook as for external sign-on and implement\nJS in the context of a rails app as well.\nThe major lesson was learning to build functionality first, and style second.\nI’ve got a habit of tweaking UI and design instead of fully implementing a\nfeature, and doing the opposite let us deliver on time.\n\nCoverage report with testing completed using cucumber and rspec\n\nHosting a live prototype at the end of every 2-week sprint made deploying our final\nproduct much easier.\n\nSprint 1 vs Sprint 3\n\nReal-Time Temperature Graph • Preact • GitHubA semester goal of mine was to find an outlet for using preact and typescript,\nso I included them in our online-enabled thermostat for senior design.\n\nThe site displays data from Firebase, populated by a Raspberry Pi with a\ntemperature sensor. Things like the display on the Pi needed to be\ncontrolled from the frontend, so firebase was used for two way communication.\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nReflecting hardware changes through firebase realtime database\n\n\nWe setup the Pi inside a small tupperware container with a lipstick phone charger.\nAll client-side code was written in a multiprocess python script, and it sent text\nmessages through Twilio. We were able to solder the sensor to a headphone\njack, and use a 3.5mm port to keep the device modular.\n\nThe device\n\nThe guts 🤮\n\nFor building out the graph, I used preact-charts. It’s built on top of d3, and tinkering with the underlying\nd3 code made for a pretty terrible experience. Missed having the\noptions of react components to choose from, and this single-view site wasn’t\na great way to benchmark preact.\n\n\n\n\nYour browser doesn't support HTML5 Video :/\nDisplaying measured temperatures\n\n\nLooking Back and Future GoalsWould have liked to include:\n\nIntegration tests -&gt; automated with github actions.\nWorking on three “agile” teams at once makes using agile difficult. Testing then either suffered or was non-existent.\n\n\nRemote hosting of Entity Framework Core + SQL\nNever found a simple solution.\nHaving more experience with docker now, I could use that to spin something up quickly.\n\n\nCreate a realistic benchmark of preact vs react to make more educated decisions\non our upcoming CHI project.\nWe’ll be hosting a web app to be viewed on mobile devices in a local area network inside a medical tent.\n\n\n\n","dateCreated":"2019-12-25T00:00:00-07:00","dateModified":"2022-09-04T20:13:51-06:00","datePublished":"2019-12-25T00:00:00-07:00","description":"Quick highlight of three web apps I developed this semester using React, Preact, and Ruby on Rails.\n","headline":"Classes: Fall 2019","image":["https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.webp","https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitchinson.dev/Class-Fall19/"},"publisher":{"@type":"Organization","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp","logo":{"@type":"ImageObject","url":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"}},"url":"https://mitchinson.dev/Class-Fall19/","keywords":"Live, React, Preact, Rails, School, Firebase","thumbnailUrl":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.webp"}</script>
+    <meta name="description" content="Quick highlight of three web apps I developed this semester using React, Preact, and Ruby on Rails.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Classes: Fall 2019">
+<meta property="og:url" content="https://mitchinson.dev/Class-Fall19/index.html">
+<meta property="og:site_name" content="Ben Mitchinson">
+<meta property="og:description" content="Quick highlight of three web apps I developed this semester using React, Preact, and Ruby on Rails.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578018927/Projects/Fall19Summary/testing.webp">
+<meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578363584/Projects/Fall19Summary/iteration.webp">
+<meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,q_50/v1578527039/Projects/Fall19Summary/device.webp">
+<meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,q_50/v1578527182/Projects/Fall19Summary/guts.webp">
+<meta property="article:published_time" content="2019-12-25T07:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-05T02:13:51.164Z">
+<meta property="article:author" content="Ben Mitchinson">
+<meta property="article:tag" content="Live">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Preact">
+<meta property="article:tag" content="Rails">
+<meta property="article:tag" content="School">
+<meta property="article:tag" content="Firebase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578018927/Projects/Fall19Summary/testing.webp">
+<meta name="twitter:creator" content="@115bwm">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1578542542/Projects/Fall19Summary/fall_apps_thumbnail.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp"/>
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-en5gmpasgdjgiazbtcli0rjiek6x0iqpkeynzsoxwungafmdsudvh1nbyz95.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131573158-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131573158-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Ben Mitchinson
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ben Mitchinson</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:mitchinson.dev@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-calendar" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://dev.to/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Dev.to"
+                        >
+                        <i class="sidebar-button-icon fab fa-dev" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Dev.to</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/115bwm/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/ben-mitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin-in" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="Resume"
+                        >
+                        <i class="sidebar-button-icon fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Resume</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-left
+                    post-header-cover--partial"
+             style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1578542413/Projects/Fall19Summary/fall_apps_cover.webp');"
+             data-behavior="1">
+            
+        </div>
+
+            <div id="main" data-behavior="1"
+                 class="hasCover
+                        hasCoverMetaOut
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Classes: Fall 2019
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-12-25T00:00:00-07:00">
+	
+		    Dec 25, 2019
+    	
+    </time>
+    
+    
+        -
+        
+            3 min to read
+        
+        
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>Quick highlight of three web apps I developed this semester using React, <a target="_blank" rel="noopener" href="https://preactjs.com/">Preact</a>, and Ruby on Rails.
+</br></p>
+<span id="more"></span>
+
+<h2 id="Classroom-•-React-•-GitHub"><a href="#Classroom-•-React-•-GitHub" class="headerlink" title="Classroom • React • GitHub"></a>Classroom • React • <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/CS5800-Team9">GitHub</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/jacobwatters">Jacob</a>, <a target="_blank" rel="noopener" href="https://github.com/SS-GregMich">Greg</a>, and I worked on a three-person agile team to develop a web app for managing course sections, class documents, submission grading, and user management.
+</br></br></p>
+<ul>
+<li>Material UI components</li>
+<li>React context providers for theming.</li>
+<li>Entity Framework Core and Dotnet on the backend.</li>
+</ul>
+<p>Entity Framework Core was great for learning JWT Token distribution, and how to lock down endpoints to user role (Teacher, Student, …etc).
+</br></br></p>
+<div class="figure center" style="width:80%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Editing course details as an admin - made easy with material-ui table">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/r_10,q_60,b_white/v1578015318/Projects/Fall19Summary/course_page_sort.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Editing course details as an admin - made easy with material-ui table</span>
+</div>
+</br>
+<div class="figure center" style="width:100%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Grading student submissions as an instructor">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/r_10,q_60,b_white/v1578016334/Projects/Fall19Summary/grading.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Grading student submissions as an instructor</span>
+</div>
+
+<h2 id="Deals-on-Rails-•-Ruby-on-Rails-•-Demo"><a href="#Deals-on-Rails-•-Ruby-on-Rails-•-Demo" class="headerlink" title="Deals on Rails • Ruby on Rails • Demo"></a>Deals on Rails • Ruby on Rails • <a target="_blank" rel="noopener" href="https://selt2019-g010-final.herokuapp.com/">Demo</a></h2><p><em>You might notice a delay in fetching the demo, as the free tier of heroku needs a moment to reboot the application</em></p>
+<p>For Software Engineering Languages and Tools, <a target="_blank" rel="noopener" href="https://github.com/cjmiller1622">Colton</a>, <a target="_blank" rel="noopener" href="https://github.com/ssiemonsma">Stephen</a>, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia</a>, <a target="_blank" rel="noopener" href="https://github.com/chasejohnson3">Chase</a>, and myself worked on a 5 person agile team to build a directory for
+local restaurant deals. It works with a voting system similar to Reddit for
+customers, and establishments can sign up to post their own deals.
+</br></br></p>
+<div class="figure center" style="width:80%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Daily Cal">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/r_10,q_40,b_white,w_2150,h_3000,x_600,y_0,c_crop/v1578018134/Projects/Fall19Summary/daily.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Daily Cal</span>
+</div>
+
+<p>It was great to learn how to use facebook as for external sign-on and implement
+JS in the context of a rails app as well.</p>
+<p>The major lesson was learning to <strong>build functionality first, and style second</strong>.
+I’ve got a habit of tweaking UI and design instead of fully implementing a
+feature, and doing the opposite let us deliver on time.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578018927/Projects/Fall19Summary/testing.webp" style="width:80%;"alt="Coverage report with testing completed using cucumber and rspec"><span class="caption">Coverage report with testing completed using cucumber and rspec</span></div>
+
+<p>Hosting a live prototype at the end of every 2-week sprint made deploying our final
+product much easier.
+</br></br></p>
+<div class="figure center" style="width:90%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1578363584/Projects/Fall19Summary/iteration.webp" style="width:90%;"alt="Sprint 1 vs Sprint 3"><span class="caption">Sprint 1 vs Sprint 3</span></div>
+
+<h2 id="Real-Time-Temperature-Graph-•-Preact-•-GitHub"><a href="#Real-Time-Temperature-Graph-•-Preact-•-GitHub" class="headerlink" title="Real-Time Temperature Graph • Preact • GitHub"></a>Real-Time Temperature Graph • Preact • <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/ece4880/tree/master/Lab1/frontend">GitHub</a></h2><p>A semester goal of mine was to find an outlet for using preact and typescript,
+so I included them in our online-enabled thermostat for senior design.
+</br></br>
+The site displays data from Firebase, populated by a Raspberry Pi with a
+temperature sensor. Things like the display on the Pi needed to be
+controlled from the frontend, so firebase was used for two way communication.
+</br></br></p>
+<div class="figure center" style="width:80%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Reflecting hardware changes through firebase realtime database">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/r_10,q_60,b_white/v1578528449/Projects/Fall19Summary/graph_switch_crop.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Reflecting hardware changes through firebase realtime database</span>
+</div>
+
+<p>We setup the Pi inside a small tupperware container with a lipstick phone charger.
+All client-side code was written in a <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/ece4880/blob/master/Lab1/pi/main.py">multiprocess python script</a>, and it sent text
+messages through Twilio. We were able to solder the sensor to a headphone
+jack, and use a 3.5mm port to keep the device modular.
+</br></br></p>
+<div class="figure center" style="width:100%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,q_50/v1578527039/Projects/Fall19Summary/device.webp" style="width:100%;"alt="The device"><span class="caption">The device</span></div>
+</br>
+<div class="figure center" style="width:60%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,q_50/v1578527182/Projects/Fall19Summary/guts.webp" style="width:60%;"alt="The guts 🤮"><span class="caption">The guts 🤮</span></div>
+
+<p>For building out the graph, I used <a target="_blank" rel="noopener" href="https://github.com/influx6/preact-charts">preact-charts</a>. It’s built on top of d3, and tinkering with the underlying
+d3 code made for a pretty terrible experience. Missed having the
+options of react components to choose from, and this single-view site wasn’t
+a great way to benchmark preact.
+</br></br></p>
+<div class="figure center" style="width:100%"; >
+<video class="fig-video" autoplay playsinline loop muted alt="Displaying measured temperatures">
+<source src="https://res.cloudinary.com/dheqbiqti/video/upload/r_10,q_40,b_white/v1578530394/Projects/Fall19Summary/graph_demo.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 Video :/</p></video>
+<span class="caption">Displaying measured temperatures</span>
+</div>
+
+<h2 id="Looking-Back-and-Future-Goals"><a href="#Looking-Back-and-Future-Goals" class="headerlink" title="Looking Back and Future Goals"></a>Looking Back and Future Goals</h2><p>Would have liked to include:</p>
+<ul>
+<li>Integration tests -&gt; automated with github actions.<ul>
+<li>Working on three “agile” teams at once makes using agile difficult. Testing then either suffered or was non-existent.</li>
+</ul>
+</li>
+<li>Remote hosting of Entity Framework Core + SQL<ul>
+<li>Never found a simple solution.</li>
+<li>Having more experience with docker now, I could use that to spin something up quickly.</li>
+</ul>
+</li>
+<li>Create a realistic benchmark of preact vs react to make more educated decisions
+on our upcoming CHI project.<ul>
+<li>We’ll be hosting a web app to be viewed on mobile devices in a local area network inside a medical tent.</li>
+</ul>
+</li>
+</ul>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Firebase/" rel="tag">Firebase</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Live/" rel="tag">Live</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Preact/" rel="tag">Preact</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Rails/" rel="tag">Rails</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/React/" rel="tag">React</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/School/" rel="tag">School</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/If-It-Aint-Broke/"
+                    data-tooltip="If it ain&#39;t broke..."
+                    aria-label="PREVIOUS: If it ain&#39;t broke..."
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Street-Smart/"
+                    data-tooltip="Street Smart"
+                    aria-label="NEXT: Street Smart"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Class-Fall19/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        
+    </span>
+</footer>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/If-It-Aint-Broke/"
+                    data-tooltip="If it ain&#39;t broke..."
+                    aria-label="PREVIOUS: If it ain&#39;t broke..."
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Street-Smart/"
+                    data-tooltip="Street Smart"
+                    aria-label="NEXT: Street Smart"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Class-Fall19/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Class-Fall19/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ben Mitchinson</h4>
+        
+            <div id="about-card-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer @ Accenture Industry X</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Denver, CO
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Photo-Frame/"
+                            aria-label=": Mother&#39;s Day Photo Frame"
+                        >
+                            <h3 class="media-heading">Mother&#39;s Day Photo Frame</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Alexa-Bus-Tracker/"
+                            aria-label=": Bus Predictions with Alexa"
+                        >
+                            <h3 class="media-heading">Bus Predictions with Alexa</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Laserphonic/"
+                            aria-label=": ⚡ Laserphonic"
+                        >
+                            <h3 class="media-heading">⚡ Laserphonic</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 2, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>For a course in Digital Arts this semester, two friends and I grouped together to
+create a multichannel audio circuit for displaying “Chladni Figures” in a project
+we called “Laserphonic”.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.webp" style="width:80%;"alt="Chladni Plate (Geek.com)"><span class="caption">Chladni Plate (Geek.com)</span></div>
+</br>
+You may have seen these formations on plates such as the one shown above.
+We set out to recreate the resonant frequency effects visually using lasers, as
+a way for listeners and artists to see a real-time visualization of harmony and
+dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
+for an <a target="_blank" rel="noopener" href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Computer-Comfort-Year-3/"
+                            aria-label=": Entering Year 3 of Computer Comfort 👵💻"
+                        >
+                            <h3 class="media-heading">Entering Year 3 of Computer Comfort 👵💻</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jul 21, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
+</p>
+
+<h3>Our Mission Statement:</h3>
+> "Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process."
+
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Playground-News/"
+                            aria-label=": TigerHacks 2018: Playground News"
+                        >
+                            <h3 class="media-heading">TigerHacks 2018: Playground News</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>At <a target="_blank" rel="noopener" href="http://tiger-hacks.com/">TigerHacks</a> this year at the University of Missouri, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia Sandvold</a>, <a target="_blank" rel="noopener" href="https://github.com/benjamin-weinberg">Ben Weinberg</a> and I, worked together to build “Playground News”: A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                20 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,c_scale,w_0.5/v1532152643/BenMitchinson.com/cover.webp');"></div>
+        <!--SCRIPTS-->
+<script defer src="/assets/js/script-gh0j5lcktiv6ht9djleelhvmzfauj38ovizdvnuhcz9ywtxczjg43vryercs.min.js"></script>
+<!--SCRIPTS END-->
+<script src="/assets/js/lazysizes.js"></script>
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://mitchinson.dev/Class-Fall19/';
+              
+            this.page.identifier = 'Class-Fall19/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'benmitchinson';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script>
+      var appId = '6XPKC4Q2SA'
+      var apiKey = 'c1cefc78aaf15ec5b644468ec41faf2f'
+      var indexName = 'mitchinson_dot_dev_index'
+    </script>
+
+    </body>
+</html>

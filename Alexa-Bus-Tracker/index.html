@@ -1,0 +1,821 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ben Mitchinson">
+    <title>Bus Predictions with Alexa - Ben Mitchinson</title>
+    <meta name="author" content="Ben Mitchinson">
+    
+        <meta name="keywords" content="Ben,Mitchinson,Ben Mitchinson,Ben Mitchinson Resume,Iowa,Ben Mitchinson Iowa,Iowa Computer Science Engineering,Ben Mitchinson HackIowa,HackIowa,Ben Hack Iowa,Blog,Ben Computer Comfort,Computer Comfort,Projects,Bongo,API,Alexa,Bus,Alexa Skill,Skill,Python,AWS">
+    
+    
+        <link rel="icon" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"},"articleBody":"During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.\n\n\n\nDevelopmentThe process of building Alexa skills has changed a lot over time, but when this skill was created, the “Skill Builder” was still in beta. So instead, I just used an AWS Lambda function to control requests to our transportations API.\n\nI never earned an API key, but luckily, using “XXXX” (the key that was used in the demonstration documentation page), allowed for unlimited requests :). In writing this post, I found their developer facebook page and API documentation, and they’ve acknowledged the public key and now encourage developers to use it.\n\nInteracting with the API ● GitHub ● Alexa SkillBelow is the script I used to interact with the Bongo API. As of January 2019, it still works, so feel free to use it in your own projects.\nThe lambda function version I used for the Alexa Skill is also available as a separate script on the GitHub repo. It’s a great beginners project because it could easily be turned into a full wrapper, and the skill has many more potential improvements, so feel free to make pull requests!\n\n\nstopInfoDemo.py - GitHubpython123456789101112131415161718192021222324252627282930313233343536373839404142434445import json, urllib.requestimport stringdef routeListing():with urllib.request.urlopen(\"http://api.ebongo.org/routelist?format=json&amp;api_key=XXXX\") as url:mainDict = json.loads(url.read().decode())    mainList = mainDict['routes']    for routeDict in mainList:        routeInfoDict = routeDict[\"route\"]        print(\"ID: \",routeInfoDict[\"id\"])def predictions(stop = 1015):stopID = stopprint(\"Searching for \" + str(stopID))requestString = \"http://api.ebongo.org/prediction?stopid=\" + str(stopID) + \"&amp;api_key=XXXX\"with urllib.request.urlopen(requestString) as url:mainDict = json.loads(url.read().decode())    predictionsList = mainDict[\"predictions\"]    #print(predictionsList)    if predictionsList == []:        print(\"No predictions for stop \" + str(stopID) +\".\"              +\" Busses must not be running right now.\")    else:        less30 = True        #i representing the amount of busses within 30 mintues        i = 0        while less30:            if predictionsList[i][\"minutes\"] &gt; 30:                less30 = False            else:                print(\"Theres a\",predictionsList[i]['title'],\"in\",predictionsList[i]['minutes'],\"coming to stop \",stopID)                i = i + 1def main():stop = int(input(\"Please Enter Stop ID: \")) #1015 is currier bus stop near burgepredictions(stop)if **name** == \"**main**\":main()\n\n\n","dateCreated":"2017-12-02T13:00:00-07:00","dateModified":"2022-09-04T20:13:51-06:00","datePublished":"2017-12-02T13:00:00-07:00","description":"During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.\n","headline":"Bus Predictions with Alexa","image":["https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp","https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546745048/Projects/Bongo/bongo.webp"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitchinson.dev/Alexa-Bus-Tracker/"},"publisher":{"@type":"Organization","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp","logo":{"@type":"ImageObject","url":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"}},"url":"https://mitchinson.dev/Alexa-Bus-Tracker/","keywords":"Live, Alexa, Python, AWS, API","thumbnailUrl":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp"}</script>
+    <meta name="description" content="During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of Januar">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Bus Predictions with Alexa">
+<meta property="og:url" content="https://mitchinson.dev/Alexa-Bus-Tracker/index.html">
+<meta property="og:site_name" content="Ben Mitchinson">
+<meta property="og:description" content="During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of Januar">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-02T20:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-05T02:13:51.163Z">
+<meta property="article:author" content="Ben Mitchinson">
+<meta property="article:tag" content="Live">
+<meta property="article:tag" content="Alexa">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@115bwm">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547070329/Projects/Bongo/BongoThumb.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546745048/Projects/Bongo/bongo.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546745048/Projects/Bongo/bongo.webp"/>
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-en5gmpasgdjgiazbtcli0rjiek6x0iqpkeynzsoxwungafmdsudvh1nbyz95.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131573158-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131573158-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Ben Mitchinson
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ben Mitchinson</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:mitchinson.dev@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-calendar" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://dev.to/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Dev.to"
+                        >
+                        <i class="sidebar-button-icon fab fa-dev" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Dev.to</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/115bwm/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/ben-mitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin-in" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="Resume"
+                        >
+                        <i class="sidebar-button-icon fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Resume</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-left
+                    post-header-cover--partial"
+             style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546745048/Projects/Bongo/bongo.webp');"
+             data-behavior="1">
+            
+        </div>
+
+            <div id="main" data-behavior="1"
+                 class="hasCover
+                        hasCoverMetaOut
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Bus Predictions with Alexa
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2017-12-02T13:00:00-07:00">
+	
+		    Dec 02, 2017
+    	
+    </time>
+    
+    
+        -
+        
+            2 min to read
+        
+        
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p>
+<span id="more"></span>
+
+<h1 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h1><p>The process of building Alexa skills has changed a lot over time, but when this skill was created, the “Skill Builder” was <a target="_blank" rel="noopener" href="https://developer.amazon.com/blogs/alexa/post/02d828b6-3144-46ea-9b4c-5ed2cbfadb9c/announcing-new-alexa-skill-builder-beta-a-tool-for-creating-skills">still in beta</a>. So instead, I just used an AWS Lambda function to control requests to our transportations API.
+</br></br>
+I never earned an API key, but luckily, using “XXXX” (the key that was used in the demonstration documentation page), allowed for unlimited requests :). In writing this post, I found their <a target="_blank" rel="noopener" href="https://www.facebook.com/bongodevelopers/">developer facebook page</a> and <a target="_blank" rel="noopener" href="https://api.ebongo.org/">API documentation</a>, and they’ve acknowledged the public key and now encourage developers to use it.
+</br></p>
+<h1 id="Interacting-with-the-API-●-GitHub-●-Alexa-Skill"><a href="#Interacting-with-the-API-●-GitHub-●-Alexa-Skill" class="headerlink" title="Interacting with the API ● GitHub ● Alexa Skill"></a>Interacting with the API ● <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/Bongo-Python/tree/master">GitHub</a> ● <a target="_blank" rel="noopener" href="https://www.amazon.com/Mitchinson-Apps-Bongo/dp/B077X254MN/">Alexa Skill</a></h1><p>Below is the script I used to interact with the Bongo API. As of January 2019, it still works, so feel free to use it in your own projects.
+The lambda function version I used for the Alexa Skill is also available as a separate script on the GitHub repo. It’s a great beginners project because it could easily be turned into a full wrapper, and the skill has many more potential improvements, so feel free to make pull requests!
+</br></br></p>
+<div style="height:600px;overflow-y:scroll">
+<figure class="codeblock codeblock--tabbed"><figcaption><a target="_blank" rel="noopener" href="https://github.com/bmitchinson/Bongo-Python/blob/master/stopInfoDemo.py">stopInfoDemo.py - GitHub</a><ul class="tabs"><li class="tab active">python</li></ul></figcaption><div class="tabs-content"><figure class="highlight python" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json, urllib.request</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">routeListing</span>():</span></span><br><span class="line"><span class="keyword">with</span> urllib.request.urlopen(<span class="string">"http://api.ebongo.org/routelist?format=json&amp;api_key=XXXX"</span>) <span class="keyword">as</span> url:</span><br><span class="line">mainDict = json.loads(url.read().decode())</span><br><span class="line"></span><br><span class="line">    mainList = mainDict[<span class="string">'routes'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> routeDict <span class="keyword">in</span> mainList:</span><br><span class="line">        routeInfoDict = routeDict[<span class="string">"route"</span>]</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"ID: "</span>,routeInfoDict[<span class="string">"id"</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predictions</span>(<span class="params">stop = <span class="number">1015</span></span>):</span></span><br><span class="line">stopID = stop</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Searching for "</span> + <span class="built_in">str</span>(stopID))</span><br><span class="line">requestString = <span class="string">"http://api.ebongo.org/prediction?stopid="</span> + <span class="built_in">str</span>(stopID) + <span class="string">"&amp;api_key=XXXX"</span></span><br><span class="line"><span class="keyword">with</span> urllib.request.urlopen(requestString) <span class="keyword">as</span> url:</span><br><span class="line">mainDict = json.loads(url.read().decode())</span><br><span class="line"></span><br><span class="line">    predictionsList = mainDict[<span class="string">"predictions"</span>]</span><br><span class="line">    <span class="comment">#print(predictionsList)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> predictionsList == []:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"No predictions for stop "</span> + <span class="built_in">str</span>(stopID) +<span class="string">"."</span></span><br><span class="line">              +<span class="string">" Busses must not be running right now."</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        less30 = <span class="literal">True</span></span><br><span class="line">        <span class="comment">#i representing the amount of busses within 30 mintues</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> less30:</span><br><span class="line">            <span class="keyword">if</span> predictionsList[i][<span class="string">"minutes"</span>] &gt; <span class="number">30</span>:</span><br><span class="line">                less30 = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Theres a"</span>,predictionsList[i][<span class="string">'title'</span>],<span class="string">"in"</span>,predictionsList[i][<span class="string">'minutes'</span>],<span class="string">"coming to stop "</span>,stopID)</span><br><span class="line">                i = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">stop = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">"Please Enter Stop ID: "</span>)) <span class="comment">#1015 is currier bus stop near burge</span></span><br><span class="line">predictions(stop)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> **name** == <span class="string">"**main**"</span>:</span><br><span class="line">main()</span><br></pre></td></tr></tbody></table></figure></div></figure>
+
+</div>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/API/" rel="tag">API</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/AWS/" rel="tag">AWS</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Alexa/" rel="tag">Alexa</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Live/" rel="tag">Live</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Python/" rel="tag">Python</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Laserphonic/"
+                    data-tooltip="⚡ Laserphonic"
+                    aria-label="PREVIOUS: ⚡ Laserphonic"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Photo-Frame/"
+                    data-tooltip="Mother&#39;s Day Photo Frame"
+                    aria-label="NEXT: Mother&#39;s Day Photo Frame"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Alexa-Bus-Tracker/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        
+    </span>
+</footer>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Laserphonic/"
+                    data-tooltip="⚡ Laserphonic"
+                    aria-label="PREVIOUS: ⚡ Laserphonic"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Photo-Frame/"
+                    data-tooltip="Mother&#39;s Day Photo Frame"
+                    aria-label="NEXT: Mother&#39;s Day Photo Frame"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Alexa-Bus-Tracker/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Alexa-Bus-Tracker/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ben Mitchinson</h4>
+        
+            <div id="about-card-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer @ Accenture Industry X</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Denver, CO
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Photo-Frame/"
+                            aria-label=": Mother&#39;s Day Photo Frame"
+                        >
+                            <h3 class="media-heading">Mother&#39;s Day Photo Frame</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Alexa-Bus-Tracker/"
+                            aria-label=": Bus Predictions with Alexa"
+                        >
+                            <h3 class="media-heading">Bus Predictions with Alexa</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Laserphonic/"
+                            aria-label=": ⚡ Laserphonic"
+                        >
+                            <h3 class="media-heading">⚡ Laserphonic</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 2, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>For a course in Digital Arts this semester, two friends and I grouped together to
+create a multichannel audio circuit for displaying “Chladni Figures” in a project
+we called “Laserphonic”.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.webp" style="width:80%;"alt="Chladni Plate (Geek.com)"><span class="caption">Chladni Plate (Geek.com)</span></div>
+</br>
+You may have seen these formations on plates such as the one shown above.
+We set out to recreate the resonant frequency effects visually using lasers, as
+a way for listeners and artists to see a real-time visualization of harmony and
+dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
+for an <a target="_blank" rel="noopener" href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Computer-Comfort-Year-3/"
+                            aria-label=": Entering Year 3 of Computer Comfort 👵💻"
+                        >
+                            <h3 class="media-heading">Entering Year 3 of Computer Comfort 👵💻</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jul 21, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
+</p>
+
+<h3>Our Mission Statement:</h3>
+> "Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process."
+
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Playground-News/"
+                            aria-label=": TigerHacks 2018: Playground News"
+                        >
+                            <h3 class="media-heading">TigerHacks 2018: Playground News</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>At <a target="_blank" rel="noopener" href="http://tiger-hacks.com/">TigerHacks</a> this year at the University of Missouri, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia Sandvold</a>, <a target="_blank" rel="noopener" href="https://github.com/benjamin-weinberg">Ben Weinberg</a> and I, worked together to build “Playground News”: A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                20 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,c_scale,w_0.5/v1532152643/BenMitchinson.com/cover.webp');"></div>
+        <!--SCRIPTS-->
+<script defer src="/assets/js/script-gh0j5lcktiv6ht9djleelhvmzfauj38ovizdvnuhcz9ywtxczjg43vryercs.min.js"></script>
+<!--SCRIPTS END-->
+<script src="/assets/js/lazysizes.js"></script>
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://mitchinson.dev/Alexa-Bus-Tracker/';
+              
+            this.page.identifier = 'Alexa-Bus-Tracker/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'benmitchinson';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script>
+      var appId = '6XPKC4Q2SA'
+      var apiKey = 'c1cefc78aaf15ec5b644468ec41faf2f'
+      var indexName = 'mitchinson_dot_dev_index'
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Ben Mitchinson">
+    <title>Mother&#39;s Day Photo Frame - Ben Mitchinson</title>
+    <meta name="author" content="Ben Mitchinson">
+    
+        <meta name="keywords" content="Ben,Mitchinson,Ben Mitchinson,Ben Mitchinson Resume,Iowa,Ben Mitchinson Iowa,Iowa Computer Science Engineering,Ben Mitchinson HackIowa,HackIowa,Ben Hack Iowa,Blog,Ben Computer Comfort,Computer Comfort,Projects,Raspberry Pi,Python,Photo Frame,Digital,Smart Frame,Smart Photo Frame,Frame,Photo">
+    
+    
+        <link rel="icon" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"},"articleBody":"This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.\n\n\n\nSolution ● GitHubInside now is a Raspberry Pi running OSMC on an HD display, with a python script running in the background to download new photos from a dedicated Gmail account. From there, OSMC transitions through them all to display. The frame is also enabled with SSH at home, so while I'm at school, I can perform remote updates and mass file transfers to update large amounts of photos manually.\n\n\nWhat I learned + potential improvements This being one of my first personal side projects, interacting with the Gmail API for the first time resulted in a really satisfying final result. The ability of anyone to be able to either email the address, or even send a photo through SMS to it, and know that it would be displayed within the next 15 minutes, felt very impressive for the little python work required.\n\nIdeally, I would have preferred to run a more appropriate OS, and just manually create a GUI solution to iterating through the photos, as opposed to having to use everything that comes with OSMC, just to use its wallpaper feature. That being said, it’s funny to send YouTube videos to it, including active streams of live events.\nThere’s also more ideas for improvements of the script located in the issues on my GitHub repo, and I’m always happy to view updates and requests.\n\n\nScript\n  dlAttachments.pypython12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364# Referenced http://stackoverflow.com/questions/348630/how-can-i-download-all-emails-with-attachments-from-gmail# Make sure you have IMAP enabled in your gmail settings.# See / create issues on github.com/bmitchinson/raspberry-pi-photo-frameimport sysimport imaplibimport emailimport email.headerimport datetimeimport os# All pictures downloaded to \"/Attachments\" by defaultdetach_dir = '.'if 'Attachments' not in os.listdir(detach_dir):os.mkdir('Attachments')# Replace _username_ and _password_EMAIL_ACCOUNT = \"_USERNAME_@gmail.com\"EMAIL_PASSWORD = \"_PASSWORD_\"# Use a dedicated folder if desired, otherwise leave as \"INBOX\" to search inboxEMAIL_FOLDER = \"INBOX\"try:imapSession = imaplib.IMAP4_SSL('imap.gmail.com')typ, accountDetails = imapSession.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)if typ != 'OK':print('Not able to sign in!')raiseimapSession.select('INBOX')typ, data = imapSession.search(None, 'ALL')if typ != 'OK':print('Error searching Inbox.')raise # Iterating over all emailsfor msgId in data[0].split():typ, messageParts = imapSession.fetch(msgId, '(RFC822)')if typ != 'OK':print('Error fetching mail.')raise        emailBody = messageParts[0][1]        mail = email.message_from_bytes(emailBody)        for part in mail.walk():            if part.get_content_maintype() == 'multipart':                continue            if part.get('Content-Disposition') is None:                continue            fileName = part.get_filename()            if bool(fileName):                filePath = os.path.join(detach_dir, 'Attachments', fileName)                if not os.path.isfile(filePath) :                    print(fileName)                    fp = open(filePath, 'wb')                    fp.write(part.get_payload(decode=True))                    fp.close()    imapSession.close()    imapSession.logout()except:print('Not able to download all attachments.')\n\n\n\nGallery\n","dateCreated":"2017-05-14T13:00:00-06:00","dateModified":"2022-09-04T20:13:51-06:00","datePublished":"2017-05-14T13:00:00-06:00","description":"This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.\n","headline":"Mother's Day Photo Frame","image":["https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.webp","https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546666566/Projects/PhotoFrame/photoframe.webp"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitchinson.dev/Photo-Frame/"},"publisher":{"@type":"Organization","name":"Ben Mitchinson","sameAs":["https://github.com/bmitchinson","https://dev.to/bmitchinson","https://twitter.com/115bwm/","https://www.linkedin.com/in/ben-mitchinson","/resume"],"image":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp","logo":{"@type":"ImageObject","url":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"}},"url":"https://mitchinson.dev/Photo-Frame/","keywords":"Python, Raspberry Pi","thumbnailUrl":"https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.webp"}</script>
+    <meta name="description" content="This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Mother&#39;s Day Photo Frame">
+<meta property="og:url" content="https://mitchinson.dev/Photo-Frame/index.html">
+<meta property="og:site_name" content="Ben Mitchinson">
+<meta property="og:description" content="This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-05-14T19:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-05T02:13:51.168Z">
+<meta property="article:author" content="Ben Mitchinson">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Raspberry Pi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@115bwm">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,r_50:5/v1547059571/Projects/PhotoFrame/frameThumbnail.webp"/>
+    
+    
+        <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546666566/Projects/PhotoFrame/photoframe.webp"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546666566/Projects/PhotoFrame/photoframe.webp"/>
+    
+    
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0229.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0229.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0234.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0234.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0237.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0237.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0250.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0250.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0238.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0238.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0279.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0279.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0275.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0275.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0281.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0281.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0290.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0290.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545534/Projects/PhotoFrame/IMG_0405.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545534/Projects/PhotoFrame/IMG_0405.webp"/>
+        
+            <meta property="og:image" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.webp"/>
+            <meta class="swiftype" name="image" data-type="enum" content="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.webp"/>
+        
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-en5gmpasgdjgiazbtcli0rjiek6x0iqpkeynzsoxwungafmdsudvh1nbyz95.min.css">
+
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131573158-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131573158-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Ben Mitchinson
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+            <img class="header-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="Read more about the author"
+                >
+                    <img class="sidebar-profile-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Ben Mitchinson</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:mitchinson.dev@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-calendar" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://dev.to/bmitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Dev.to"
+                        >
+                        <i class="sidebar-button-icon fab fa-dev" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Dev.to</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/115bwm/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/ben-mitchinson"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin-in" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/resume"
+                            
+                            rel="noopener"
+                            title="Resume"
+                        >
+                        <i class="sidebar-button-icon fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Resume</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-left
+                    post-header-cover--partial"
+             style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_1300/v1546666566/Projects/PhotoFrame/photoframe.webp');"
+             data-behavior="1">
+            
+        </div>
+
+            <div id="main" data-behavior="1"
+                 class="hasCover
+                        hasCoverMetaOut
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Mother&#39;s Day Photo Frame
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2017-05-14T13:00:00-06:00">
+	
+		    May 14, 2017
+    	
+    </time>
+    
+    
+        -
+        
+            3 min to read
+        
+        
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p>
+<span id="more"></span>
+
+<h1 id="Solution-●-GitHub"><a href="#Solution-●-GitHub" class="headerlink" title="Solution ● GitHub"></a>Solution ● <a href="github.com/bmitchinson/raspberry-pi-photo-frame">GitHub</a></h1><p>Inside now is a Raspberry Pi running OSMC on an HD display, with a python script running in the background to download new photos from a dedicated Gmail account. From there, OSMC transitions through them all to display. The frame is also enabled with SSH at home, so while I'm at school, I can perform remote updates and mass file transfers to update large amounts of photos manually.
+</p>
+
+<h1 id="What-I-learned-potential-improvements"><a href="#What-I-learned-potential-improvements" class="headerlink" title="What I learned + potential improvements"></a>What I learned + potential improvements</h1><p> This being one of my first personal side projects, interacting with the Gmail API for the first time resulted in a really satisfying final result. The ability of anyone to be able to either email the address, or even send a photo through SMS to it, and know that it would be displayed within the next 15 minutes, felt very impressive for the little python work required.
+
+<p>Ideally, I would have preferred to run a more appropriate OS, and just manually create a GUI solution to iterating through the photos, as opposed to having to use everything that comes with OSMC, just to use its wallpaper feature. That being said, it’s funny to send YouTube videos to it, including active streams of live events.</p>
+<p>There’s also more ideas for improvements of the script located in <a target="_blank" rel="noopener" href="https://github.com/bmitchinson/Raspberry-Pi-Photo-Frame/issues">the issues on my GitHub repo</a>, and I’m always happy to view updates and requests.</p>
+</p>
+
+<h1 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h1><div style="height:600px;overflow-y:scroll">
+  <figure class="codeblock codeblock--tabbed"><figcaption><a target="_blank" rel="noopener" href="https://github.com/bmitchinson/Raspberry-Pi-Photo-Frame/blob/master/dlAttachments.py">dlAttachments.py</a><ul class="tabs"><li class="tab active">python</li></ul></figcaption><div class="tabs-content"><figure class="highlight python" style="display: block;"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Referenced http://stackoverflow.com/questions/348630/how-can-i-download-all-emails-with-attachments-from-gmail</span></span><br><span class="line"><span class="comment"># Make sure you have IMAP enabled in your gmail settings.</span></span><br><span class="line"><span class="comment"># See / create issues on github.com/bmitchinson/raspberry-pi-photo-frame</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> imaplib</span><br><span class="line"><span class="keyword">import</span> email</span><br><span class="line"><span class="keyword">import</span> email.header</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># All pictures downloaded to "/Attachments" by default</span></span><br><span class="line"></span><br><span class="line">detach_dir = <span class="string">'.'</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">'Attachments'</span> <span class="keyword">not</span> <span class="keyword">in</span> os.listdir(detach_dir):</span><br><span class="line">os.mkdir(<span class="string">'Attachments'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace _username_ and _password_</span></span><br><span class="line"></span><br><span class="line">EMAIL_ACCOUNT = <span class="string">"_USERNAME_@gmail.com"</span></span><br><span class="line">EMAIL_PASSWORD = <span class="string">"_PASSWORD_"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use a dedicated folder if desired, otherwise leave as "INBOX" to search inbox</span></span><br><span class="line"></span><br><span class="line">EMAIL_FOLDER = <span class="string">"INBOX"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">imapSession = imaplib.IMAP4_SSL(<span class="string">'imap.gmail.com'</span>)</span><br><span class="line">typ, accountDetails = imapSession.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)</span><br><span class="line"><span class="keyword">if</span> typ != <span class="string">'OK'</span>:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Not able to sign in!'</span>)</span><br><span class="line"><span class="keyword">raise</span></span><br><span class="line">imapSession.select(<span class="string">'INBOX'</span>)</span><br><span class="line">typ, data = imapSession.search(<span class="literal">None</span>, <span class="string">'ALL'</span>)</span><br><span class="line"><span class="keyword">if</span> typ != <span class="string">'OK'</span>:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Error searching Inbox.'</span>)</span><br><span class="line"><span class="keyword">raise</span> <span class="comment"># Iterating over all emails</span></span><br><span class="line"><span class="keyword">for</span> msgId <span class="keyword">in</span> data[<span class="number">0</span>].split():</span><br><span class="line">typ, messageParts = imapSession.fetch(msgId, <span class="string">'(RFC822)'</span>)</span><br><span class="line"><span class="keyword">if</span> typ != <span class="string">'OK'</span>:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Error fetching mail.'</span>)</span><br><span class="line"><span class="keyword">raise</span></span><br><span class="line"></span><br><span class="line">        emailBody = messageParts[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">        mail = email.message_from_bytes(emailBody)</span><br><span class="line">        <span class="keyword">for</span> part <span class="keyword">in</span> mail.walk():</span><br><span class="line">            <span class="keyword">if</span> part.get_content_maintype() == <span class="string">'multipart'</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> part.get(<span class="string">'Content-Disposition'</span>) <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            fileName = part.get_filename()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">bool</span>(fileName):</span><br><span class="line">                filePath = os.path.join(detach_dir, <span class="string">'Attachments'</span>, fileName)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> os.path.isfile(filePath) :</span><br><span class="line">                    <span class="built_in">print</span>(fileName)</span><br><span class="line">                    fp = <span class="built_in">open</span>(filePath, <span class="string">'wb'</span>)</span><br><span class="line">                    fp.write(part.get_payload(decode=<span class="literal">True</span>))</span><br><span class="line">                    fp.close()</span><br><span class="line">    imapSession.close()</span><br><span class="line">    imapSession.logout()</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'Not able to download all attachments.'</span>)</span><br></pre></td></tr></tbody></table></figure></div></figure>
+
+</div>
+
+<h1 id="Gallery"><a href="#Gallery" class="headerlink" title="Gallery"></a>Gallery</h1><!-- Gallery -->
+
+            
+
+    
+    <div class="image-gallery">
+        <div class="image-gallery-metabar">
+            <span>Gallery: 11 images</span>
+        </div>
+        <div class="image-gallery-photos image-gallery-photos--thumbnail">
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Original electronics ready to be removed, and replaced with an HD screen"
+                    title="Original electronics ready to be removed, and replaced with an HD screen"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0229.webp"
+                    aria-label=""
+                >
+                    
+
+                        <img
+                                class="photo" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0229.webp"
+                        >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Guts removed"
+                    title="Guts removed"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0234.webp"
+                    aria-label=""
+                >
+                    
+
+                        <img
+                                class="photo" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0234.webp"
+                        >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="New screen in"
+                    title="New screen in"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0237.webp"
+                    aria-label=""
+                >
+                    
+
+                        <img
+                                class="photo" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0237.webp"
+                        >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Working screen"
+                    title="Working screen"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0250.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Attaching buttons"
+                    title="Attaching buttons"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545531/Projects/PhotoFrame/IMG_0238.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Configuring OSMC on the Pi"
+                    title="Configuring OSMC on the Pi"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0279.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Writing the script"
+                    title="Writing the script"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545532/Projects/PhotoFrame/IMG_0275.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Some final testing"
+                    title="Some final testing"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0281.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Less than ideal skotch tape reassembly"
+                    title="Less than ideal skotch tape reassembly"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545533/Projects/PhotoFrame/IMG_0290.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption="Final placement! Mom loved it"
+                    title="Final placement! Mom loved it"
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1544545534/Projects/PhotoFrame/IMG_0405.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+            
+            <div class="photo-box">
+                <a
+                    class="photo-box-inner fancybox"
+                    data-fancybox="gallery-cl7o5yz5k000jdwt2aetudrs0"
+                    data-caption=""
+                    title=""
+                    target="_blank" rel="noopener" href="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546666566/Projects/PhotoFrame/photoframe.webp"
+                    aria-label=""
+                >
+                    
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Python/" rel="tag">Python</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/Raspberry-Pi/" rel="tag">Raspberry Pi</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Alexa-Bus-Tracker/"
+                    data-tooltip="Bus Predictions with Alexa"
+                    aria-label="PREVIOUS: Bus Predictions with Alexa"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Photo-Frame/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        
+    </span>
+</footer>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/Alexa-Bus-Tracker/"
+                    data-tooltip="Bus Predictions with Alexa"
+                    aria-label="PREVIOUS: Bus Predictions with Alexa"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Photo-Frame/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://mitchinson.dev/Photo-Frame/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,w_110/v1532150487/BenMitchinson.com/profile.webp" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Ben Mitchinson</h4>
+        
+            <div id="about-card-bio"><p>Focused on code quality, learning new things, and creating effective processes for agile development. I like to make software that feels fun to use.</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Engineer @ Accenture Industry X</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br/>
+                Denver, CO
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Photo-Frame/"
+                            aria-label=": Mother&#39;s Day Photo Frame"
+                        >
+                            <h3 class="media-heading">Mother&#39;s Day Photo Frame</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 14, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This year for Mother’s Day, I decided to take an old digital photo frame we had lying around the house, and throw in some improvements. Originally, the frame had a small amount of internal memory, and could store low-resolution images loaded in from a flash drive. The process of moving files over was tedious, and I wanted anyone in my family to be able to easily contribute to the rotation of photos. Going away from school, I thought it would be neat to be able to easily update the frame with new photos, no matter where my siblings were in the world.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Alexa-Bus-Tracker/"
+                            aria-label=": Bus Predictions with Alexa"
+                        >
+                            <h3 class="media-heading">Bus Predictions with Alexa</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 2, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>During local hack day this December, I developed an Alexa skill for students to check bus times through campus transportation. It was a solo project I set out to complete in 10 hours, and as of January of 2019, over 30 students are still actively invoking the skill every week.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Laserphonic/"
+                            aria-label=": ⚡ Laserphonic"
+                        >
+                            <h3 class="media-heading">⚡ Laserphonic</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    May 2, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>For a course in Digital Arts this semester, two friends and I grouped together to
+create a multichannel audio circuit for displaying “Chladni Figures” in a project
+we called “Laserphonic”.
+</br></br></p>
+<div class="figure center" style="width:80%;"><img class="fig-img lazyload" data-src="https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive/v1546974833/Projects/Lazerphonics/Chladni-Plate-625x350.webp" style="width:80%;"alt="Chladni Plate (Geek.com)"><span class="caption">Chladni Plate (Geek.com)</span></div>
+</br>
+You may have seen these formations on plates such as the one shown above.
+We set out to recreate the resonant frequency effects visually using lasers, as
+a way for listeners and artists to see a real-time visualization of harmony and
+dissonance. We were inspired by Nathan J. Wall, who demoed a similar idea
+for an <a target="_blank" rel="noopener" href="https://youtu.be/RxzMzSZF_b4?t=99">acoustics project</a> at USF Music Tech in 2012.
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Computer-Comfort-Year-3/"
+                            aria-label=": Entering Year 3 of Computer Comfort 👵💻"
+                        >
+                            <h3 class="media-heading">Entering Year 3 of Computer Comfort 👵💻</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jul 21, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>This fall I'll be taking on the role of President for the Computer Comfort executive board, and I couldn't be more excited. I've been with the org for two years now, and immediately after my first semester of volunteering, I applied for a position on the board. I knew right away that the club was something I wanted to participate in throughout my four years at Iowa, and I've held leadership roles within the club ever since. In that time we've grown a ton, so I wanted to share a bit about what we've done for the community, and how we've grown as a student org on campus.
+</p>
+
+<h3>Our Mission Statement:</h3>
+> "Computer Comfort strives to bridge the age gap in Iowa City by educating seniors on today’s technology while building strong relationships in the process."
+
+</br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    <div class="media-body">
+                        <a
+                            class="link-unstyled"
+                            href="https://mitchinson.dev/Playground-News/"
+                            aria-label=": TigerHacks 2018: Playground News"
+                        >
+                            <h3 class="media-heading">TigerHacks 2018: Playground News</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Oct 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>At <a target="_blank" rel="noopener" href="http://tiger-hacks.com/">TigerHacks</a> this year at the University of Missouri, <a target="_blank" rel="noopener" href="https://github.com/osandvold302">Olivia Sandvold</a>, <a target="_blank" rel="noopener" href="https://github.com/benjamin-weinberg">Ben Weinberg</a> and I, worked together to build “Playground News”: A web app for elementary/adolescent aged kids to read and interact with curated news, and motivate family conversation. <br/><br/>
+Our goal was to help kids increase their literary ability, learn relevant topics through current news, and then encourage dialog over those concepts with parents through provided parental controls and data-driven tooling with insight reports.
+</br></p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                20 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('https://res.cloudinary.com/dheqbiqti/image/upload/fl_progressive,c_scale,w_0.5/v1532152643/BenMitchinson.com/cover.webp');"></div>
+        <!--SCRIPTS-->
+<script defer src="/assets/js/script-gh0j5lcktiv6ht9djleelhvmzfauj38ovizdvnuhcz9ywtxczjg43vryercs.min.js"></script>
+<!--SCRIPTS END-->
+<script src="/assets/js/lazysizes.js"></script>
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://mitchinson.dev/Photo-Frame/';
+              
+            this.page.identifier = 'Photo-Frame/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'benmitchinson';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script>
+      var appId = '6XPKC4Q2SA'
+      var apiKey = 'c1cefc78aaf15ec5b644468ec41faf2f'
+      var indexName = 'mitchinson_dot_dev_index'
+    </script>
+
+    </body>
+</html>
