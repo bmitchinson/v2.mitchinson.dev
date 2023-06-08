@@ -1,4 +1,4 @@
-# [🌍 mitchinson.dev](https://mitchinson.dev)
+# [🌍 v2.mitchinson.dev](https://v2.mitchinson.dev)
 
 [![Lighthouse Accessibility Badge](./badges/lighthouse_accessibility.svg)](https://github.com/bmitchinson/mitchinson.dev)
 [![Lighthouse Best Practices Badge](./badges/lighthouse_best-practices.svg)](https://github.com/bmitchinson/mitchinson.dev)
